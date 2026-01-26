@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Materi TKJ Kelas 11 - Pelajari Routing, Switching, VLAN, dan Manajemen Bandwidth.">
+    <title>Kelas 11 - Boetoenux</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/src/styles/main.css">
+    <link rel="stylesheet" href="/src/styles/pages.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="/" class="logo">
+                <span class="logo-icon">⌘</span>
+                <span class="logo-text">Boetoenux</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="/" class="nav-link">Beranda</a></li>
+                <li><a href="/kelas-10.html" class="nav-link">Kelas 10</a></li>
+                <li><a href="/kelas-11.html" class="nav-link active">Kelas 11</a></li>
+                <li><a href="/kelas-12.html" class="nav-link">Kelas 12</a></li>
+                <li><a href="/lab-virtual.html" class="nav-link">Lab Virtual</a></li>
+            </ul>
+            <button class="search-btn" id="searchBtn" aria-label="Search">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <span class="search-shortcut">Ctrl+K</span>
+            </button>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container page-header-content">
+            <div class="page-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="16 18 22 12 16 6"></polyline>
+                    <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+                <span>Menengah</span>
+            </div>
+            <h1 class="page-title">Kelas <span class="gradient-text">11</span></h1>
+            <p class="page-desc">
+                Materi tingkat menengah yang mempersiapkanmu untuk konfigurasi jaringan yang lebih kompleks.
+            </p>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="/">Beranda</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current">Kelas 11</span>
+        </nav>
+    </div>
+
+    <!-- Routing & Switching Section -->
+    <section class="content-section" id="routing">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Modul 1</span>
+                <h2 class="section-title">Dasar Routing & Switching</h2>
+                <p class="section-desc">
+                    Mulai belajar konfigurasi router dan switch untuk menghubungkan jaringan.
+                </p>
+            </div>
+            <div class="materials-grid">
+                <article class="material-card">
+                    <div class="material-icon">🔀</div>
+                    <h3 class="material-title">Konsep Routing</h3>
+                    <p class="material-desc">
+                        Apa itu routing? Static vs Dynamic routing, routing table,
+                        dan cara kerja router dalam meneruskan paket data.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            30 menit
+                        </span>
+                        <span class="material-meta-item">Teori</span>
+                    </div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon">⚙️</div>
+                    <h3 class="material-title">Static Routing</h3>
+                    <p class="material-desc">
+                        Konfigurasi static route pada Cisco dan MikroTik.
+                        Menghubungkan dua atau lebih network dengan route manual.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            45 menit
+                        </span>
+                        <span class="material-meta-item">Praktik</span>
+                    </div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon">🔄</div>
+                    <h3 class="material-title">Switching Dasar</h3>
+                    <p class="material-desc">
+                        Konsep Layer 2 switching, MAC address table, cara kerja switch,
+                        dan perbedaan dengan hub.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            25 menit
+                        </span>
+                        <span class="material-meta-item">Teori</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- VLAN Section -->
+    <section class="content-section" id="vlan">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Modul 2</span>
+                <h2 class="section-title">VLAN Configuration</h2>
+                <p class="section-desc">
+                    Memisahkan jaringan secara logis menggunakan Virtual LAN.
+                </p>
+            </div>
+            <div class="materials-grid">
+                <article class="material-card">
+                    <div class="material-icon">🏷️</div>
+                    <h3 class="material-title">Konsep VLAN</h3>
+                    <p class="material-desc">
+                        Pengertian VLAN, keuntungan segmentasi jaringan, VLAN ID,
+                        dan cara kerja VLAN dalam switch.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            20 menit
+                        </span>
+                        <span class="material-meta-item">Teori</span>
+                    </div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon">🔌</div>
+                    <h3 class="material-title">Access & Trunk Port</h3>
+                    <p class="material-desc">
+                        Perbedaan port access dan trunk. Konfigurasi trunk untuk
+                        menghubungkan VLAN antar switch.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            35 menit
+                        </span>
+                        <span class="material-meta-item">Praktik</span>
+                    </div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon">🌉</div>
+                    <h3 class="material-title">Inter-VLAN Routing</h3>
+                    <p class="material-desc">
+                        Router on a stick dan Layer 3 switch untuk menghubungkan
+                        VLAN yang berbeda.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            40 menit
+                        </span>
+                        <span class="material-meta-item">Praktik</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bandwidth Section -->
+    <section class="content-section" id="bandwidth">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Modul 3</span>
+                <h2 class="section-title">Manajemen Bandwidth</h2>
+                <p class="section-desc">
+                    Mengatur dan membatasi penggunaan bandwidth dalam jaringan.
+                </p>
+            </div>
+            <div class="materials-grid">
+                <article class="material-card">
+                    <div class="material-icon">📊</div>
+                    <h3 class="material-title">Konsep QoS</h3>
+                    <p class="material-desc">
+                        Quality of Service, prioritas traffic, dan pentingnya
+                        manajemen bandwidth dalam jaringan.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            25 menit
+                        </span>
+                        <span class="material-meta-item">Teori</span>
+                    </div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon">⬇️</div>
+                    <h3 class="material-title">Simple Queue MikroTik</h3>
+                    <p class="material-desc">
+                        Limitasi bandwidth sederhana menggunakan Simple Queue.
+                        Konfigurasi limit upload dan download per IP.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            35 menit
+                        </span>
+                        <span class="material-meta-item">Praktik</span>
+                    </div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon">📈</div>
+                    <h3 class="material-title">Traffic Shaping Dasar</h3>
+                    <p class="material-desc">
+                        Pengenalan traffic shaping dan burst limit. Memberikan
+                        boost bandwidth sementara untuk user.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            30 menit
+                        </span>
+                        <span class="material-meta-item">Praktik</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wireless Section -->
+    <section class="content-section" id="wireless">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Modul 4</span>
+                <h2 class="section-title">Wireless Network</h2>
+                <p class="section-desc">
+                    Dasar-dasar jaringan nirkabel dan konfigurasi access point.
+                </p>
+            </div>
+            <div class="materials-grid">
+                <article class="material-card">
+                    <div class="material-icon">📡</div>
+                    <h3 class="material-title">Konsep Wireless</h3>
+                    <p class="material-desc">
+                        Standar WiFi (802.11), frekuensi 2.4GHz vs 5GHz,
+                        channel, dan interferensi.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            25 menit
+                        </span>
+                        <span class="material-meta-item">Teori</span>
+                    </div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon">🔐</div>
+                    <h3 class="material-title">Wireless Security</h3>
+                    <p class="material-desc">
+                        WEP, WPA, WPA2, WPA3 - Memahami enkripsi wireless
+                        dan best practice pengamanan.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            30 menit
+                        </span>
+                        <span class="material-meta-item">Teori</span>
+                    </div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon">🌐</div>
+                    <h3 class="material-title">Konfigurasi Hotspot</h3>
+                    <p class="material-desc">
+                        Setup hotspot dengan captive portal menggunakan MikroTik.
+                        Login page dan voucher sistem.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            45 menit
+                        </span>
+                        <span class="material-meta-item">Praktik</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Next Step CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-card">
+                <div class="cta-glow"></div>
+                <div class="cta-content">
+                    <h2>Siap Pilih Spesialisasi?</h2>
+                    <p>Di Kelas 12, kamu akan memilih jalur spesialisasi: AIJ, ASJ, atau KJ!</p>
+                    <a href="/kelas-12.html" class="btn btn-primary btn-lg">
+                        <span>Lihat Spesialisasi</span>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="cta-decoration">
+                    <div class="code-block-preview">
+                        <span class="line"><span class="prompt">$</span> show ip route</span>
+                        <span class="line output">Gateway of last resort: 192.168.1.1</span>
+                        <span class="line output success">✓ Routing configured!</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="logo">
+                        <span class="logo-icon">⌘</span>
+                        <span class="logo-text">Boetoenux</span>
+                    </a>
+                    <p>Portal belajar TKJ terlengkap untuk siswa SMK Indonesia.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigasi</h4>
+                    <ul>
+                        <li><a href="/">Beranda</a></li>
+                        <li><a href="/kelas-10.html">Kelas 10</a></li>
+                        <li><a href="/kelas-11.html">Kelas 11</a></li>
+                        <li><a href="/kelas-12.html">Kelas 12</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Spesialisasi</h4>
+                    <ul>
+                        <li><a href="/aij.html">AIJ</a></li>
+                        <li><a href="/asj.html">ASJ</a></li>
+                        <li><a href="/kj.html">KJ</a></li>
+                        <li><a href="/lab-virtual.html">Lab Virtual</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Boetoenux. Built with 💚 for Indonesian students.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Search Modal -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-overlay"></div>
+        <div class="search-container">
+            <div class="search-header">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <input type="text" class="search-input" placeholder="Cari materi..." id="searchInput">
+                <kbd class="search-kbd">ESC</kbd>
+            </div>
+            <div class="search-results" id="searchResults">
+                <div class="search-hint">
+                    <p>Mulai ketik untuk mencari materi...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

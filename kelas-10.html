@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Materi TKJ Kelas 10 - Pelajari dasar-dasar K3LH, Perakitan PC, Jaringan, dan Sistem Operasi.">
+    <title>Kelas 10 - Boetoenux</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/src/styles/main.css">
+    <link rel="stylesheet" href="/src/styles/pages.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="/" class="logo">
+                <span class="logo-icon">⌘</span>
+                <span class="logo-text">Boetoenux</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="/" class="nav-link">Beranda</a></li>
+                <li><a href="/kelas-10.html" class="nav-link active">Kelas 10</a></li>
+                <li><a href="/kelas-11.html" class="nav-link">Kelas 11</a></li>
+                <li><a href="/kelas-12.html" class="nav-link">Kelas 12</a></li>
+                <li><a href="/lab-virtual.html" class="nav-link">Lab Virtual</a></li>
+            </ul>
+            <button class="search-btn" id="searchBtn" aria-label="Search">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <span class="search-shortcut">Ctrl+K</span>
+            </button>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container page-header-content">
+            <div class="page-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                </svg>
+                <span>Fondasi</span>
+            </div>
+            <h1 class="page-title">Kelas <span class="gradient-text">10</span></h1>
+            <p class="page-desc">
+                Dasar-dasar yang wajib dikuasai sebelum masuk ke materi TKJ tingkat lanjutan.
+                Fondasi yang kuat adalah kunci kesuksesan.
+            </p>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="/">Beranda</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current">Kelas 10</span>
+        </nav>
+    </div>
+
+    <!-- K3LH Section -->
+    <section class="content-section" id="k3lh">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Modul 1</span>
+                <h2 class="section-title">K3LH & Keselamatan Kerja</h2>
+                <p class="section-desc">
+                    Memahami prosedur keselamatan dan kesehatan kerja di lingkungan IT.
+                </p>
+            </div>
+            <div class="materials-grid">
+                <article class="material-card">
+                    <div class="material-icon">🛡️</div>
+                    <h3 class="material-title">Pengenalan K3LH</h3>
+                    <p class="material-desc">
+                        Pengertian, tujuan, dan pentingnya K3LH dalam dunia kerja IT.
+                        Mengenal potensi bahaya dan cara pencegahannya.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            15 menit
+                        </span>
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                            </svg>
+                            Teori
+                        </span>
+                    </div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon">⚡</div>
+                    <h3 class="material-title">Bahaya Listrik</h3>
+                    <p class="material-desc">
+                        Mengenal bahaya kelistrikan saat merakit dan memperbaiki komputer.
+                        Prosedur aman bekerja dengan komponen elektronik.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            20 menit
+                        </span>
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                            </svg>
+                            Teori
+                        </span>
+                    </div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon">🧰</div>
+                    <h3 class="material-title">Alat Pelindung Diri</h3>
+                    <p class="material-desc">
+                        Penggunaan APD yang tepat: gelang anti statis, sarung tangan,
+                        dan peralatan keselamatan lainnya.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            10 menit
+                        </span>
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                            </svg>
+                            Teori
+                        </span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Perakitan PC Section -->
+    <section class="content-section" id="perakitan">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Modul 2</span>
+                <h2 class="section-title">Perakitan & Perawatan PC</h2>
+                <p class="section-desc">
+                    Belajar mengenal komponen komputer dan cara merakitnya dengan benar.
+                </p>
+            </div>
+            <div class="materials-grid">
+                <article class="material-card">
+                    <div class="material-icon">🖥️</div>
+                    <h3 class="material-title">Komponen Utama PC</h3>
+                    <p class="material-desc">
+                        Mengenal CPU, RAM, Motherboard, Storage, PSU, dan komponen
+                        penting lainnya beserta fungsinya.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            30 menit
+                        </span>
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                            </svg>
+                            Teori
+                        </span>
+                    </div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon">🔧</div>
+                    <h3 class="material-title">Langkah Perakitan</h3>
+                    <p class="material-desc">
+                        Tutorial step-by-step merakit PC dari nol. Dari pemasangan
+                        CPU hingga kabel management.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            45 menit
+                        </span>
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                            Praktik
+                        </span>
+                    </div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon">🔍</div>
+                    <h3 class="material-title">Troubleshooting Dasar</h3>
+                    <p class="material-desc">
+                        Mendiagnosis dan memperbaiki masalah umum pada PC:
+                        tidak menyala, hang, BSOD, dan lainnya.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            25 menit
+                        </span>
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                            Praktik
+                        </span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dasar Jaringan Section -->
+    <section class="content-section" id="jaringan">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Modul 3</span>
+                <h2 class="section-title">Dasar-Dasar Jaringan</h2>
+                <p class="section-desc">
+                    Fondasi pengetahuan jaringan komputer yang akan menjadi bekal di kelas selanjutnya.
+                </p>
+            </div>
+            <div class="materials-grid">
+                <article class="material-card">
+                    <div class="material-icon">🌐</div>
+                    <h3 class="material-title">Pengenalan Jaringan</h3>
+                    <p class="material-desc">
+                        Apa itu jaringan komputer? Jenis-jenis jaringan: LAN, WAN, MAN,
+                        dan PAN. Keuntungan menggunakan jaringan.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            20 menit
+                        </span>
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                            </svg>
+                            Teori
+                        </span>
+                    </div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon">📊</div>
+                    <h3 class="material-title">Model OSI & TCP/IP</h3>
+                    <p class="material-desc">
+                        Memahami model referensi OSI 7 layer dan TCP/IP. Cara data
+                        bergerak dalam jaringan dari satu perangkat ke perangkat lain.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            35 menit
+                        </span>
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                            </svg>
+                            Teori
+                        </span>
+                    </div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon">🔌</div>
+                    <h3 class="material-title">Topologi Jaringan</h3>
+                    <p class="material-desc">
+                        Mengenal topologi Star, Bus, Ring, Mesh, dan Hybrid.
+                        Kelebihan dan kekurangan masing-masing topologi.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            25 menit
+                        </span>
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                            </svg>
+                            Teori
+                        </span>
+                    </div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon">🔢</div>
+                    <h3 class="material-title">IP Address & Subnetting</h3>
+                    <p class="material-desc">
+                        Konsep IP Address, IPv4 vs IPv6, cara menghitung subnet,
+                        dan pembagian network address.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            40 menit
+                        </span>
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                            Praktik
+                        </span>
+                    </div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon">🔀</div>
+                    <h3 class="material-title">Perangkat Jaringan</h3>
+                    <p class="material-desc">
+                        Mengenal Hub, Switch, Router, Access Point, dan Modem.
+                        Kapan dan bagaimana menggunakannya.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            25 menit
+                        </span>
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                            </svg>
+                            Teori
+                        </span>
+                    </div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon">📡</div>
+                    <h3 class="material-title">Media Transmisi</h3>
+                    <p class="material-desc">
+                        Kabel UTP, Fiber Optic, dan Wireless. Cara crimping kabel
+                        straight dan crossover.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            30 menit
+                        </span>
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                            Praktik
+                        </span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sistem Operasi Section -->
+    <section class="content-section" id="os">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Modul 4</span>
+                <h2 class="section-title">Sistem Operasi</h2>
+                <p class="section-desc">
+                    Instalasi dan konfigurasi dasar Windows dan Linux untuk pemula.
+                </p>
+            </div>
+            <div class="materials-grid">
+                <article class="material-card">
+                    <div class="material-icon">🪟</div>
+                    <h3 class="material-title">Instalasi Windows</h3>
+                    <p class="material-desc">
+                        Langkah-langkah menginstall Windows 10/11 dari awal.
+                        Partisi disk, driver, dan pengaturan awal.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            30 menit
+                        </span>
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                            Praktik
+                        </span>
+                    </div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon">🐧</div>
+                    <h3 class="material-title">Instalasi Linux</h3>
+                    <p class="material-desc">
+                        Pengenalan distro Linux populer. Instalasi Ubuntu/Debian
+                        untuk pemula dengan dual boot.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            35 menit
+                        </span>
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                            Praktik
+                        </span>
+                    </div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon">⌨️</div>
+                    <h3 class="material-title">Command Line Basics</h3>
+                    <p class="material-desc">
+                        Dasar-dasar penggunaan terminal Linux dan CMD Windows.
+                        Perintah navigasi dan manajemen file.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            25 menit
+                        </span>
+                        <span class="material-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                            Praktik
+                        </span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Next Step CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-card">
+                <div class="cta-glow"></div>
+                <div class="cta-content">
+                    <h2>Siap Lanjut ke Kelas 11?</h2>
+                    <p>Setelah menguasai dasar-dasar, saatnya masuk ke materi routing dan switching!</p>
+                    <a href="/kelas-11.html" class="btn btn-primary btn-lg">
+                        <span>Lanjut ke Kelas 11</span>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="cta-decoration">
+                    <div class="code-block-preview">
+                        <span class="line"><span class="prompt">$</span> progress --kelas 10</span>
+                        <span class="line output">Fondasi: ████████████ 100%</span>
+                        <span class="line output success">✓ Ready for next level!</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="logo">
+                        <span class="logo-icon">⌘</span>
+                        <span class="logo-text">Boetoenux</span>
+                    </a>
+                    <p>Portal belajar TKJ terlengkap untuk siswa SMK Indonesia.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigasi</h4>
+                    <ul>
+                        <li><a href="/">Beranda</a></li>
+                        <li><a href="/kelas-10.html">Kelas 10</a></li>
+                        <li><a href="/kelas-11.html">Kelas 11</a></li>
+                        <li><a href="/kelas-12.html">Kelas 12</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Spesialisasi</h4>
+                    <ul>
+                        <li><a href="/aij.html">AIJ</a></li>
+                        <li><a href="/asj.html">ASJ</a></li>
+                        <li><a href="/kj.html">KJ</a></li>
+                        <li><a href="/lab-virtual.html">Lab Virtual</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Boetoenux. Built with 💚 for Indonesian students.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Search Modal -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-overlay"></div>
+        <div class="search-container">
+            <div class="search-header">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <input type="text" class="search-input" placeholder="Cari materi..." id="searchInput">
+                <kbd class="search-kbd">ESC</kbd>
+            </div>
+            <div class="search-results" id="searchResults">
+                <div class="search-hint">
+                    <p>Mulai ketik untuk mencari materi...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

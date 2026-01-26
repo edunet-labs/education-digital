@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="KJ - Keamanan Jaringan. Belajar Cyber Security, Iptables, IDS/IPS, VPN, dan Server Hardening.">
+    <title>KJ - Keamanan Jaringan - Boetoenux</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/src/styles/main.css">
+    <link rel="stylesheet" href="/src/styles/pages.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="/" class="logo">
+                <span class="logo-icon">⌘</span>
+                <span class="logo-text">Boetoenux</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="/" class="nav-link">Beranda</a></li>
+                <li><a href="/kelas-10.html" class="nav-link">Kelas 10</a></li>
+                <li><a href="/kelas-11.html" class="nav-link">Kelas 11</a></li>
+                <li><a href="/kelas-12.html" class="nav-link active">Kelas 12</a></li>
+                <li><a href="/lab-virtual.html" class="nav-link">Lab Virtual</a></li>
+            </ul>
+            <button class="search-btn" id="searchBtn" aria-label="Search">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <span class="search-shortcut">Ctrl+K</span>
+            </button>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header"
+        style="background: linear-gradient(180deg, rgba(239, 68, 68, 0.05) 0%, var(--bg-secondary) 100%);">
+        <div class="container page-header-content">
+            <div class="page-badge"
+                style="background: rgba(239, 68, 68, 0.15); border-color: rgba(239, 68, 68, 0.3); color: #ef4444;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+                <span>Spesialisasi Kelas 12</span>
+            </div>
+            <h1 class="page-title"
+                style="background: linear-gradient(135deg, #ef4444, #dc2626); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                KJ</h1>
+            <p class="page-desc" style="font-size: 1rem; margin-bottom: 0.5rem;">
+                Keamanan Jaringan
+            </p>
+            <p class="page-desc">
+                Fokus pada keamanan siber dan perlindungan infrastruktur IT.
+                Pelajari cara mengamankan jaringan dari berbagai ancaman.
+            </p>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="/">Beranda</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="/kelas-12.html">Kelas 12</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current">KJ</span>
+        </nav>
+    </div>
+
+    <!-- Cyber Security Fundamentals -->
+    <section class="content-section" id="fundamental">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" style="background: rgba(239, 68, 68, 0.1); color: #ef4444;">Modul 1</span>
+                <h2 class="section-title">Cyber Security Fundamentals</h2>
+                <p class="section-desc">
+                    Dasar-dasar keamanan siber yang wajib dipahami sebelum masuk ke teknik lanjutan.
+                </p>
+            </div>
+            <div class="materials-grid">
+                <article class="material-card">
+                    <div class="material-icon" style="background: linear-gradient(135deg, #ef4444, #dc2626);">🎯</div>
+                    <h3 class="material-title">CIA Triad</h3>
+                    <p class="material-desc">
+                        Confidentiality, Integrity, Availability - tiga pilar utama
+                        dalam keamanan informasi.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">20 menit</span>
+                        <span class="material-meta-item">Teori</span>
+                    </div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon" style="background: linear-gradient(135deg, #ef4444, #dc2626);">⚠️</div>
+                    <h3 class="material-title">Jenis-jenis Ancaman</h3>
+                    <p class="material-desc">
+                        Malware, phishing, DDoS, man-in-the-middle, SQL injection,
+                        dan berbagai jenis serangan lainnya.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">35 menit</span>
+                        <span class="material-meta-item">Teori</span>
+                    </div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon" style="background: linear-gradient(135deg, #ef4444, #dc2626);">🔐</div>
+                    <h3 class="material-title">Kriptografi Dasar</h3>
+                    <p class="material-desc">
+                        Enkripsi simetris vs asimetris, hashing, digital signature,
+                        dan penggunaan SSL/TLS.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">40 menit</span>
+                        <span class="material-meta-item">Teori</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Iptables Section -->
+    <section class="content-section" id="iptables">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" style="background: rgba(239, 68, 68, 0.1); color: #ef4444;">Modul 2</span>
+                <h2 class="section-title">Iptables Firewall</h2>
+                <p class="section-desc">
+                    Linux firewall menggunakan iptables untuk mengontrol traffic jaringan.
+                </p>
+            </div>
+            <div class="materials-grid">
+                <article class="material-card">
+                    <div class="material-icon" style="background: linear-gradient(135deg, #ef4444, #dc2626);">🔥</div>
+                    <h3 class="material-title">Konsep Iptables</h3>
+                    <p class="material-desc">
+                        Tables, chains (INPUT, OUTPUT, FORWARD), dan targets
+                        (ACCEPT, DROP, REJECT).
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">30 menit</span>
+                        <span class="material-meta-item">Teori</span>
+                    </div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon" style="background: linear-gradient(135deg, #ef4444, #dc2626);">⚙️</div>
+                    <h3 class="material-title">Basic Rules</h3>
+                    <p class="material-desc">
+                        Membuat rules untuk memblokir/mengizinkan traffic berdasarkan
+                        IP, port, dan protocol.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">45 menit</span>
+                        <span class="material-meta-item">Praktik</span>
+                    </div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon" style="background: linear-gradient(135deg, #ef4444, #dc2626);">📝</div>
+                    <h3 class="material-title">Persistent Rules</h3>
+                    <p class="material-desc">
+                        Menyimpan rules agar tetap aktif setelah reboot menggunakan
+                        iptables-persistent.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">25 menit</span>
+                        <span class="material-meta-item">Praktik</span>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Example Code Block -->
+            <div class="article-content" style="max-width: 100%; margin-top: 2rem;">
+                <h3>Contoh: Basic Firewall Rules</h3>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-lang">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="4 17 10 11 4 5"></polyline>
+                                <line x1="12" y1="19" x2="20" y2="19"></line>
+                            </svg>
+                            Bash
+                        </span>
+                        <button class="copy-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                            <span>Copy</span>
+                        </button>
+                    </div>
+                    <div class="code-body">
+                        <code><span class="comment"># Allow loopback</span>
+sudo iptables -A INPUT -i lo -j ACCEPT
+
+<span class="comment"># Allow established connections</span>
+sudo iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+<span class="comment"># Allow SSH (port 22)</span>
+sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+
+<span class="comment"># Allow HTTP and HTTPS</span>
+sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+
+<span class="comment"># Drop all other incoming traffic</span>
+sudo iptables -A INPUT -j DROP
+
+<span class="comment"># Save rules</span>
+sudo iptables-save > /etc/iptables/rules.v4</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IDS/IPS Section -->
+    <section class="content-section" id="ids">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" style="background: rgba(239, 68, 68, 0.1); color: #ef4444;">Modul 3</span>
+                <h2 class="section-title">IDS/IPS Systems</h2>
+                <p class="section-desc">
+                    Intrusion Detection & Prevention Systems untuk mendeteksi dan mencegah serangan.
+                </p>
+            </div>
+            <div class="materials-grid">
+                <article class="material-card">
+                    <div class="material-icon" style="background: linear-gradient(135deg, #ef4444, #dc2626);">👁️</div>
+                    <h3 class="material-title">Konsep IDS vs IPS</h3>
+                    <p class="material-desc">
+                        Perbedaan antara detection (mendeteksi) dan prevention (mencegah).
+                        Network-based vs Host-based.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">25 menit</span>
+                        <span class="material-meta-item">Teori</span>
+                    </div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon" style="background: linear-gradient(135deg, #ef4444, #dc2626);">🐗</div>
+                    <h3 class="material-title">Snort IDS</h3>
+                    <p class="material-desc">
+                        Instalasi dan konfigurasi Snort. Rules, alerts, dan
+                        analysis dari detected threats.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">50 menit</span>
+                        <span class="material-meta-item">Praktik</span>
+                    </div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon" style="background: linear-gradient(135deg, #ef4444, #dc2626);">🦔</div>
+                    <h3 class="material-title">Suricata IPS</h3>
+                    <p class="material-desc">
+                        Alternatif modern untuk Snort dengan multi-threading.
+                        Inline mode untuk prevention.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">45 menit</span>
+                        <span class="material-meta-item">Praktik</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- VPN Section -->
+    <section class="content-section" id="vpn">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" style="background: rgba(239, 68, 68, 0.1); color: #ef4444;">Modul 4</span>
+                <h2 class="section-title">VPN Configuration</h2>
+                <p class="section-desc">
+                    Virtual Private Network untuk koneksi aman antar jaringan.
+                </p>
+            </div>
+            <div class="materials-grid">
+                <article class="material-card">
+                    <div class="material-icon" style="background: linear-gradient(135deg, #ef4444, #dc2626);">🔒</div>
+                    <h3 class="material-title">Konsep VPN</h3>
+                    <p class="material-desc">
+                        Jenis-jenis VPN, tunneling protocols (OpenVPN, WireGuard, IPSec),
+                        dan use cases.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">25 menit</span>
+                        <span class="material-meta-item">Teori</span>
+                    </div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon" style="background: linear-gradient(135deg, #ef4444, #dc2626);">🔑</div>
+                    <h3 class="material-title">OpenVPN Server</h3>
+                    <p class="material-desc">
+                        Setup OpenVPN server, generate certificates, dan
+                        konfigurasi client untuk akses remote.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">55 menit</span>
+                        <span class="material-meta-item">Praktik</span>
+                    </div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon" style="background: linear-gradient(135deg, #ef4444, #dc2626);">⚡</div>
+                    <h3 class="material-title">WireGuard VPN</h3>
+                    <p class="material-desc">
+                        VPN modern yang lebih cepat dan simple. Setup peer-to-peer
+                        dan site-to-site connections.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">45 menit</span>
+                        <span class="material-meta-item">Praktik</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hardening Section -->
+    <section class="content-section" id="hardening">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" style="background: rgba(239, 68, 68, 0.1); color: #ef4444;">Modul 5</span>
+                <h2 class="section-title">Server Hardening</h2>
+                <p class="section-desc">
+                    Teknik mengamankan server Linux dari berbagai potensi serangan.
+                </p>
+            </div>
+            <div class="materials-grid">
+                <article class="material-card">
+                    <div class="material-icon" style="background: linear-gradient(135deg, #ef4444, #dc2626);">🔐</div>
+                    <h3 class="material-title">SSH Hardening</h3>
+                    <p class="material-desc">
+                        Key-based authentication, disable root login, change port,
+                        dan fail2ban protection.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">40 menit</span>
+                        <span class="material-meta-item">Praktik</span>
+                    </div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon" style="background: linear-gradient(135deg, #ef4444, #dc2626);">🛡️</div>
+                    <h3 class="material-title">System Hardening</h3>
+                    <p class="material-desc">
+                        Disable unnecessary services, file permissions, automatic
+                        security updates, dan audit logging.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">35 menit</span>
+                        <span class="material-meta-item">Praktik</span>
+                    </div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon" style="background: linear-gradient(135deg, #ef4444, #dc2626);">📊</div>
+                    <h3 class="material-title">Security Audit</h3>
+                    <p class="material-desc">
+                        Tools untuk audit keamanan: Lynis, CIS Benchmarks,
+                        dan vulnerability scanning dengan Nessus.
+                    </p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">45 menit</span>
+                        <span class="material-meta-item">Praktik</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="logo">
+                        <span class="logo-icon">⌘</span>
+                        <span class="logo-text">Boetoenux</span>
+                    </a>
+                    <p>Portal belajar TKJ terlengkap untuk siswa SMK Indonesia.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigasi</h4>
+                    <ul>
+                        <li><a href="/">Beranda</a></li>
+                        <li><a href="/kelas-10.html">Kelas 10</a></li>
+                        <li><a href="/kelas-11.html">Kelas 11</a></li>
+                        <li><a href="/kelas-12.html">Kelas 12</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Spesialisasi</h4>
+                    <ul>
+                        <li><a href="/aij.html">AIJ</a></li>
+                        <li><a href="/asj.html">ASJ</a></li>
+                        <li><a href="/kj.html">KJ</a></li>
+                        <li><a href="/lab-virtual.html">Lab Virtual</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Boetoenux. Built with 💚 for Indonesian students.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Search Modal -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-overlay"></div>
+        <div class="search-container">
+            <div class="search-header">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <input type="text" class="search-input" placeholder="Cari materi..." id="searchInput">
+                <kbd class="search-kbd">ESC</kbd>
+            </div>
+            <div class="search-results" id="searchResults">
+                <div class="search-hint">
+                    <p>Mulai ketik untuk mencari materi...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

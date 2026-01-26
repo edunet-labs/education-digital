@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Lab Virtual - Rekomendasi software simulasi untuk praktik TKJ: Cisco Packet Tracer, GNS3, PNETLab, dan tools lainnya.">
+    <title>Lab Virtual - Boetoenux</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/src/styles/main.css">
+    <link rel="stylesheet" href="/src/styles/pages.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="/" class="logo">
+                <span class="logo-icon">⌘</span>
+                <span class="logo-text">Boetoenux</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="/" class="nav-link">Beranda</a></li>
+                <li><a href="/kelas-10.html" class="nav-link">Kelas 10</a></li>
+                <li><a href="/kelas-11.html" class="nav-link">Kelas 11</a></li>
+                <li><a href="/kelas-12.html" class="nav-link">Kelas 12</a></li>
+                <li><a href="/lab-virtual.html" class="nav-link active">Lab Virtual</a></li>
+            </ul>
+            <button class="search-btn" id="searchBtn" aria-label="Search">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <span class="search-shortcut">Ctrl+K</span>
+            </button>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container page-header-content">
+            <div class="page-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+                <span>Praktik Virtual</span>
+            </div>
+            <h1 class="page-title">Lab <span class="gradient-text">Virtual</span></h1>
+            <p class="page-desc">
+                Kumpulan software simulasi dan virtualisasi untuk praktik jaringan tanpa
+                memerlukan perangkat fisik. Belajar di mana saja, kapan saja!
+            </p>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="/">Beranda</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current">Lab Virtual</span>
+        </nav>
+    </div>
+
+    <!-- Network Simulators -->
+    <section class="content-section" id="simulators">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Network Simulators</span>
+                <h2 class="section-title">Simulator <span class="gradient-text">Jaringan</span></h2>
+                <p class="section-desc">
+                    Software untuk mensimulasikan topologi jaringan dan konfigurasi perangkat.
+                </p>
+            </div>
+            <div class="tools-grid">
+                <!-- Packet Tracer -->
+                <article class="tool-card" id="packet-tracer">
+                    <div class="tool-logo">📦</div>
+                    <h3 class="tool-name">Cisco Packet Tracer</h3>
+                    <p class="tool-desc">
+                        Simulator jaringan resmi dari Cisco. Cocok untuk pemula yang ingin
+                        belajar dasar networking dan persiapan CCNA.
+                    </p>
+                    <div class="tool-features">
+                        <span class="tool-feature">Free</span>
+                        <span class="tool-feature">Beginner Friendly</span>
+                        <span class="tool-feature">Cisco Devices</span>
+                        <span class="tool-feature">Windows/Mac/Linux</span>
+                    </div>
+                    <a href="https://www.netacad.com/courses/packet-tracer" target="_blank" rel="noopener"
+                        class="tool-link">
+                        <span>Download</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                    </a>
+                </article>
+
+                <!-- GNS3 -->
+                <article class="tool-card" id="gns3">
+                    <div class="tool-logo">🌐</div>
+                    <h3 class="tool-name">GNS3</h3>
+                    <p class="tool-desc">
+                        Network emulator yang powerful. Dapat menjalankan real IOS images
+                        dari Cisco, Juniper, dan berbagai vendor lainnya.
+                    </p>
+                    <div class="tool-features">
+                        <span class="tool-feature">Free & Open Source</span>
+                        <span class="tool-feature">Real IOS</span>
+                        <span class="tool-feature">Advanced</span>
+                        <span class="tool-feature">Multi-vendor</span>
+                    </div>
+                    <a href="https://www.gns3.com/" target="_blank" rel="noopener" class="tool-link">
+                        <span>Download</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                    </a>
+                </article>
+
+                <!-- PNETLab -->
+                <article class="tool-card" id="pnetlab">
+                    <div class="tool-logo">🔬</div>
+                    <h3 class="tool-name">PNETLab</h3>
+                    <p class="tool-desc">
+                        Platform lab virtual berbasis web (fork dari EVE-NG). Bisa diakses
+                        dari browser tanpa install client tambahan.
+                    </p>
+                    <div class="tool-features">
+                        <span class="tool-feature">Free</span>
+                        <span class="tool-feature">Web-based</span>
+                        <span class="tool-feature">Multi-vendor</span>
+                        <span class="tool-feature">Community</span>
+                    </div>
+                    <a href="https://pnetlab.com/" target="_blank" rel="noopener" class="tool-link">
+                        <span>Download</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                    </a>
+                </article>
+
+                <!-- EVE-NG -->
+                <article class="tool-card">
+                    <div class="tool-logo">🌍</div>
+                    <h3 class="tool-name">EVE-NG</h3>
+                    <p class="tool-desc">
+                        Emulated Virtual Environment for Network. Professional-grade lab
+                        platform yang digunakan oleh network engineers.
+                    </p>
+                    <div class="tool-features">
+                        <span class="tool-feature">Free Community</span>
+                        <span class="tool-feature">Professional</span>
+                        <span class="tool-feature">Enterprise</span>
+                        <span class="tool-feature">Multi-vendor</span>
+                    </div>
+                    <a href="https://www.eve-ng.net/" target="_blank" rel="noopener" class="tool-link">
+                        <span>Download</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                    </a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Virtualization -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Virtualization</span>
+                <h2 class="section-title">Software <span class="gradient-text">Virtualisasi</span></h2>
+                <p class="section-desc">
+                    Jalankan multiple sistem operasi secara bersamaan untuk praktik server.
+                </p>
+            </div>
+            <div class="tools-grid">
+                <!-- VirtualBox -->
+                <article class="tool-card">
+                    <div class="tool-logo">📦</div>
+                    <h3 class="tool-name">VirtualBox</h3>
+                    <p class="tool-desc">
+                        Virtualisasi gratis dari Oracle. Cocok untuk menjalankan VM
+                        Linux, Windows, dan lainnya di satu komputer.
+                    </p>
+                    <div class="tool-features">
+                        <span class="tool-feature">Free & Open Source</span>
+                        <span class="tool-feature">Cross-platform</span>
+                        <span class="tool-feature">Snapshots</span>
+                        <span class="tool-feature">Easy to Use</span>
+                    </div>
+                    <a href="https://www.virtualbox.org/" target="_blank" rel="noopener" class="tool-link">
+                        <span>Download</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                    </a>
+                </article>
+
+                <!-- VMware -->
+                <article class="tool-card">
+                    <div class="tool-logo">🖥️</div>
+                    <h3 class="tool-name">VMware Workstation</h3>
+                    <p class="tool-desc">
+                        Professional virtualization software. Player gratis untuk penggunaan
+                        personal, Pro untuk fitur lengkap.
+                    </p>
+                    <div class="tool-features">
+                        <span class="tool-feature">Free Player</span>
+                        <span class="tool-feature">Professional</span>
+                        <span class="tool-feature">Better Performance</span>
+                        <span class="tool-feature">Advanced Features</span>
+                    </div>
+                    <a href="https://www.vmware.com/products/workstation-player.html" target="_blank" rel="noopener"
+                        class="tool-link">
+                        <span>Download</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                    </a>
+                </article>
+
+                <!-- Proxmox -->
+                <article class="tool-card">
+                    <div class="tool-logo">🏢</div>
+                    <h3 class="tool-name">Proxmox VE</h3>
+                    <p class="tool-desc">
+                        Enterprise-grade virtualization platform. Cocok untuk
+                        membangun home lab server dengan multiple VMs.
+                    </p>
+                    <div class="tool-features">
+                        <span class="tool-feature">Free & Open Source</span>
+                        <span class="tool-feature">Enterprise</span>
+                        <span class="tool-feature">Web UI</span>
+                        <span class="tool-feature">Containers</span>
+                    </div>
+                    <a href="https://www.proxmox.com/en/proxmox-ve" target="_blank" rel="noopener" class="tool-link">
+                        <span>Download</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                    </a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- OS Images -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Operating Systems</span>
+                <h2 class="section-title">ISO <span class="gradient-text">Images</span></h2>
+                <p class="section-desc">
+                    Download ISO untuk instalasi di virtual machine.
+                </p>
+            </div>
+            <div class="tools-grid">
+                <!-- Debian -->
+                <article class="tool-card">
+                    <div class="tool-logo">🐧</div>
+                    <h3 class="tool-name">Debian</h3>
+                    <p class="tool-desc">
+                        Distribusi Linux yang stabil dan populer untuk server.
+                        Direkomendasikan untuk materi ASJ.
+                    </p>
+                    <div class="tool-features">
+                        <span class="tool-feature">Server</span>
+                        <span class="tool-feature">Stable</span>
+                        <span class="tool-feature">Free</span>
+                    </div>
+                    <a href="https://www.debian.org/download" target="_blank" rel="noopener" class="tool-link">
+                        <span>Download</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                    </a>
+                </article>
+
+                <!-- Ubuntu Server -->
+                <article class="tool-card">
+                    <div class="tool-logo">🟠</div>
+                    <h3 class="tool-name">Ubuntu Server</h3>
+                    <p class="tool-desc">
+                        Linux server yang user-friendly dengan LTS support.
+                        Dokumentasi lengkap dan komunitas besar.
+                    </p>
+                    <div class="tool-features">
+                        <span class="tool-feature">Server</span>
+                        <span class="tool-feature">LTS</span>
+                        <span class="tool-feature">Popular</span>
+                    </div>
+                    <a href="https://ubuntu.com/download/server" target="_blank" rel="noopener" class="tool-link">
+                        <span>Download</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                    </a>
+                </article>
+
+                <!-- MikroTik CHR -->
+                <article class="tool-card">
+                    <div class="tool-logo">📡</div>
+                    <h3 class="tool-name">MikroTik CHR</h3>
+                    <p class="tool-desc">
+                        Cloud Hosted Router - RouterOS dalam bentuk virtual machine.
+                        Free license untuk speed 1 Mbps.
+                    </p>
+                    <div class="tool-features">
+                        <span class="tool-feature">Router</span>
+                        <span class="tool-feature">Free Trial</span>
+                        <span class="tool-feature">AIJ</span>
+                    </div>
+                    <a href="https://mikrotik.com/download" target="_blank" rel="noopener" class="tool-link">
+                        <span>Download</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                    </a>
+                </article>
+
+                <!-- Kali Linux -->
+                <article class="tool-card">
+                    <div class="tool-logo">🐉</div>
+                    <h3 class="tool-name">Kali Linux</h3>
+                    <p class="tool-desc">
+                        Distribusi Linux untuk penetration testing dan security auditing.
+                        Cocok untuk materi KJ.
+                    </p>
+                    <div class="tool-features">
+                        <span class="tool-feature">Security</span>
+                        <span class="tool-feature">Pentesting</span>
+                        <span class="tool-feature">KJ</span>
+                    </div>
+                    <a href="https://www.kali.org/get-kali/" target="_blank" rel="noopener" class="tool-link">
+                        <span>Download</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                    </a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Utility Tools -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Utilities</span>
+                <h2 class="section-title">Tools <span class="gradient-text">Pendukung</span></h2>
+                <p class="section-desc">
+                    Software tambahan yang berguna untuk praktik networking.
+                </p>
+            </div>
+            <div class="tools-grid">
+                <!-- PuTTY -->
+                <article class="tool-card">
+                    <div class="tool-logo">⌨️</div>
+                    <h3 class="tool-name">PuTTY</h3>
+                    <p class="tool-desc">
+                        SSH dan Telnet client untuk Windows. Wajib punya untuk
+                        remote access ke router dan server.
+                    </p>
+                    <div class="tool-features">
+                        <span class="tool-feature">SSH</span>
+                        <span class="tool-feature">Telnet</span>
+                        <span class="tool-feature">Serial</span>
+                    </div>
+                    <a href="https://www.putty.org/" target="_blank" rel="noopener" class="tool-link">
+                        <span>Download</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                    </a>
+                </article>
+
+                <!-- WinBox -->
+                <article class="tool-card">
+                    <div class="tool-logo">🔧</div>
+                    <h3 class="tool-name">WinBox</h3>
+                    <p class="tool-desc">
+                        GUI management tool untuk MikroTik RouterOS.
+                        Interface yang user-friendly untuk konfigurasi.
+                    </p>
+                    <div class="tool-features">
+                        <span class="tool-feature">MikroTik</span>
+                        <span class="tool-feature">GUI</span>
+                        <span class="tool-feature">AIJ</span>
+                    </div>
+                    <a href="https://mikrotik.com/download" target="_blank" rel="noopener" class="tool-link">
+                        <span>Download</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                    </a>
+                </article>
+
+                <!-- Wireshark -->
+                <article class="tool-card">
+                    <div class="tool-logo">🦈</div>
+                    <h3 class="tool-name">Wireshark</h3>
+                    <p class="tool-desc">
+                        Network protocol analyzer. Capture dan analyze network
+                        traffic untuk troubleshooting dan security.
+                    </p>
+                    <div class="tool-features">
+                        <span class="tool-feature">Packet Capture</span>
+                        <span class="tool-feature">Analysis</span>
+                        <span class="tool-feature">KJ</span>
+                    </div>
+                    <a href="https://www.wireshark.org/" target="_blank" rel="noopener" class="tool-link">
+                        <span>Download</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                    </a>
+                </article>
+
+                <!-- FileZilla -->
+                <article class="tool-card">
+                    <div class="tool-logo">📁</div>
+                    <h3 class="tool-name">FileZilla</h3>
+                    <p class="tool-desc">
+                        FTP/SFTP client untuk transfer file ke server.
+                        Interface drag-and-drop yang mudah.
+                    </p>
+                    <div class="tool-features">
+                        <span class="tool-feature">FTP</span>
+                        <span class="tool-feature">SFTP</span>
+                        <span class="tool-feature">ASJ</span>
+                    </div>
+                    <a href="https://filezilla-project.org/" target="_blank" rel="noopener" class="tool-link">
+                        <span>Download</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                    </a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="logo">
+                        <span class="logo-icon">⌘</span>
+                        <span class="logo-text">Boetoenux</span>
+                    </a>
+                    <p>Portal belajar TKJ terlengkap untuk siswa SMK Indonesia.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigasi</h4>
+                    <ul>
+                        <li><a href="/">Beranda</a></li>
+                        <li><a href="/kelas-10.html">Kelas 10</a></li>
+                        <li><a href="/kelas-11.html">Kelas 11</a></li>
+                        <li><a href="/kelas-12.html">Kelas 12</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Spesialisasi</h4>
+                    <ul>
+                        <li><a href="/aij.html">AIJ</a></li>
+                        <li><a href="/asj.html">ASJ</a></li>
+                        <li><a href="/kj.html">KJ</a></li>
+                        <li><a href="/lab-virtual.html">Lab Virtual</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Boetoenux. Built with 💚 for Indonesian students.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Search Modal -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-overlay"></div>
+        <div class="search-container">
+            <div class="search-header">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <input type="text" class="search-input" placeholder="Cari materi..." id="searchInput">
+                <kbd class="search-kbd">ESC</kbd>
+            </div>
+            <div class="search-results" id="searchResults">
+                <div class="search-hint">
+                    <p>Mulai ketik untuk mencari materi...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
