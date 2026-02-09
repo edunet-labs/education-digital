@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="ASJ Kelas 12 - Belajar Linux Server, Web Server, Mail Server, Database Server, dan Network Monitoring.">
+    <title>ASJ Kelas 12 - Administrasi Sistem Jaringan - Edunet</title>
+    <link rel="icon" type="image/png" href="/public/img/logos/edunet-logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/src/styles/main.css">
+    <link rel="stylesheet" href="/src/styles/pages.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="/" class="logo"><img src="/public/img/logos/edunet-logo.png" alt="Edunet Logo"
+                    class="logo-icon logo-img"><span class="logo-text">Edunet</span></a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation"><span
+                    class="hamburger"></span></button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="/" class="nav-link">Beranda</a></li>
+                <li class="nav-dropdown"><a href="#" class="nav-link">Kelas</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/pages/kelas-10.html" class="dropdown-link">Kelas 10</a></li>
+                        <li><a href="/pages/kelas-11.html" class="dropdown-link">Kelas 11</a></li>
+                        <li><a href="/pages/kelas-12.html" class="dropdown-link">Kelas 12</a></li>
+                    </ul>
+                </li>
+                <li><a href="/pages/quiz.html" class="nav-link">Quiz</a></li>
+                <li><a href="/pages/forum.html" class="nav-link">Forum</a></li>
+                <li><a href="/pages/lab-virtual.html" class="nav-link">Lab Virtual</a></li>
+            </ul>
+            <button class="search-btn" id="searchBtn" aria-label="Search"><svg width="20" height="20"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg><span class="search-shortcut">Ctrl+K</span></button>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><svg class="sun-icon" width="20"
+                    height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg><svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg></button>
+        </div>
+    </nav>
+
+    <header class="hero-header-full"
+        style="background: linear-gradient(180deg, rgba(59, 130, 246, 0.08) 0%, var(--bg-secondary) 100%);">
+        <div class="hero-glow primary" style="background: #3b82f6;"></div>
+        <div class="hero-glow secondary" style="background: #1d4ed8;"></div>
+        <div class="hero-floating-icons">
+            <i class="bi bi-terminal icon" style="font-size: 4rem; color: #3b82f6;"></i>
+            <i class="bi bi-database icon" style="font-size: 3rem; color: #3b82f6;"></i>
+            <i class="bi bi-globe icon" style="font-size: 3.5rem; color: #3b82f6;"></i>
+            <i class="bi bi-server icon" style="font-size: 3rem; color: #3b82f6;"></i>
+        </div>
+        <div class="container">
+            <div class="hero-content-wrapper">
+                <div class="hero-text-content">
+                    <p class="hero-subtitle" style="color: #3b82f6;"><i class="bi bi-server"></i> Kelas 12 -
+                        Spesialisasi</p>
+                    <h1 class="hero-title"><span
+                            style="background: linear-gradient(135deg, #3b82f6, #1d4ed8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">ASJ</span>
+                    </h1>
+                    <p class="hero-description">Administrasi Sistem Jaringan - Level lanjutan dengan Linux Server, Web
+                        Server, Mail Server, Database, dan Monitoring.</p>
+                    <div class="hero-stats-inline">
+                        <div class="hero-stat-item"><span class="hero-stat-number" style="color: #3b82f6;">5</span><span
+                                class="hero-stat-text">Modul</span></div>
+                        <div class="hero-stat-item"><span class="hero-stat-number"
+                                style="color: #3b82f6;">15</span><span class="hero-stat-text">Materi</span></div>
+                        <div class="hero-stat-item"><span class="hero-stat-number"
+                                style="color: #3b82f6;">9+</span><span class="hero-stat-text">Jam Belajar</span></div>
+                    </div>
+                    <div class="hero-buttons">
+                        <a href="#linux" class="btn-hero btn-hero-primary"
+                            style="background: #3b82f6; box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);"><span>Mulai
+                                Belajar</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg></a>
+                        <a href="/pages/kelas-12.html" class="btn-hero btn-hero-secondary"><i
+                                class="bi bi-arrow-left"></i><span>Kembali</span></a>
+                    </div>
+                </div>
+                <div class="hero-visual-content">
+                    <div class="hero-visual-card" style="border-color: rgba(59, 130, 246, 0.2);">
+                        <div class="hero-visual-icon" style="color: #3b82f6;"><i class="bi bi-server"></i></div>
+                        <p class="hero-visual-title">Advanced Server</p>
+                        <div class="hero-visual-tags">
+                            <span class="hero-visual-tag"
+                                style="background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.2); color: #3b82f6;">Web</span>
+                            <span class="hero-visual-tag"
+                                style="background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.2); color: #3b82f6;">Mail</span>
+                            <span class="hero-visual-tag"
+                                style="background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.2); color: #3b82f6;">DB</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator"><span>Scroll ke bawah</span><svg viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M19 12l-7 7-7-7" />
+            </svg></div>
+    </header>
+
+    <section class="content-section" id="linux">
+        <div class="container">
+            <div class="section-header"><span class="section-tag"
+                    style="background: rgba(59, 130, 246, 0.1); color: #3b82f6;">Modul 1</span>
+                <h2 class="section-title">Linux Server</h2>
+                <p class="section-desc">Instalasi dan konfigurasi dasar Linux server menggunakan Debian/Ubuntu.</p>
+            </div>
+            <div class="materials-grid">
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-ubuntu"></i></div>
+                    <h3 class="material-title">Instalasi Debian Server</h3>
+                    <p class="material-desc">Instalasi Debian minimal tanpa GUI. Partisi, user management, dan
+                        konfigurasi dasar pasca instalasi.</p>
+                    <div class="material-meta"><span class="material-meta-item">45 menit</span><span
+                            class="material-meta-item">Praktik</span></div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-terminal"></i></div>
+                    <h3 class="material-title">Linux Command Line</h3>
+                    <p class="material-desc">Navigasi filesystem, manajemen file dan folder, text editor (nano/vim), dan
+                        perintah-perintah penting lainnya.</p>
+                    <div class="material-meta"><span class="material-meta-item">40 menit</span><span
+                            class="material-meta-item">Praktik</span></div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-person-lock"></i></div>
+                    <h3 class="material-title">User & Permission</h3>
+                    <p class="material-desc">Manajemen user dan group. File permission (chmod, chown), dan sudo
+                        configuration.</p>
+                    <div class="material-meta"><span class="material-meta-item">35 menit</span><span
+                            class="material-meta-item">Praktik</span></div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" id="webserver">
+        <div class="container">
+            <div class="section-header"><span class="section-tag"
+                    style="background: rgba(59, 130, 246, 0.1); color: #3b82f6;">Modul 2</span>
+                <h2 class="section-title">Web Server</h2>
+                <p class="section-desc">Instalasi dan konfigurasi Apache2 atau Nginx sebagai web server.</p>
+            </div>
+            <div class="materials-grid">
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-globe"></i></div>
+                    <h3 class="material-title">Apache2 Web Server</h3>
+                    <p class="material-desc">Instalasi Apache2, document root, directory listing, dan konfigurasi dasar
+                        httpd.conf.</p>
+                    <div class="material-meta"><span class="material-meta-item">40 menit</span><span
+                            class="material-meta-item">Praktik</span></div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-lightning"></i></div>
+                    <h3 class="material-title">Nginx Web Server</h3>
+                    <p class="material-desc">Alternatif yang lebih ringan dan cepat. Server blocks, reverse proxy, dan
+                        load balancing dasar.</p>
+                    <div class="material-meta"><span class="material-meta-item">45 menit</span><span
+                            class="material-meta-item">Praktik</span></div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-house-door"></i></div>
+                    <h3 class="material-title">Virtual Host</h3>
+                    <p class="material-desc">Hosting multiple website dalam satu server menggunakan virtual host/server
+                        blocks.</p>
+                    <div class="material-meta"><span class="material-meta-item">35 menit</span><span
+                            class="material-meta-item">Praktik</span></div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" id="mail">
+        <div class="container">
+            <div class="section-header"><span class="section-tag"
+                    style="background: rgba(59, 130, 246, 0.1); color: #3b82f6;">Modul 3</span>
+                <h2 class="section-title">Mail Server</h2>
+                <p class="section-desc">Konfigurasi Postfix dan Dovecot untuk layanan email.</p>
+            </div>
+            <div class="materials-grid">
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-envelope"></i></div>
+                    <h3 class="material-title">Postfix SMTP</h3>
+                    <p class="material-desc">Mail Transfer Agent (MTA) untuk mengirim email. Konfigurasi main.cf dan
+                        relay settings.</p>
+                    <div class="material-meta"><span class="material-meta-item">45 menit</span><span
+                            class="material-meta-item">Praktik</span></div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-mailbox"></i></div>
+                    <h3 class="material-title">Dovecot IMAP/POP3</h3>
+                    <p class="material-desc">Mail Delivery Agent (MDA) untuk menerima email. Konfigurasi mailbox dan
+                        authentication.</p>
+                    <div class="material-meta"><span class="material-meta-item">40 menit</span><span
+                            class="material-meta-item">Praktik</span></div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-browser-chrome"></i></div>
+                    <h3 class="material-title">Webmail (Roundcube)</h3>
+                    <p class="material-desc">Akses email melalui browser menggunakan Roundcube webmail client.</p>
+                    <div class="material-meta"><span class="material-meta-item">35 menit</span><span
+                            class="material-meta-item">Praktik</span></div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" id="database">
+        <div class="container">
+            <div class="section-header"><span class="section-tag"
+                    style="background: rgba(59, 130, 246, 0.1); color: #3b82f6;">Modul 4</span>
+                <h2 class="section-title">Database Server</h2>
+                <p class="section-desc">Instalasi dan manajemen MySQL/MariaDB database server.</p>
+            </div>
+            <div class="materials-grid">
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-database"></i></div>
+                    <h3 class="material-title">MariaDB Installation</h3>
+                    <p class="material-desc">Instalasi MariaDB, secure installation, dan konfigurasi my.cnf.</p>
+                    <div class="material-meta"><span class="material-meta-item">30 menit</span><span
+                            class="material-meta-item">Praktik</span></div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-file-code"></i></div>
+                    <h3 class="material-title">SQL Basics</h3>
+                    <p class="material-desc">CREATE, SELECT, INSERT, UPDATE, DELETE. Dasar-dasar query SQL untuk admin.
+                    </p>
+                    <div class="material-meta"><span class="material-meta-item">40 menit</span><span
+                            class="material-meta-item">Praktik</span></div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-people"></i></div>
+                    <h3 class="material-title">User & Privileges</h3>
+                    <p class="material-desc">Membuat user database, GRANT privileges, dan remote access configuration.
+                    </p>
+                    <div class="material-meta"><span class="material-meta-item">35 menit</span><span
+                            class="material-meta-item">Praktik</span></div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" id="monitoring">
+        <div class="container">
+            <div class="section-header"><span class="section-tag"
+                    style="background: rgba(59, 130, 246, 0.1); color: #3b82f6;">Modul 5</span>
+                <h2 class="section-title">Network Monitoring</h2>
+                <p class="section-desc">Tools untuk memonitor performa server dan jaringan.</p>
+            </div>
+            <div class="materials-grid">
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-graph-up"></i></div>
+                    <h3 class="material-title">Monitoring Tools</h3>
+                    <p class="material-desc">htop, netstat, ss, iftop, dan iotop untuk memonitor sistem secara
+                        real-time.</p>
+                    <div class="material-meta"><span class="material-meta-item">30 menit</span><span
+                            class="material-meta-item">Praktik</span></div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-speedometer2"></i></div>
+                    <h3 class="material-title">Nagios/Zabbix Basics</h3>
+                    <p class="material-desc">Pengenalan tools monitoring enterprise untuk memantau banyak server
+                        sekaligus.</p>
+                    <div class="material-meta"><span class="material-meta-item">45 menit</span><span
+                            class="material-meta-item">Praktik</span></div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-journal-text"></i></div>
+                    <h3 class="material-title">Log Management</h3>
+                    <p class="material-desc">Syslog, journalctl, dan cara membaca log untuk troubleshooting masalah
+                        server.</p>
+                    <div class="material-meta"><span class="material-meta-item">35 menit</span><span
+                            class="material-meta-item">Praktik</span></div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-card">
+                <div class="cta-glow"></div>
+                <div class="cta-content">
+                    <h2>🎉 Selamat!</h2>
+                    <p>Kamu sudah menyelesaikan materi ASJ. Coba Quiz untuk menguji pemahamanmu!</p><a
+                        href="/pages/quiz.html" class="btn btn-primary btn-lg"><span>Mulai Quiz</span><svg width="24"
+                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand"><a href="/" class="logo"><img src="/public/img/logos/edunet-logo.png"
+                            alt="Edunet Logo" class="logo-icon logo-img"><span class="logo-text">Edunet</span></a>
+                    <p>Portal belajar TKJ terlengkap untuk siswa SMK Indonesia.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigasi</h4>
+                    <ul>
+                        <li><a href="/">Beranda</a></li>
+                        <li><a href="/pages/kelas-10.html">Kelas 10</a></li>
+                        <li><a href="/pages/kelas-11.html">Kelas 11</a></li>
+                        <li><a href="/pages/kelas-12.html">Kelas 12</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Kelas 12</h4>
+                    <ul>
+                        <li><a href="/pages/kelas-12/aij.html">AIJ</a></li>
+                        <li><a href="/pages/kelas-12/asj.html">ASJ</a></li>
+                        <li><a href="/pages/kelas-12/kj.html">KJ</a></li>
+                        <li><a href="/pages/lab-virtual.html">Lab Virtual</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Edunet. Built with 💚 for Indonesian students.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="search-modal" id="searchModal">
+        <div class="search-overlay"></div>
+        <div class="search-container">
+            <div class="search-header"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg><input type="text" class="search-input" placeholder="Cari materi..." id="searchInput"><kbd
+                    class="search-kbd">ESC</kbd></div>
+            <div class="search-results" id="searchResults">
+                <div class="search-hint">
+                    <p>Mulai ketik untuk mencari materi...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

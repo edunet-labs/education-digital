@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="KJ Kelas 12 - Belajar Firewall UFW, Kriptografi, CIA Triad, dan Server Hardening.">
+    <title>KJ Kelas 12 - Keamanan Jaringan - Edunet</title>
+    <link rel="icon" type="image/png" href="/public/img/logos/edunet-logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/src/styles/main.css">
+    <link rel="stylesheet" href="/src/styles/pages.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="/" class="logo"><img src="/public/img/logos/edunet-logo.png" alt="Edunet Logo"
+                    class="logo-icon logo-img"><span class="logo-text">Edunet</span></a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation"><span
+                    class="hamburger"></span></button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="/" class="nav-link">Beranda</a></li>
+                <li class="nav-dropdown"><a href="#" class="nav-link">Kelas</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/pages/kelas-10.html" class="dropdown-link">Kelas 10</a></li>
+                        <li><a href="/pages/kelas-11.html" class="dropdown-link">Kelas 11</a></li>
+                        <li><a href="/pages/kelas-12.html" class="dropdown-link">Kelas 12</a></li>
+                    </ul>
+                </li>
+                <li><a href="/pages/quiz.html" class="nav-link">Quiz</a></li>
+                <li><a href="/pages/forum.html" class="nav-link">Forum</a></li>
+                <li><a href="/pages/lab-virtual.html" class="nav-link">Lab Virtual</a></li>
+            </ul>
+            <button class="search-btn" id="searchBtn" aria-label="Search"><svg width="20" height="20"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg><span class="search-shortcut">Ctrl+K</span></button>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><svg class="sun-icon" width="20"
+                    height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg><svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg></button>
+        </div>
+    </nav>
+
+    <header class="hero-header-full"
+        style="background: linear-gradient(180deg, rgba(239, 68, 68, 0.08) 0%, var(--bg-secondary) 100%);">
+        <div class="hero-glow primary" style="background: #ef4444;"></div>
+        <div class="hero-glow secondary" style="background: #dc2626;"></div>
+        <div class="hero-floating-icons">
+            <i class="bi bi-shield-lock icon" style="font-size: 4rem; color: #ef4444;"></i>
+            <i class="bi bi-key icon" style="font-size: 3rem; color: #ef4444;"></i>
+            <i class="bi bi-bug icon" style="font-size: 3.5rem; color: #ef4444;"></i>
+            <i class="bi bi-fingerprint icon" style="font-size: 3rem; color: #ef4444;"></i>
+        </div>
+        <div class="container">
+            <div class="hero-content-wrapper">
+                <div class="hero-text-content">
+                    <p class="hero-subtitle" style="color: #ef4444;"><i class="bi bi-shield-lock-fill"></i> Kelas 12 -
+                        Spesialisasi</p>
+                    <h1 class="hero-title"><span
+                            style="background: linear-gradient(135deg, #ef4444, #dc2626); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">KJ</span>
+                    </h1>
+                    <p class="hero-description">Keamanan Jaringan - Level lanjutan dengan Firewall UFW, Kriptografi, CIA
+                        Triad, dan Server Hardening.</p>
+                    <div class="hero-stats-inline">
+                        <div class="hero-stat-item"><span class="hero-stat-number" style="color: #ef4444;">5</span><span
+                                class="hero-stat-text">Modul</span></div>
+                        <div class="hero-stat-item"><span class="hero-stat-number"
+                                style="color: #ef4444;">15</span><span class="hero-stat-text">Materi</span></div>
+                        <div class="hero-stat-item"><span class="hero-stat-number"
+                                style="color: #ef4444;">9+</span><span class="hero-stat-text">Jam Belajar</span></div>
+                    </div>
+                    <div class="hero-buttons">
+                        <a href="#firewall-auth" class="btn-hero btn-hero-primary"
+                            style="background: #ef4444; box-shadow: 0 4px 20px rgba(239, 68, 68, 0.3);"><span>Mulai
+                                Belajar</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg></a>
+                        <a href="/pages/kelas-12.html" class="btn-hero btn-hero-secondary"><i
+                                class="bi bi-arrow-left"></i><span>Kembali</span></a>
+                    </div>
+                </div>
+                <div class="hero-visual-content">
+                    <div class="hero-visual-card" style="border-color: rgba(239, 68, 68, 0.2);">
+                        <div class="hero-visual-icon" style="color: #ef4444;"><i class="bi bi-shield-lock-fill"></i>
+                        </div>
+                        <p class="hero-visual-title">Advanced Security</p>
+                        <div class="hero-visual-tags">
+                            <span class="hero-visual-tag"
+                                style="background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.2); color: #ef4444;">UFW</span>
+                            <span class="hero-visual-tag"
+                                style="background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.2); color: #ef4444;">Crypto</span>
+                            <span class="hero-visual-tag"
+                                style="background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.2); color: #ef4444;">Hardening</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator"><span>Scroll ke bawah</span><svg viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M19 12l-7 7-7-7" />
+            </svg></div>
+    </header>
+
+    <section class="content-section" id="firewall-auth">
+        <div class="container">
+            <div class="section-header"><span class="section-tag"
+                    style="background: rgba(239, 68, 68, 0.1); color: #ef4444;">Modul 1</span>
+                <h2 class="section-title">Firewall & Autentikasi</h2>
+                <p class="section-desc">Implementasi firewall tingkat lanjut dengan sistem autentikasi.</p>
+            </div>
+            <div class="materials-grid">
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-fire"></i></div>
+                    <h3 class="material-title">Firewall Policy Design</h3>
+                    <p class="material-desc">Merancang kebijakan firewall berdasarkan kebutuhan organisasi. Zone-based
+                        firewall dan DMZ implementation.</p>
+                    <div class="material-meta"><span class="material-meta-item">35 menit</span><span
+                            class="material-meta-item">Teori + Praktik</span></div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-person-check"></i></div>
+                    <h3 class="material-title">Autentikasi Multi-Faktor</h3>
+                    <p class="material-desc">Implementasi MFA menggunakan TOTP, SMS, dan hardware token. Konfigurasi 2FA
+                        pada aplikasi dan server.</p>
+                    <div class="material-meta"><span class="material-meta-item">40 menit</span><span
+                            class="material-meta-item">Praktik</span></div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-shield-check"></i></div>
+                    <h3 class="material-title">RADIUS & LDAP</h3>
+                    <p class="material-desc">Centralized authentication menggunakan RADIUS server. Integrasi dengan
+                        Active Directory dan LDAP.</p>
+                    <div class="material-meta"><span class="material-meta-item">45 menit</span><span
+                            class="material-meta-item">Praktik</span></div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" id="ufw">
+        <div class="container">
+            <div class="section-header"><span class="section-tag"
+                    style="background: rgba(239, 68, 68, 0.1); color: #ef4444;">Modul 2</span>
+                <h2 class="section-title">Blokir Web & IP UFW</h2>
+                <p class="section-desc">Menggunakan UFW untuk memblokir akses web dan IP address tertentu.</p>
+            </div>
+            <div class="materials-grid">
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-terminal"></i></div>
+                    <h3 class="material-title">Pengenalan UFW</h3>
+                    <p class="material-desc">Uncomplicated Firewall sebagai frontend iptables. Basic commands: enable,
+                        disable, status, allow, deny.</p>
+                    <div class="material-meta"><span class="material-meta-item">25 menit</span><span
+                            class="material-meta-item">Teori + Praktik</span></div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-x-circle"></i></div>
+                    <h3 class="material-title">Blokir IP Address</h3>
+                    <p class="material-desc">Memblokir IP address, subnet, dan range tertentu. Whitelist dan blacklist
+                        management.</p>
+                    <div class="material-meta"><span class="material-meta-item">35 menit</span><span
+                            class="material-meta-item">Praktik</span></div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-globe-x"></i></div>
+                    <h3 class="material-title">Blokir Website & Port</h3>
+                    <p class="material-desc">Blocking akses ke website tertentu berdasarkan port. Rate limiting dan
+                        connection limiting.</p>
+                    <div class="material-meta"><span class="material-meta-item">40 menit</span><span
+                            class="material-meta-item">Praktik</span></div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" id="crypto">
+        <div class="container">
+            <div class="section-header"><span class="section-tag"
+                    style="background: rgba(239, 68, 68, 0.1); color: #ef4444;">Modul 3</span>
+                <h2 class="section-title">Kriptografi & Enkripsi</h2>
+                <p class="section-desc">Teknik melindungi data menggunakan kriptografi dan enkripsi.</p>
+            </div>
+            <div class="materials-grid">
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-key-fill"></i></div>
+                    <h3 class="material-title">Dasar Kriptografi</h3>
+                    <p class="material-desc">Symmetric vs Asymmetric encryption. AES, RSA, dan penggunaannya dalam
+                        keamanan data.</p>
+                    <div class="material-meta"><span class="material-meta-item">30 menit</span><span
+                            class="material-meta-item">Teori</span></div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-hash"></i></div>
+                    <h3 class="material-title">Hashing & Signature</h3>
+                    <p class="material-desc">MD5, SHA-256, dan digital signatures. Verifikasi integritas data dan
+                        autentikasi pesan.</p>
+                    <div class="material-meta"><span class="material-meta-item">35 menit</span><span
+                            class="material-meta-item">Teori + Praktik</span></div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-file-lock2"></i></div>
+                    <h3 class="material-title">SSL/TLS & HTTPS</h3>
+                    <p class="material-desc">Certificate management, Let's Encrypt, dan implementasi HTTPS untuk
+                        mengamankan komunikasi web.</p>
+                    <div class="material-meta"><span class="material-meta-item">45 menit</span><span
+                            class="material-meta-item">Praktik</span></div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" id="cia">
+        <div class="container">
+            <div class="section-header"><span class="section-tag"
+                    style="background: rgba(239, 68, 68, 0.1); color: #ef4444;">Modul 4</span>
+                <h2 class="section-title">CIA Triad</h2>
+                <p class="section-desc">Tiga pilar utama keamanan informasi: Confidentiality, Integrity, Availability.
+                </p>
+            </div>
+            <div class="materials-grid">
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-eye-slash"></i></div>
+                    <h3 class="material-title">Confidentiality</h3>
+                    <p class="material-desc">Menjaga kerahasiaan data. Access control, encryption, dan data
+                        classification implementation.</p>
+                    <div class="material-meta"><span class="material-meta-item">30 menit</span><span
+                            class="material-meta-item">Teori</span></div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-check-circle"></i></div>
+                    <h3 class="material-title">Integrity</h3>
+                    <p class="material-desc">Menjamin keutuhan data. Checksums, digital signatures, dan version control
+                        untuk data integrity.</p>
+                    <div class="material-meta"><span class="material-meta-item">30 menit</span><span
+                            class="material-meta-item">Teori + Praktik</span></div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-cloud-check"></i></div>
+                    <h3 class="material-title">Availability</h3>
+                    <p class="material-desc">Menjamin ketersediaan layanan. Redundancy, backup, disaster recovery, dan
+                        high availability setup.</p>
+                    <div class="material-meta"><span class="material-meta-item">35 menit</span><span
+                            class="material-meta-item">Teori + Praktik</span></div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" id="hardening">
+        <div class="container">
+            <div class="section-header"><span class="section-tag"
+                    style="background: rgba(239, 68, 68, 0.1); color: #ef4444;">Modul 5</span>
+                <h2 class="section-title">Server Hardening</h2>
+                <p class="section-desc">Teknik mengamankan dan memperkuat konfigurasi server.</p>
+            </div>
+            <div class="materials-grid">
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-ubuntu"></i></div>
+                    <h3 class="material-title">Linux Hardening</h3>
+                    <p class="material-desc">Disable unnecessary services, secure SSH, remove unused packages, dan CIS
+                        Benchmark implementation.</p>
+                    <div class="material-meta"><span class="material-meta-item">45 menit</span><span
+                            class="material-meta-item">Praktik</span></div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-search"></i></div>
+                    <h3 class="material-title">Vulnerability Scanning</h3>
+                    <p class="material-desc">Menggunakan tools seperti Nessus, OpenVAS untuk menemukan kerentanan pada
+                        sistem.</p>
+                    <div class="material-meta"><span class="material-meta-item">50 menit</span><span
+                            class="material-meta-item">Praktik</span></div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-patch-check"></i></div>
+                    <h3 class="material-title">Patch Management</h3>
+                    <p class="material-desc">Strategi update dan patching. Automating updates dengan
+                        unattended-upgrades.</p>
+                    <div class="material-meta"><span class="material-meta-item">35 menit</span><span
+                            class="material-meta-item">Praktik</span></div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-card">
+                <div class="cta-glow"></div>
+                <div class="cta-content">
+                    <h2>🎉 Selamat!</h2>
+                    <p>Kamu sudah menyelesaikan materi KJ. Coba Quiz untuk menguji pemahamanmu!</p><a
+                        href="/pages/quiz.html" class="btn btn-primary btn-lg"><span>Mulai Quiz</span><svg width="24"
+                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand"><a href="/" class="logo"><img src="/public/img/logos/edunet-logo.png"
+                            alt="Edunet Logo" class="logo-icon logo-img"><span class="logo-text">Edunet</span></a>
+                    <p>Portal belajar TKJ terlengkap untuk siswa SMK Indonesia.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigasi</h4>
+                    <ul>
+                        <li><a href="/">Beranda</a></li>
+                        <li><a href="/pages/kelas-10.html">Kelas 10</a></li>
+                        <li><a href="/pages/kelas-11.html">Kelas 11</a></li>
+                        <li><a href="/pages/kelas-12.html">Kelas 12</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Kelas 12</h4>
+                    <ul>
+                        <li><a href="/pages/kelas-12/aij.html">AIJ</a></li>
+                        <li><a href="/pages/kelas-12/asj.html">ASJ</a></li>
+                        <li><a href="/pages/kelas-12/kj.html">KJ</a></li>
+                        <li><a href="/pages/lab-virtual.html">Lab Virtual</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Edunet. Built with 💚 for Indonesian students.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="search-modal" id="searchModal">
+        <div class="search-overlay"></div>
+        <div class="search-container">
+            <div class="search-header"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg><input type="text" class="search-input" placeholder="Cari materi..." id="searchInput"><kbd
+                    class="search-kbd">ESC</kbd></div>
+            <div class="search-results" id="searchResults">
+                <div class="search-hint">
+                    <p>Mulai ketik untuk mencari materi...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

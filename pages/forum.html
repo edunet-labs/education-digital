@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Forum Diskusi TKJ - Bertanya dan berbagi pengetahuan dengan sesama siswa" />
+    <meta name="keywords" content="Forum, Diskusi, TKJ, SMK, Tanya Jawab" />
+    <meta name="author" content="Edunet" />
+    <title>Forum Diskusi - Edunet</title>
+    <link rel="icon" type="image/png" href="/public/img/logos/edunet-logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/src/styles/main.css">
+    <style>
+        /* Forum-specific styles */
+        .forum-container {
+            min-height: 100vh;
+            padding: 8rem 0 4rem;
+        }
+
+        .forum-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .forum-filters {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            transition: all var(--transition-fast);
+            cursor: pointer;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: rgba(0, 255, 200, 0.1);
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        .forum-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .forum-card {
+            padding: 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            transition: all var(--transition-base);
+            cursor: pointer;
+        }
+
+        .forum-card:hover {
+            border-color: var(--accent-primary);
+            transform: translateX(4px);
+        }
+
+        .forum-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .forum-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .forum-meta {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            flex-wrap: wrap;
+        }
+
+        .forum-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .forum-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .forum-tag {
+            padding: 0.25rem 0.75rem;
+            background: rgba(0, 255, 200, 0.1);
+            color: var(--accent-primary);
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .forum-excerpt {
+            color: var(--text-muted);
+            margin-top: 0.75rem;
+            line-height: 1.6;
+        }
+
+        .forum-stats {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.875rem;
+            color: var(--text-dim);
+        }
+
+        .forum-stat {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xl);
+            padding: 2.5rem;
+            max-width: 700px;
+            width: 100%;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .modal-close:hover {
+            background: var(--accent-primary);
+            color: var(--bg-primary);
+        }
+
+        .modal-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all var(--transition-fast);
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px rgba(0, 255, 200, 0.1);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        /* Topic Detail */
+        .topic-detail {
+            padding: 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xl);
+            margin-bottom: 2rem;
+        }
+
+        .topic-question {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .topic-body {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .replies-section {
+            margin-top: 2rem;
+        }
+
+        .replies-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .reply-card {
+            padding: 1.5rem;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            margin-bottom: 1rem;
+        }
+
+        .reply-author {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .reply-avatar {
+            width: 2.5rem;
+            height: 2.5rem;
+            background: var(--accent-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--bg-primary);
+        }
+
+        .reply-info {
+            flex: 1;
+        }
+
+        .reply-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 0.9375rem;
+        }
+
+        .reply-time {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+
+        .reply-body {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-muted);
+        }
+
+        .empty-state svg {
+            margin: 0 auto 1rem;
+            opacity: 0.5;
+        }
+
+        @media (max-width: 768px) {
+            .forum-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .modal-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .topic-detail {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="/" class="logo">
+                <img src="/public/img/logos/edunet-logo.png" alt="Edunet Logo" class="logo-icon logo-img">
+                <span class="logo-text">Edunet</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="/" class="nav-link">Beranda</a></li>
+                <li class="nav-dropdown">
+                    <a href="#" class="nav-link">Kelas</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/pages/kelas-10.html" class="dropdown-link">Kelas 10</a></li>
+                        <li><a href="/pages/kelas-11.html" class="dropdown-link">Kelas 11</a></li>
+                        <li><a href="/pages/kelas-12.html" class="dropdown-link">Kelas 12</a></li>
+                    </ul>
+                </li>
+                <li><a href="/pages/quiz.html" class="nav-link">Quiz</a></li>
+                <li><a href="/pages/forum.html" class="nav-link active">Forum</a></li>
+                <li><a href="/pages/lab-virtual.html" class="nav-link">Lab Virtual</a></li>
+            </ul>
+            <button class="search-btn" id="searchBtn" aria-label="Search">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <span class="search-shortcut">Ctrl+K</span>
+            </button>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Forum Container -->
+    <div class="forum-container">
+        <div class="container">
+            <!-- Forum List View -->
+            <div id="forumList">
+                <div class="section-header">
+                    <span class="section-tag">Komunitas</span>
+                    <h1 class="section-title">Forum <span class="gradient-text">Diskusi</span></h1>
+                    <p class="section-desc">
+                        Bertanya, berbagi, dan belajar bersama dengan sesama siswa TKJ.
+                    </p>
+                </div>
+
+                <div class="forum-header">
+                    <div class="forum-filters">
+                        <button class="filter-btn active" data-filter="all">Semua</button>
+                        <button class="filter-btn" data-filter="Kelas 10">Kelas 10</button>
+                        <button class="filter-btn" data-filter="Kelas 11">Kelas 11</button>
+                        <button class="filter-btn" data-filter="Kelas 12">Kelas 12</button>
+                        <button class="filter-btn" data-filter="AIJ">AIJ</button>
+                        <button class="filter-btn" data-filter="ASJ">ASJ</button>
+                        <button class="filter-btn" data-filter="KJ">KJ</button>
+                    </div>
+                    <button class="btn btn-primary" id="newTopicBtn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M12 5v14M5 12h14" />
+                        </svg>
+                        Buat Topik Baru
+                    </button>
+                </div>
+
+                <div id="topicsList" class="forum-list">
+                    <!-- Topics will be rendered here -->
+                </div>
+            </div>
+
+            <!-- Topic Detail View -->
+            <div id="topicDetail" style="display: none;">
+                <div class="forum-header">
+                    <button class="btn btn-secondary" id="backToList">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7" />
+                        </svg>
+                        Kembali
+                    </button>
+                </div>
+
+                <div class="topic-detail">
+                    <div class="forum-tags" id="detailTags"></div>
+                    <h2 class="topic-question" id="detailTitle"></h2>
+                    <p class="topic-body" id="detailBody"></p>
+                    <div class="forum-meta" id="detailMeta"></div>
+                </div>
+
+                <div class="replies-section">
+                    <div class="replies-title">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                        </svg>
+                        <span id="repliesCount">0 Balasan</span>
+                    </div>
+
+                    <div id="repliesList">
+                        <!-- Replies will be rendered here -->
+                    </div>
+
+                    <!-- Reply Form -->
+                    <div class="forum-card">
+                        <h3 style="font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 1rem;">
+                            Tambah Balasan</h3>
+                        <div class="form-group">
+                            <textarea class="form-textarea" id="replyBody" placeholder="Tulis balasanmu di sini..."
+                                rows="4"></textarea>
+                        </div>
+                        <div style="display: flex; justify-content: flex-end;">
+                            <button class="btn btn-primary" id="submitReply">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+                                </svg>
+                                Kirim Balasan
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Topic Modal -->
+    <div class="modal" id="newTopicModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 6L6 18M6 6l12 12" />
+                </svg>
+            </button>
+            <h2 class="modal-title">Buat Topik Baru</h2>
+            <form id="newTopicForm">
+                <div class="form-group">
+                    <label class="form-label">Nama Kamu</label>
+                    <input type="text" class="form-input" id="topicAuthor" placeholder="Masukkan nama kamu" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Kategori</label>
+                    <select class="form-select" id="topicCategory" required>
+                        <option value="">Pilih kategori</option>
+                        <option value="Kelas 10">Kelas 10</option>
+                        <option value="Kelas 11">Kelas 11</option>
+                        <option value="Kelas 12">Kelas 12</option>
+                        <option value="AIJ">AIJ - Administrasi Infrastruktur Jaringan</option>
+                        <option value="ASJ">ASJ - Administrasi Sistem Jaringan</option>
+                        <option value="KJ">KJ - Keamanan Jaringan</option>
+                        <option value="Umum">Umum</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Judul Pertanyaan</label>
+                    <input type="text" class="form-input" id="topicTitle" placeholder="Tulis judul pertanyaan kamu"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Deskripsi</label>
+                    <textarea class="form-textarea" id="topicBody"
+                        placeholder="Jelaskan pertanyaan kamu secara detail..." required></textarea>
+                </div>
+                <div class="form-footer">
+                    <button type="button" class="btn btn-secondary" id="cancelTopic">Batal</button>
+                    <button type="submit" class="btn btn-primary">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+                        </svg>
+                        Posting
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="logo">
+                        <img src="/public/img/logos/edunet-logo.png" alt="Edunet Logo" class="logo-icon logo-img">
+                        <span class="logo-text">Edunet</span>
+                    </a>
+                    <p>Portal belajar TKJ terlengkap untuk siswa SMK Indonesia.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigasi</h4>
+                    <ul>
+                        <li><a href="/">Beranda</a></li>
+                        <li><a href="/pages/quiz.html">Quiz</a></li>
+                        <li><a href="/pages/forum.html">Forum</a></li>
+                        <li><a href="/pages/lab-virtual.html">Lab Virtual</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Spesialisasi</h4>
+                    <ul>
+                        <li><a href="/pages/aij.html">AIJ</a></li>
+                        <li><a href="/pages/asj.html">ASJ</a></li>
+                        <li><a href="/pages/kj.html">KJ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Edunet. for Indonesian students.</p>
+                <p class="footer-tagline">Open Source • Free Forever</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Search Modal -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-overlay"></div>
+        <div class="search-container">
+            <div class="search-header">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <input type="text" class="search-input" placeholder="Cari materi..." id="searchInput">
+                <kbd class="search-kbd">ESC</kbd>
+            </div>
+            <div class="search-results" id="searchResults">
+                <div class="search-hint">
+                    <p>Mulai ketik untuk mencari materi...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/scripts/forum.js"></script>
+</body>
+
+</html>

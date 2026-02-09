@@ -6,12 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description"
         content="Lab Virtual - Rekomendasi software simulasi untuk praktik TKJ: Cisco Packet Tracer, GNS3, PNETLab, dan tools lainnya.">
-    <title>Lab Virtual - Boetoenux</title>
+    <title>Lab Virtual - Edunet</title>
+    <link rel="icon" type="image/png" href="/public/img/logos/edunet-logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="/src/styles/main.css">
     <link rel="stylesheet" href="/src/styles/pages.css">
 </head>
@@ -21,18 +23,25 @@
     <nav class="navbar">
         <div class="container nav-container">
             <a href="/" class="logo">
-                <span class="logo-icon">⌘</span>
-                <span class="logo-text">Boetoenux</span>
+                <img src="/public/img/logos/edunet-logo.png" alt="Edunet Logo" class="logo-icon logo-img">
+                <span class="logo-text">Edunet</span>
             </a>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
                 <span class="hamburger"></span>
             </button>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="/" class="nav-link">Beranda</a></li>
-                <li><a href="/kelas-10.html" class="nav-link">Kelas 10</a></li>
-                <li><a href="/kelas-11.html" class="nav-link">Kelas 11</a></li>
-                <li><a href="/kelas-12.html" class="nav-link">Kelas 12</a></li>
-                <li><a href="/lab-virtual.html" class="nav-link active">Lab Virtual</a></li>
+                <li class="nav-dropdown">
+                    <a href="#" class="nav-link">Kelas</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/pages/kelas-10.html" class="dropdown-link">Kelas 10</a></li>
+                        <li><a href="/pages/kelas-11.html" class="dropdown-link">Kelas 11</a></li>
+                        <li><a href="/pages/kelas-12.html" class="dropdown-link">Kelas 12</a></li>
+                    </ul>
+                </li>
+                <li><a href="/pages/quiz.html" class="nav-link">Quiz</a></li>
+                <li><a href="/pages/forum.html" class="nav-link">Forum</a></li>
+                <li><a href="/pages/lab-virtual.html" class="nav-link">Lab Virtual</a></li>
             </ul>
             <button class="search-btn" id="searchBtn" aria-label="Search">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -80,15 +89,6 @@
             </p>
         </div>
     </header>
-
-    <!-- Breadcrumb -->
-    <div class="container">
-        <nav class="breadcrumb">
-            <a href="/">Beranda</a>
-            <span class="breadcrumb-separator">/</span>
-            <span class="breadcrumb-current">Lab Virtual</span>
-        </nav>
-    </div>
 
     <!-- Network Simulators -->
     <section class="content-section" id="simulators">
@@ -401,6 +401,33 @@
                         </svg>
                     </a>
                 </article>
+
+
+                <!-- Windows ISO -->
+                <article class="tool-card">
+                    <div class="tool-logo">🐉</div>
+                    <h3 class="tool-name">Windows ISO Images</h3>
+                    <p class="tool-desc">
+                        Operasi sistem Windows dalam format ISO.
+                        Cocok untuk materi TKJ.
+                    </p>
+                    <div class="tool-features">
+                        <span class="tool-feature">Windows</span>
+                        <span class="tool-feature">ISO</span>
+                        <span class="tool-feature">Microsoft</span>
+                    </div>
+                    <a href="https://drive.google.com/drive/folders/1O3N2N71-fUgLjO0yNm3EDiLTokwAPXWC?usp=sharing"
+                        target="_blank" rel="noopener" class="tool-link"
+                        onclick="window.open(this.href, '_blank'); return false;">
+                        <span>Download</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                    </a>
+                </article>
             </div>
         </div>
     </section>
@@ -521,8 +548,8 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <a href="/" class="logo">
-                        <span class="logo-icon">⌘</span>
-                        <span class="logo-text">Boetoenux</span>
+                        <img src="/public/img/logos/edunet-logo.png" alt="Edunet Logo" class="logo-icon logo-img">
+                        <span class="logo-text">Edunet</span>
                     </a>
                     <p>Portal belajar TKJ terlengkap untuk siswa SMK Indonesia.</p>
                 </div>
@@ -530,23 +557,23 @@
                     <h4>Navigasi</h4>
                     <ul>
                         <li><a href="/">Beranda</a></li>
-                        <li><a href="/kelas-10.html">Kelas 10</a></li>
-                        <li><a href="/kelas-11.html">Kelas 11</a></li>
-                        <li><a href="/kelas-12.html">Kelas 12</a></li>
+                        <li><a href="/pages/kelas-10.html">Kelas 10</a></li>
+                        <li><a href="/pages/kelas-11.html">Kelas 11</a></li>
+                        <li><a href="/pages/kelas-12.html">Kelas 12</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
                     <h4>Spesialisasi</h4>
                     <ul>
-                        <li><a href="/aij.html">AIJ</a></li>
-                        <li><a href="/asj.html">ASJ</a></li>
-                        <li><a href="/kj.html">KJ</a></li>
-                        <li><a href="/lab-virtual.html">Lab Virtual</a></li>
+                        <li><a href="/pages/aij.html">AIJ</a></li>
+                        <li><a href="/pages/asj.html">ASJ</a></li>
+                        <li><a href="/pages/kj.html">KJ</a></li>
+                        <li><a href="/pages/lab-virtual.html">Lab Virtual</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Boetoenux. Built with 💚 for Indonesian students.</p>
+                <p>&copy; 2026 Edunet. Built with 💚 for Indonesian students.</p>
             </div>
         </div>
     </footer>

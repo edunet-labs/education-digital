@@ -5,10 +5,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description"
-    content="Boetoenux - Portal belajar TKJ terlengkap dan terstruktur untuk siswa SMK Indonesia. Kuasai Jaringan, Taklukkan Masa Depan.">
+    content="Edunet - Portal belajar TKJ terlengkap dan terstruktur untuk siswa SMK Indonesia. Kuasai Jaringan, Taklukkan Masa Depan.">
   <meta name="keywords" content="TKJ, SMK, Jaringan, Networking, MikroTik, Cisco, Linux, Server, AIJ, ASJ, KJ">
-  <meta name="author" content="Boetoenux">
-  <title>Boetoenux - Portal Belajar TKJ</title>
+  <meta name="author" content="Edunet">
+  <title>Edunet - Portal Belajar TKJ</title>
+  <link rel="icon" type="image/png" href="/public/img/logos/edunet-logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -22,18 +23,25 @@
   <nav class="navbar">
     <div class="container nav-container">
       <a href="/" class="logo">
-        <span class="logo-icon">⌘</span>
-        <span class="logo-text">Boetoenux</span>
+        <img src="/public/img/logos/edunet-logo.png" alt="Edunet Logo" class="logo-icon logo-img">
+        <span class="logo-text">Edunet</span>
       </a>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
         <span class="hamburger"></span>
       </button>
       <ul class="nav-menu" id="navMenu">
         <li><a href="/" class="nav-link active">Beranda</a></li>
-        <li><a href="/kelas-10.html" class="nav-link">Kelas 10</a></li>
-        <li><a href="/kelas-11.html" class="nav-link">Kelas 11</a></li>
-        <li><a href="/kelas-12.html" class="nav-link">Kelas 12</a></li>
-        <li><a href="/lab-virtual.html" class="nav-link">Lab Virtual</a></li>
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">Kelas</a>
+          <ul class="dropdown-menu">
+            <li><a href="/pages/kelas-10.html" class="dropdown-link">Kelas 10</a></li>
+            <li><a href="/pages/kelas-11.html" class="dropdown-link">Kelas 11</a></li>
+            <li><a href="/pages/kelas-12.html" class="dropdown-link">Kelas 12</a></li>
+          </ul>
+        </li>
+        <li><a href="/pages/quiz.html" class="nav-link">Quiz</a></li>
+        <li><a href="/pages/forum.html" class="nav-link">Forum</a></li>
+        <li><a href="/pages/lab-virtual.html" class="nav-link">Lab Virtual</a></li>
       </ul>
       <button class="search-btn" id="searchBtn" aria-label="Search">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -78,14 +86,14 @@
             <span class="dot yellow"></span>
             <span class="dot green"></span>
           </div>
-          <span class="terminal-title">boetoenux@learn:~</span>
+          <span class="terminal-title">Edunet@learn:~</span>
         </div>
         <div class="terminal-body">
           <p class="typing-text">
             <span class="prompt">$</span>
             <span class="command">welcome</span>
             <span class="flag">--to</span>
-            <span class="value">boetoenux</span>
+            <span class="value">Edunet</span>
           </p>
         </div>
       </div>
@@ -98,13 +106,13 @@
         Dari dasar hingga mahir, semua ada di sini.
       </p>
       <div class="hero-cta">
-        <a href="#jalur-belajar" class="btn btn-primary">
+        <a href="#about" class="btn btn-primary">
           <span>Mulai Belajar</span>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>
         </a>
-        <a href="/lab-virtual.html" class="btn btn-secondary">
+        <a href="/pages/lab-virtual.html" class="btn btn-secondary">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
             <line x1="8" y1="21" x2="16" y2="21"></line>
@@ -141,7 +149,7 @@
     <div class="container">
       <div class="section-header">
         <span class="section-tag">Tentang Kami</span>
-        <h2 class="section-title">Mengapa <span class="gradient-text">Boetoenux</span>?</h2>
+        <h2 class="section-title">Mengapa <span class="gradient-text">Edunet</span>?</h2>
         <p class="section-desc">
           Dibangun khusus untuk siswa SMK jurusan TKJ yang ingin menguasai dunia jaringan komputer secara mendalam.
         </p>
@@ -211,7 +219,7 @@
         </p>
       </div>
       <div class="class-cards">
-        <a href="/kelas-10.html" class="class-card">
+        <a href="/pages/kelas-10.html" class="class-card">
           <div class="card-glow"></div>
           <div class="card-header">
             <span class="class-badge">Fondasi</span>
@@ -253,7 +261,7 @@
           </div>
         </a>
 
-        <a href="/kelas-11.html" class="class-card featured">
+        <a href="/pages/kelas-11.html" class="class-card featured">
           <div class="card-glow"></div>
           <div class="card-header">
             <span class="class-badge">Menengah</span>
@@ -295,7 +303,7 @@
           </div>
         </a>
 
-        <a href="/kelas-12.html" class="class-card">
+        <a href="/pages/kelas-12.html" class="class-card">
           <div class="card-glow"></div>
           <div class="card-header">
             <span class="class-badge pro">Spesialisasi</span>
@@ -347,7 +355,7 @@
         <div class="cta-glow"></div>
         <div class="cta-content">
           <h2>Siap Memulai Perjalananmu?</h2>
-          <p>Bergabung dengan ribuan siswa SMK yang sudah belajar di Boetoenux. Gratis selamanya!</p>
+          <p>Bergabung dengan ribuan siswa SMK yang sudah belajar di Edunet. Gratis selamanya!</p>
           <a href="#jalur-belajar" class="btn btn-primary btn-lg">
             <span>Mulai Sekarang</span>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -357,8 +365,8 @@
         </div>
         <div class="cta-decoration">
           <div class="code-block-preview">
-            <span class="line"><span class="prompt">$</span> ping boetoenux.my.id</span>
-            <span class="line output">64 bytes from boetoenux: icmp_seq=1 ttl=64 time=0.5ms</span>
+            <span class="line"><span class="prompt">$</span> ping Edunet.my.id</span>
+            <span class="line output">64 bytes from Edunet: icmp_seq=1 ttl=64 time=0.5ms</span>
             <span class="line output success">✓ Connection established!</span>
           </div>
         </div>
@@ -372,8 +380,8 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="/" class="logo">
-            <span class="logo-icon">⌘</span>
-            <span class="logo-text">Boetoenux</span>
+            <img src="/public/img/logos/edunet-logo.png" alt="Edunet Logo" class="logo-icon logo-img">
+            <span class="logo-text">Edunet</span>
           </a>
           <p>Portal belajar TKJ terlengkap untuk siswa SMK Indonesia.</p>
           <div class="social-links">
@@ -404,33 +412,33 @@
           <h4>Navigasi</h4>
           <ul>
             <li><a href="/">Beranda</a></li>
-            <li><a href="/kelas-10.html">Kelas 10</a></li>
-            <li><a href="/kelas-11.html">Kelas 11</a></li>
-            <li><a href="/kelas-12.html">Kelas 12</a></li>
+            <li><a href="/pages/kelas-10.html">Kelas 10</a></li>
+            <li><a href="/pages/kelas-11.html">Kelas 11</a></li>
+            <li><a href="/pages/kelas-12.html">Kelas 12</a></li>
           </ul>
         </div>
         <div class="footer-links">
           <h4>Spesialisasi</h4>
           <ul>
-            <li><a href="/aij.html">AIJ</a></li>
-            <li><a href="/asj.html">ASJ</a></li>
-            <li><a href="/kj.html">KJ</a></li>
-            <li><a href="/lab-virtual.html">Lab Virtual</a></li>
+            <li><a href="/pages/aij.html">AIJ</a></li>
+            <li><a href="/pages/asj.html">ASJ</a></li>
+            <li><a href="/pages/kj.html">KJ</a></li>
+            <li><a href="/pages/lab-virtual.html">Lab Virtual</a></li>
           </ul>
         </div>
         <div class="footer-links">
-          <h4>Resources</h4>
+          <h4>Lainnya</h4>
           <ul>
-            <li><a href="#">Tentang Kami</a></li>
-            <li><a href="#">Kontribusi</a></li>
-            <li><a href="#">Changelog</a></li>
-            <li><a href="#">Kontak</a></li>
+            <li><a href="#about">Tentang Kami</a></li>
+            <li><a href="/pages/quiz.html">Quiz</a></li>
+            <li><a href="/pages/forum.html">Forum</a></li>
+            <li><a href="https://github.com/edunet-labs/education-digital" target="_blank">GitHub</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2026 Boetoenux. for Indonesian students.</p>
-        <p class="footer-tagline">Open Source • Free Forever</p>
+        <p>&copy; 2026 Edunet. All rights reserved.</p>
+        <p class="footer-tagline">PJBL Kelompok 2 TKJ</p>
       </div>
     </div>
   </footer>

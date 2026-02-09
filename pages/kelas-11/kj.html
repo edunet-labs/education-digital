@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="KJ Kelas 11 - Belajar Firewall, Cyber Security, Tingkatan Keamanan, dan Jenis Ancaman Online.">
+    <title>KJ Kelas 11 - Keamanan Jaringan - Edunet</title>
+    <link rel="icon" type="image/png" href="/public/img/logos/edunet-logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/src/styles/main.css">
+    <link rel="stylesheet" href="/src/styles/pages.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="/" class="logo"><img src="/public/img/logos/edunet-logo.png" alt="Edunet Logo"
+                    class="logo-icon logo-img"><span class="logo-text">Edunet</span></a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation"><span
+                    class="hamburger"></span></button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="/" class="nav-link">Beranda</a></li>
+                <li class="nav-dropdown"><a href="#" class="nav-link">Kelas</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/pages/kelas-10.html" class="dropdown-link">Kelas 10</a></li>
+                        <li><a href="/pages/kelas-11.html" class="dropdown-link">Kelas 11</a></li>
+                        <li><a href="/pages/kelas-12.html" class="dropdown-link">Kelas 12</a></li>
+                    </ul>
+                </li>
+                <li><a href="/pages/quiz.html" class="nav-link">Quiz</a></li>
+                <li><a href="/pages/forum.html" class="nav-link">Forum</a></li>
+                <li><a href="/pages/lab-virtual.html" class="nav-link">Lab Virtual</a></li>
+            </ul>
+            <button class="search-btn" id="searchBtn" aria-label="Search"><svg width="20" height="20"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg><span class="search-shortcut">Ctrl+K</span></button>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><svg class="sun-icon" width="20"
+                    height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg><svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg></button>
+        </div>
+    </nav>
+
+    <header class="hero-header-full"
+        style="background: linear-gradient(180deg, rgba(239, 68, 68, 0.08) 0%, var(--bg-secondary) 100%);">
+        <div class="hero-glow primary" style="background: #ef4444;"></div>
+        <div class="hero-glow secondary" style="background: #dc2626;"></div>
+        <div class="hero-floating-icons">
+            <i class="bi bi-shield-lock icon" style="font-size: 4rem; color: #ef4444;"></i>
+            <i class="bi bi-key icon" style="font-size: 3rem; color: #ef4444;"></i>
+            <i class="bi bi-bug icon" style="font-size: 3.5rem; color: #ef4444;"></i>
+            <i class="bi bi-fingerprint icon" style="font-size: 3rem; color: #ef4444;"></i>
+        </div>
+        <div class="container">
+            <div class="hero-content-wrapper">
+                <div class="hero-text-content">
+                    <p class="hero-subtitle" style="color: #ef4444;"><i class="bi bi-shield-lock-fill"></i> Kelas 11 -
+                        Spesialisasi</p>
+                    <h1 class="hero-title"><span
+                            style="background: linear-gradient(135deg, #ef4444, #dc2626); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">KJ</span>
+                    </h1>
+                    <p class="hero-description">Keamanan Jaringan - Fokus pada keamanan siber dan perlindungan
+                        infrastruktur IT. Pelajari cara mengamankan jaringan dari berbagai ancaman.</p>
+                    <div class="hero-stats-inline">
+                        <div class="hero-stat-item"><span class="hero-stat-number" style="color: #ef4444;">4</span><span
+                                class="hero-stat-text">Modul</span></div>
+                        <div class="hero-stat-item"><span class="hero-stat-number"
+                                style="color: #ef4444;">13</span><span class="hero-stat-text">Materi</span></div>
+                        <div class="hero-stat-item"><span class="hero-stat-number"
+                                style="color: #ef4444;">7+</span><span class="hero-stat-text">Jam Belajar</span></div>
+                    </div>
+                    <div class="hero-buttons">
+                        <a href="#firewall" class="btn-hero btn-hero-primary"
+                            style="background: #ef4444; box-shadow: 0 4px 20px rgba(239, 68, 68, 0.3);"><span>Mulai
+                                Belajar</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg></a>
+                        <a href="/pages/kelas-11.html" class="btn-hero btn-hero-secondary"><i
+                                class="bi bi-arrow-left"></i><span>Kembali</span></a>
+                    </div>
+                </div>
+                <div class="hero-visual-content">
+                    <div class="hero-visual-card" style="border-color: rgba(239, 68, 68, 0.2);">
+                        <div class="hero-visual-icon" style="color: #ef4444;"><i class="bi bi-shield-lock-fill"></i>
+                        </div>
+                        <p class="hero-visual-title">Cyber Security</p>
+                        <div class="hero-visual-tags">
+                            <span class="hero-visual-tag"
+                                style="background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.2); color: #ef4444;">Firewall</span>
+                            <span class="hero-visual-tag"
+                                style="background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.2); color: #ef4444;">Security</span>
+                            <span class="hero-visual-tag"
+                                style="background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.2); color: #ef4444;">Threats</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator"><span>Scroll ke bawah</span><svg viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M19 12l-7 7-7-7" />
+            </svg></div>
+    </header>
+
+    <section class="content-section" id="firewall">
+        <div class="container">
+            <div class="section-header"><span class="section-tag"
+                    style="background: rgba(239, 68, 68, 0.1); color: #ef4444;">Modul 1</span>
+                <h2 class="section-title">Dasar Firewall</h2>
+                <p class="section-desc">Memahami konsep dan cara kerja firewall dalam melindungi jaringan.</p>
+            </div>
+            <div class="materials-grid">
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-fire"></i></div>
+                    <h3 class="material-title">Apa itu Firewall?</h3>
+                    <p class="material-desc">Pengertian firewall, jenis-jenis firewall (packet filtering, stateful,
+                        application), dan fungsinya dalam keamanan jaringan.</p>
+                    <div class="material-meta"><span class="material-meta-item">25 menit</span><span
+                            class="material-meta-item">Teori</span></div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-funnel"></i></div>
+                    <h3 class="material-title">Packet Filtering</h3>
+                    <p class="material-desc">Cara kerja packet filtering berdasarkan IP address, port, dan protokol.
+                        Stateless vs stateful filtering.</p>
+                    <div class="material-meta"><span class="material-meta-item">30 menit</span><span
+                            class="material-meta-item">Teori</span></div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-windows"></i></div>
+                    <h3 class="material-title">Windows Firewall</h3>
+                    <p class="material-desc">Konfigurasi Windows Defender Firewall. Inbound/outbound rules dan profile
+                        settings.</p>
+                    <div class="material-meta"><span class="material-meta-item">35 menit</span><span
+                            class="material-meta-item">Praktik</span></div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" id="cyber">
+        <div class="container">
+            <div class="section-header"><span class="section-tag"
+                    style="background: rgba(239, 68, 68, 0.1); color: #ef4444;">Modul 2</span>
+                <h2 class="section-title">Cyber Security</h2>
+                <p class="section-desc">Pengenalan dunia keamanan siber dan konsep dasarnya.</p>
+            </div>
+            <div class="materials-grid">
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-shield-check"></i></div>
+                    <h3 class="material-title">Pengenalan Cyber Security</h3>
+                    <p class="material-desc">Apa itu keamanan siber? CIA Triad (Confidentiality, Integrity,
+                        Availability) sebagai fondasi keamanan.</p>
+                    <div class="material-meta"><span class="material-meta-item">30 menit</span><span
+                            class="material-meta-item">Teori</span></div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-person-badge"></i></div>
+                    <h3 class="material-title">Karir di Cyber Security</h3>
+                    <p class="material-desc">Blue Team, Red Team, SOC Analyst, Penetration Tester, dan jalur karir di
+                        bidang keamanan siber.</p>
+                    <div class="material-meta"><span class="material-meta-item">25 menit</span><span
+                            class="material-meta-item">Teori</span></div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-graph-up-arrow"></i></div>
+                    <h3 class="material-title">Security Awareness</h3>
+                    <p class="material-desc">Pentingnya kesadaran keamanan untuk semua pengguna. Social engineering dan
+                        cara mengenalinya.</p>
+                    <div class="material-meta"><span class="material-meta-item">25 menit</span><span
+                            class="material-meta-item">Teori</span></div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" id="level">
+        <div class="container">
+            <div class="section-header"><span class="section-tag"
+                    style="background: rgba(239, 68, 68, 0.1); color: #ef4444;">Modul 3</span>
+                <h2 class="section-title">Tingkatan Cyber Security</h2>
+                <p class="section-desc">Memahami lapisan-lapisan keamanan dalam organisasi.</p>
+            </div>
+            <div class="materials-grid">
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-layers"></i></div>
+                    <h3 class="material-title">Defense in Depth</h3>
+                    <p class="material-desc">Konsep pertahanan berlapis. Physical, Network, Host, Application, dan Data
+                        security layers.</p>
+                    <div class="material-meta"><span class="material-meta-item">30 menit</span><span
+                            class="material-meta-item">Teori</span></div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-building"></i></div>
+                    <h3 class="material-title">Network Security</h3>
+                    <p class="material-desc">Keamanan pada level jaringan: segmentasi, DMZ, firewall placement, dan
+                        network monitoring.</p>
+                    <div class="material-meta"><span class="material-meta-item">35 menit</span><span
+                            class="material-meta-item">Teori</span></div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-laptop"></i></div>
+                    <h3 class="material-title">Endpoint Security</h3>
+                    <p class="material-desc">Perlindungan pada level perangkat: antivirus, EDR, patch management, dan
+                        device encryption.</p>
+                    <div class="material-meta"><span class="material-meta-item">30 menit</span><span
+                            class="material-meta-item">Teori</span></div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" id="threats">
+        <div class="container">
+            <div class="section-header"><span class="section-tag"
+                    style="background: rgba(239, 68, 68, 0.1); color: #ef4444;">Modul 4</span>
+                <h2 class="section-title">Jenis Ancaman Online</h2>
+                <p class="section-desc">Mengenal berbagai jenis serangan siber dan cara pencegahannya.</p>
+            </div>
+            <div class="materials-grid">
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-bug"></i></div>
+                    <h3 class="material-title">Malware</h3>
+                    <p class="material-desc">Jenis-jenis malware: virus, worm, trojan, ransomware, spyware. Cara infeksi
+                        dan pencegahan.</p>
+                    <div class="material-meta"><span class="material-meta-item">35 menit</span><span
+                            class="material-meta-item">Teori</span></div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-envelope-exclamation"></i></div>
+                    <h3 class="material-title">Phishing & Social Engineering</h3>
+                    <p class="material-desc">Teknik manipulasi untuk mencuri informasi. Mengenali email phishing dan
+                        website palsu.</p>
+                    <div class="material-meta"><span class="material-meta-item">30 menit</span><span
+                            class="material-meta-item">Teori + Praktik</span></div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-cloud-slash"></i></div>
+                    <h3 class="material-title">DoS & DDoS Attack</h3>
+                    <p class="material-desc">Denial of Service attack, cara kerjanya, dan strategi mitigasi yang dapat
+                        diterapkan.</p>
+                    <div class="material-meta"><span class="material-meta-item">30 menit</span><span
+                            class="material-meta-item">Teori</span></div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-person-x"></i></div>
+                    <h3 class="material-title">Man-in-the-Middle (MitM)</h3>
+                    <p class="material-desc">Serangan penyadapan komunikasi. ARP spoofing, SSL stripping, dan cara
+                        pencegahannya.</p>
+                    <div class="material-meta"><span class="material-meta-item">30 menit</span><span
+                            class="material-meta-item">Teori</span></div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-card">
+                <div class="cta-glow"></div>
+                <div class="cta-content">
+                    <h2>Siap Lanjut ke Kelas 12?</h2>
+                    <p>Setelah menguasai dasar keamanan, saatnya masuk ke Firewall UFW, Kriptografi, dan Server
+                        Hardening!</p><a href="/pages/kelas-12/kj.html" class="btn btn-primary btn-lg"><span>KJ Kelas
+                            12</span><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand"><a href="/" class="logo"><img src="/public/img/logos/edunet-logo.png"
+                            alt="Edunet Logo" class="logo-icon logo-img"><span class="logo-text">Edunet</span></a>
+                    <p>Portal belajar TKJ terlengkap untuk siswa SMK Indonesia.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigasi</h4>
+                    <ul>
+                        <li><a href="/">Beranda</a></li>
+                        <li><a href="/pages/kelas-10.html">Kelas 10</a></li>
+                        <li><a href="/pages/kelas-11.html">Kelas 11</a></li>
+                        <li><a href="/pages/kelas-12.html">Kelas 12</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Kelas 11</h4>
+                    <ul>
+                        <li><a href="/pages/kelas-11/aij.html">AIJ</a></li>
+                        <li><a href="/pages/kelas-11/asj.html">ASJ</a></li>
+                        <li><a href="/pages/kelas-11/kj.html">KJ</a></li>
+                        <li><a href="/pages/lab-virtual.html">Lab Virtual</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Edunet. Built with 💚 for Indonesian students.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="search-modal" id="searchModal">
+        <div class="search-overlay"></div>
+        <div class="search-container">
+            <div class="search-header"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg><input type="text" class="search-input" placeholder="Cari materi..." id="searchInput"><kbd
+                    class="search-kbd">ESC</kbd></div>
+            <div class="search-results" id="searchResults">
+                <div class="search-hint">
+                    <p>Mulai ketik untuk mencari materi...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

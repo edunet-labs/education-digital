@@ -6,12 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description"
         content="Pilih spesialisasi TKJ Kelas 12 - AIJ (Administrasi Infrastruktur Jaringan), ASJ (Administrasi Sistem Jaringan), atau KJ (Keamanan Jaringan).">
-    <title>Kelas 12 - Spesialisasi - Boetoenux</title>
+    <title>Kelas 12 - Spesialisasi - Edunet</title>
+    <link rel="icon" type="image/png" href="/public/img/logos/edunet-logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="/src/styles/main.css">
     <link rel="stylesheet" href="/src/styles/pages.css">
 </head>
@@ -21,18 +23,25 @@
     <nav class="navbar">
         <div class="container nav-container">
             <a href="/" class="logo">
-                <span class="logo-icon">⌘</span>
-                <span class="logo-text">Boetoenux</span>
+                <img src="/public/img/logos/edunet-logo.png" alt="Edunet Logo" class="logo-icon logo-img">
+                <span class="logo-text">Edunet</span>
             </a>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
                 <span class="hamburger"></span>
             </button>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="/" class="nav-link">Beranda</a></li>
-                <li><a href="/kelas-10.html" class="nav-link">Kelas 10</a></li>
-                <li><a href="/kelas-11.html" class="nav-link">Kelas 11</a></li>
-                <li><a href="/kelas-12.html" class="nav-link active">Kelas 12</a></li>
-                <li><a href="/lab-virtual.html" class="nav-link">Lab Virtual</a></li>
+                <li class="nav-dropdown">
+                    <a href="#" class="nav-link">Kelas</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/pages/kelas-10.html" class="dropdown-link">Kelas 10</a></li>
+                        <li><a href="/pages/kelas-11.html" class="dropdown-link">Kelas 11</a></li>
+                        <li><a href="/pages/kelas-12.html" class="dropdown-link">Kelas 12</a></li>
+                    </ul>
+                </li>
+                <li><a href="/pages/quiz.html" class="nav-link">Quiz</a></li>
+                <li><a href="/pages/forum.html" class="nav-link">Forum</a></li>
+                <li><a href="/pages/lab-virtual.html" class="nav-link">Lab Virtual</a></li>
             </ul>
             <button class="search-btn" id="searchBtn" aria-label="Search">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -62,39 +71,109 @@
         </div>
     </nav>
 
-    <!-- Page Header -->
-    <header class="page-header">
-        <div class="container page-header-content">
-            <div class="page-badge">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polygon
-                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                    </polygon>
-                </svg>
-                <span>Spesialisasi</span>
+    <!-- Full Hero Header -->
+    <header class="hero-header-full"
+        style="background: linear-gradient(180deg, rgba(249, 115, 22, 0.08) 0%, var(--bg-secondary) 100%);">
+
+        <!-- Animated Glow Orbs -->
+        <div class="hero-glow primary" style="background: #f97316;"></div>
+        <div class="hero-glow secondary" style="background: #ea580c;"></div>
+
+        <!-- Floating Background Icons -->
+        <div class="hero-floating-icons">
+            <i class="bi bi-trophy icon" style="font-size: 4rem; color: #f97316;"></i>
+            <i class="bi bi-mortarboard icon" style="font-size: 3rem; color: #f97316;"></i>
+            <i class="bi bi-briefcase icon" style="font-size: 3.5rem; color: #f97316;"></i>
+            <i class="bi bi-graph-up icon" style="font-size: 3rem; color: #f97316;"></i>
+            <i class="bi bi-rocket icon" style="font-size: 3.5rem; color: #f97316;"></i>
+            <i class="bi bi-award icon" style="font-size: 4rem; color: #f97316;"></i>
+        </div>
+
+        <div class="container">
+            <div class="hero-content-wrapper">
+                <!-- Text Content -->
+                <div class="hero-text-content">
+                    <p class="hero-subtitle" style="color: #f97316;">
+                        <i class="bi bi-star-fill"></i> Spesialisasi TKJ
+                    </p>
+                    <h1 class="hero-title">
+                        Kelas <span
+                            style="background: linear-gradient(135deg, #f97316, #ea580c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">12</span>
+                    </h1>
+                    <p class="hero-description">
+                        Tingkat akhir di mana kamu mendalami spesialisasi dan mempersiapkan diri
+                        untuk dunia kerja. Pilih jalur sesuai minat dan karirmu!
+                    </p>
+
+                    <!-- Stats -->
+                    <div class="hero-stats-inline">
+                        <div class="hero-stat-item">
+                            <span class="hero-stat-number" style="color: #f97316;">3</span>
+                            <span class="hero-stat-text">Spesialisasi</span>
+                        </div>
+                        <div class="hero-stat-item">
+                            <span class="hero-stat-number" style="color: #f97316;">15</span>
+                            <span class="hero-stat-text">Modul</span>
+                        </div>
+                        <div class="hero-stat-item">
+                            <span class="hero-stat-number" style="color: #f97316;">50+</span>
+                            <span class="hero-stat-text">Jam Belajar</span>
+                        </div>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div class="hero-buttons">
+                        <a href="#spec-cards" class="btn-hero btn-hero-primary"
+                            style="background: #f97316; box-shadow: 0 4px 20px rgba(249, 115, 22, 0.3);">
+                            <span>Pilih Spesialisasi</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                        <a href="/pages/lab-virtual.html" class="btn-hero btn-hero-secondary">
+                            <i class="bi bi-terminal"></i>
+                            <span>Lab Virtual</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Visual Card -->
+                <div class="hero-visual-content">
+                    <div class="hero-visual-card" style="border-color: rgba(249, 115, 22, 0.2);">
+                        <div class="hero-visual-icon" style="color: #f97316;">
+                            <i class="bi bi-mortarboard-fill"></i>
+                        </div>
+                        <p class="hero-visual-title">Siap Kerja & Sertifikasi</p>
+                        <div class="hero-visual-tags">
+                            <span class="hero-visual-tag"
+                                style="background: rgba(249, 115, 22, 0.1); border-color: rgba(249, 115, 22, 0.2); color: #f97316;">MikroTik</span>
+                            <span class="hero-visual-tag"
+                                style="background: rgba(249, 115, 22, 0.1); border-color: rgba(249, 115, 22, 0.2); color: #f97316;">Linux</span>
+                            <span class="hero-visual-tag"
+                                style="background: rgba(249, 115, 22, 0.1); border-color: rgba(249, 115, 22, 0.2); color: #f97316;">Security</span>
+                            <span class="hero-visual-tag"
+                                style="background: rgba(249, 115, 22, 0.1); border-color: rgba(249, 115, 22, 0.2); color: #f97316;">MTCNA</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <h1 class="page-title">Kelas <span class="gradient-text">12</span></h1>
-            <p class="page-desc">
-                Pilih jalur spesialisasi sesuai minat dan karirmu. Setiap jalur dirancang
-                untuk mempersiapkan skill spesifik di dunia kerja.
-            </p>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <span>Scroll ke bawah</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M19 12l-7 7-7-7" />
+            </svg>
         </div>
     </header>
-
-    <!-- Breadcrumb -->
-    <div class="container">
-        <nav class="breadcrumb">
-            <a href="/">Beranda</a>
-            <span class="breadcrumb-separator">/</span>
-            <span class="breadcrumb-current">Kelas 12</span>
-        </nav>
-    </div>
 
     <!-- Specialization Cards -->
     <section class="content-section">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">Pilih Jalurmu</span>
+                <span class="section-tag">Pilih Mapel</span>
                 <h2 class="section-title">Tiga <span class="gradient-text">Spesialisasi</span> TKJ</h2>
                 <p class="section-desc">
                     Masing-masing spesialisasi memiliki fokus yang berbeda. Pilih sesuai passion-mu!
@@ -102,7 +181,7 @@
             </div>
             <div class="spec-cards">
                 <!-- AIJ Card -->
-                <a href="/aij.html" class="spec-card aij">
+                <a href="/pages/kelas-12/aij.html" class="spec-card aij">
                     <div class="spec-icon">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
@@ -124,28 +203,21 @@
                                 stroke-width="2">
                                 <polyline points="20 6 9 17 4 12"></polyline>
                             </svg>
-                            RouterOS & MikroTik Configuration
+                            Routing Static
                         </li>
                         <li>
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
                                 <polyline points="20 6 9 17 4 12"></polyline>
                             </svg>
-                            Dynamic Routing (OSPF, BGP)
+                            Routing Dinamis (OSPF)
                         </li>
                         <li>
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
                                 <polyline points="20 6 9 17 4 12"></polyline>
                             </svg>
-                            Advanced Firewall & NAT
-                        </li>
-                        <li>
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                            Queue Tree & Traffic Control
+                            MikroTik Configuration
                         </li>
                     </ul>
                     <div class="spec-cta">
@@ -158,7 +230,7 @@
                 </a>
 
                 <!-- ASJ Card -->
-                <a href="/asj.html" class="spec-card asj">
+                <a href="/pages/kelas-12/asj.html" class="spec-card asj">
                     <div class="spec-icon">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
@@ -179,28 +251,28 @@
                                 stroke-width="2">
                                 <polyline points="20 6 9 17 4 12"></polyline>
                             </svg>
-                            Linux Server (Debian/Ubuntu)
+                            FTP, Samba, DHCP, DNS Server
                         </li>
                         <li>
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
                                 <polyline points="20 6 9 17 4 12"></polyline>
                             </svg>
-                            Web Server & DNS Server
+                            Web &amp; Database Server
                         </li>
                         <li>
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
                                 <polyline points="20 6 9 17 4 12"></polyline>
                             </svg>
-                            Mail Server & Database
+                            VPN, VPS, Dedicated Server
                         </li>
                         <li>
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
                                 <polyline points="20 6 9 17 4 12"></polyline>
                             </svg>
-                            Network Monitoring
+                            Control Monitoring
                         </li>
                     </ul>
                     <div class="spec-cta">
@@ -213,7 +285,7 @@
                 </a>
 
                 <!-- KJ Card -->
-                <a href="/kj.html" class="spec-card kj">
+                <a href="/pages/kelas-12/kj.html" class="spec-card kj">
                     <div class="spec-icon">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
@@ -232,28 +304,28 @@
                                 stroke-width="2">
                                 <polyline points="20 6 9 17 4 12"></polyline>
                             </svg>
-                            Cyber Security Fundamentals
+                            Firewall &amp; Autentikasi
                         </li>
                         <li>
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
                                 <polyline points="20 6 9 17 4 12"></polyline>
                             </svg>
-                            Iptables & Firewall Rules
+                            Blokir Web &amp; IP UFW
                         </li>
                         <li>
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
                                 <polyline points="20 6 9 17 4 12"></polyline>
                             </svg>
-                            IDS/IPS & VPN
+                            Kriptografi &amp; Enkripsi
                         </li>
                         <li>
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
                                 <polyline points="20 6 9 17 4 12"></polyline>
                             </svg>
-                            Server Hardening
+                            CIA Triad
                         </li>
                     </ul>
                     <div class="spec-cta">
@@ -324,8 +396,8 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <a href="/" class="logo">
-                        <span class="logo-icon">⌘</span>
-                        <span class="logo-text">Boetoenux</span>
+                        <img src="/public/img/logos/edunet-logo.png" alt="Edunet Logo" class="logo-icon logo-img">
+                        <span class="logo-text">Edunet</span>
                     </a>
                     <p>Portal belajar TKJ terlengkap untuk siswa SMK Indonesia.</p>
                 </div>
@@ -333,23 +405,23 @@
                     <h4>Navigasi</h4>
                     <ul>
                         <li><a href="/">Beranda</a></li>
-                        <li><a href="/kelas-10.html">Kelas 10</a></li>
-                        <li><a href="/kelas-11.html">Kelas 11</a></li>
-                        <li><a href="/kelas-12.html">Kelas 12</a></li>
+                        <li><a href="/pages/kelas-10.html">Kelas 10</a></li>
+                        <li><a href="/pages/kelas-11.html">Kelas 11</a></li>
+                        <li><a href="/pages/kelas-12.html">Kelas 12</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
-                    <h4>Spesialisasi</h4>
+                    <h4>Kelas 12</h4>
                     <ul>
-                        <li><a href="/aij.html">AIJ</a></li>
-                        <li><a href="/asj.html">ASJ</a></li>
-                        <li><a href="/kj.html">KJ</a></li>
-                        <li><a href="/lab-virtual.html">Lab Virtual</a></li>
+                        <li><a href="/pages/kelas-12/aij.html">AIJ</a></li>
+                        <li><a href="/pages/kelas-12/asj.html">ASJ</a></li>
+                        <li><a href="/pages/kelas-12/kj.html">KJ</a></li>
+                        <li><a href="/pages/lab-virtual.html">Lab Virtual</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Boetoenux. Built with 💚 for Indonesian students.</p>
+                <p>&copy; 2026 Edunet. Built with 💚 for Indonesian students.</p>
             </div>
         </div>
     </footer>

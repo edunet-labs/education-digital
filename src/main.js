@@ -1,5 +1,5 @@
 /* ======================================
-   Boetoenux Main JavaScript
+   Edunet Main JavaScript
    Core functionality for the website
    ====================================== */
 
@@ -51,47 +51,77 @@ const searchModal = document.getElementById('searchModal');
 const searchInput = document.getElementById('searchInput');
 const searchResults = document.getElementById('searchResults');
 
-// Search data - all materials
+// Search data - all materials from curriculum
 const searchData = [
-  // Kelas 10
-  { title: 'K3LH & Keselamatan Kerja', category: 'Kelas 10', url: '/kelas-10.html#k3lh', keywords: 'keselamatan kesehatan lingkungan kerja' },
-  { title: 'Perakitan & Perawatan PC', category: 'Kelas 10', url: '/kelas-10.html#perakitan', keywords: 'komputer merakit komponen' },
-  { title: 'Dasar-Dasar Jaringan', category: 'Kelas 10', url: '/kelas-10.html#jaringan', keywords: 'network topologi osi tcp ip' },
-  { title: 'Sistem Operasi', category: 'Kelas 10', url: '/kelas-10.html#os', keywords: 'windows linux ubuntu debian' },
+  // Kelas 10 - Dasar TKJ (8 materi sesuai kurikulum)
+  { title: 'K3LH', category: 'Kelas 10', url: '/pages/kelas-10.html', keywords: 'k3lh keselamatan kesehatan lingkungan kerja safety prosedur aman' },
+  { title: 'Subnetting', category: 'Kelas 10', url: '/pages/kelas-10.html', keywords: 'subnet mask ip address network cidr vlsm pembagian jaringan' },
+  { title: 'Perakitan PC', category: 'Kelas 10', url: '/pages/kelas-10.html', keywords: 'merakit komputer hardware komponen motherboard cpu ram psu' },
+  { title: 'Crimping Cable Straight-Cross', category: 'Kelas 10', url: '/pages/kelas-10.html', keywords: 'crimping kabel utp rj45 straight crossover t568a t568b' },
+  { title: 'Gerbang Logika', category: 'Kelas 10', url: '/pages/kelas-10.html', keywords: 'gerbang logika and or not nand nor xor digital' },
+  { title: 'Konversi Bilangan', category: 'Kelas 10', url: '/pages/kelas-10.html', keywords: 'konversi bilangan biner oktal desimal heksadesimal binary' },
+  { title: 'Pemrograman Dasar', category: 'Kelas 10', url: '/pages/kelas-10.html', keywords: 'pemrograman algoritma flowchart pseudocode logika coding' },
+  { title: 'Sistem Operasi', category: 'Kelas 10', url: '/pages/kelas-10.html', keywords: 'sistem operasi windows linux ubuntu debian instalasi os partisi' },
 
-  // Kelas 11
-  { title: 'Dasar Routing & Switching', category: 'Kelas 11', url: '/kelas-11.html#routing', keywords: 'router switch gateway' },
-  { title: 'VLAN Configuration', category: 'Kelas 11', url: '/kelas-11.html#vlan', keywords: 'virtual lan trunk access' },
-  { title: 'Manajemen Bandwidth', category: 'Kelas 11', url: '/kelas-11.html#bandwidth', keywords: 'qos queue traffic shaping' },
-  { title: 'Wireless Network', category: 'Kelas 11', url: '/kelas-11.html#wireless', keywords: 'wifi hotspot access point' },
+  // AIJ Kelas 11
+  { title: 'VLAN Trunking', category: 'AIJ Kelas 11', url: '/pages/kelas-11/aij.html#vlan', keywords: 'vlan virtual lan trunk access port switch cisco managed' },
+  { title: 'Routing Statis', category: 'AIJ Kelas 11', url: '/pages/kelas-11/aij.html#routing', keywords: 'routing statis static route gateway hop router mikrotik cisco' },
+  { title: 'Subnetting Lanjut', category: 'AIJ Kelas 11', url: '/pages/kelas-11/aij.html#subnetting', keywords: 'subnetting vlsm supernet cidr network address broadcast' },
+  { title: 'Konfigurasi Wireless', category: 'AIJ Kelas 11', url: '/pages/kelas-11/aij.html#wireless', keywords: 'wifi wireless hotspot access point wlan ssid wpa2 wpa3' },
+  { title: 'InterVLAN Routing', category: 'AIJ Kelas 11', url: '/pages/kelas-11/aij.html#intervlan', keywords: 'intervlan router on stick layer 3 switch svi' },
 
-  // AIJ
-  { title: 'Konfigurasi MikroTik', category: 'AIJ', url: '/aij.html#mikrotik', keywords: 'routerboard routeros winbox' },
-  { title: 'Routing OSPF', category: 'AIJ', url: '/aij.html#ospf', keywords: 'dynamic routing protocol area' },
-  { title: 'Routing BGP', category: 'AIJ', url: '/aij.html#bgp', keywords: 'border gateway autonomous system' },
-  { title: 'Firewall Filter Rules', category: 'AIJ', url: '/aij.html#firewall', keywords: 'nat mangle chain accept drop' },
-  { title: 'Queue Tree', category: 'AIJ', url: '/aij.html#queue', keywords: 'bandwidth management htb pcq' },
+  // ASJ Kelas 11
+  { title: 'Remote Server', category: 'ASJ Kelas 11', url: '/pages/kelas-11/asj.html#remote', keywords: 'remote server ssh telnet putty vnc rdp' },
+  { title: 'DHCP Server', category: 'ASJ Kelas 11', url: '/pages/kelas-11/asj.html#dhcp', keywords: 'dhcp server dynamic host configuration protocol ip otomatis lease' },
+  { title: 'DNS Server', category: 'ASJ Kelas 11', url: '/pages/kelas-11/asj.html#dns', keywords: 'dns domain name system bind resolusi forward reverse zone' },
+  { title: 'FTP Server', category: 'ASJ Kelas 11', url: '/pages/kelas-11/asj.html#ftp', keywords: 'ftp server file transfer protocol proftpd vsftpd upload download' },
 
-  // ASJ
-  { title: 'Instalasi Linux Server', category: 'ASJ', url: '/asj.html#linux', keywords: 'debian ubuntu centos server' },
-  { title: 'Web Server Apache/Nginx', category: 'ASJ', url: '/asj.html#webserver', keywords: 'http https virtual host' },
-  { title: 'DNS Server', category: 'ASJ', url: '/asj.html#dns', keywords: 'bind domain name resolution' },
-  { title: 'Mail Server', category: 'ASJ', url: '/asj.html#mail', keywords: 'postfix dovecot smtp imap' },
-  { title: 'Database Server', category: 'ASJ', url: '/asj.html#database', keywords: 'mysql mariadb postgresql' },
-  { title: 'FTP Server', category: 'ASJ', url: '/asj.html#ftp', keywords: 'proftpd vsftpd file transfer' },
+  // KJ Kelas 11
+  { title: 'Dasar Firewall', category: 'KJ Kelas 11', url: '/pages/kelas-11/kj.html#firewall', keywords: 'firewall packet filtering stateful inspection iptables windows' },
+  { title: 'Pengenalan Cyber Security', category: 'KJ Kelas 11', url: '/pages/kelas-11/kj.html#cyber', keywords: 'cyber security keamanan siber cia triad awareness ancaman' },
+  { title: 'Tingkatan Cyber Security', category: 'KJ Kelas 11', url: '/pages/kelas-11/kj.html#level', keywords: 'defense in depth network endpoint application security layer' },
+  { title: 'Jenis Ancaman Online', category: 'KJ Kelas 11', url: '/pages/kelas-11/kj.html#threats', keywords: 'malware virus trojan ransomware phishing ddos mitm social engineering' },
 
-  // KJ
-  { title: 'Cyber Security Fundamentals', category: 'KJ', url: '/kj.html#fundamental', keywords: 'keamanan siber dasar' },
-  { title: 'Iptables Firewall', category: 'KJ', url: '/kj.html#iptables', keywords: 'linux firewall rules chain' },
-  { title: 'IDS/IPS Systems', category: 'KJ', url: '/kj.html#ids', keywords: 'snort suricata intrusion detection' },
-  { title: 'VPN Configuration', category: 'KJ', url: '/kj.html#vpn', keywords: 'openvpn wireguard tunnel' },
-  { title: 'Server Hardening', category: 'KJ', url: '/kj.html#hardening', keywords: 'security audit fail2ban' },
+  // AIJ Kelas 12
+  { title: 'MikroTik RouterOS', category: 'AIJ Kelas 12', url: '/pages/kelas-12/aij.html#mikrotik', keywords: 'mikrotik routerboard routeros winbox webfig terminal' },
+  { title: 'OSPF Routing', category: 'AIJ Kelas 12', url: '/pages/kelas-12/aij.html#ospf', keywords: 'ospf open shortest path first dynamic routing protocol area backbone' },
+  { title: 'BGP Basics', category: 'AIJ Kelas 12', url: '/pages/kelas-12/aij.html#bgp', keywords: 'bgp border gateway protocol autonomous system ebgp ibgp isp' },
+  { title: 'NAT & PAT', category: 'AIJ Kelas 12', url: '/pages/kelas-12/aij.html#nat', keywords: 'nat pat network address translation masquerade port forwarding srcnat dstnat' },
+  { title: 'Bandwidth Management', category: 'AIJ Kelas 12', url: '/pages/kelas-12/aij.html#bandwidth', keywords: 'bandwidth management simple queue queue tree pcq limiter htb qos' },
+
+  // ASJ Kelas 12
+  { title: 'Instalasi Linux Server', category: 'ASJ Kelas 12', url: '/pages/kelas-12/asj.html#linux', keywords: 'linux server debian ubuntu centos rocky alma instalasi cli' },
+  { title: 'Web Server Apache/Nginx', category: 'ASJ Kelas 12', url: '/pages/kelas-12/asj.html#webserver', keywords: 'web server apache nginx http https virtual host ssl' },
+  { title: 'Mail Server', category: 'ASJ Kelas 12', url: '/pages/kelas-12/asj.html#mail', keywords: 'mail server postfix dovecot smtp imap pop3 email roundcube squirrelmail' },
+  { title: 'Database Server MySQL', category: 'ASJ Kelas 12', url: '/pages/kelas-12/asj.html#database', keywords: 'database server mysql mariadb sql phpmyadmin query table' },
+  { title: 'Samba File Server', category: 'ASJ Kelas 12', url: '/pages/kelas-12/asj.html#samba', keywords: 'samba smb cifs file sharing windows linux network drive' },
+  { title: 'NFS Server', category: 'ASJ Kelas 12', url: '/pages/kelas-12/asj.html#nfs', keywords: 'nfs network file system linux unix mount share' },
+  { title: 'Proxy Server Squid', category: 'ASJ Kelas 12', url: '/pages/kelas-12/asj.html#proxy', keywords: 'proxy squid cache transparent filtering acl' },
+  { title: 'VPN Server', category: 'ASJ Kelas 12', url: '/pages/kelas-12/asj.html#vpn', keywords: 'vpn virtual private network openvpn pptp l2tp ipsec wireguard' },
+  { title: 'Network Monitoring Zabbix', category: 'ASJ Kelas 12', url: '/pages/kelas-12/asj.html#monitoring', keywords: 'monitoring zabbix nagios grafana prometheus snmp log' },
+
+  // KJ Kelas 12
+  { title: 'Firewall Lanjutan', category: 'KJ Kelas 12', url: '/pages/kelas-12/kj.html#firewall-adv', keywords: 'firewall advanced iptables nftables rules chain policy' },
+  { title: 'UFW Uncomplicated Firewall', category: 'KJ Kelas 12', url: '/pages/kelas-12/kj.html#ufw', keywords: 'ufw uncomplicated firewall ubuntu blokir ip port allow deny' },
+  { title: 'Autentikasi & Otorisasi', category: 'KJ Kelas 12', url: '/pages/kelas-12/kj.html#auth', keywords: 'autentikasi otorisasi mfa radius ldap active directory pam' },
+  { title: 'Kriptografi & Enkripsi', category: 'KJ Kelas 12', url: '/pages/kelas-12/kj.html#crypto', keywords: 'kriptografi enkripsi aes rsa hashing md5 sha ssl tls certificate' },
+  { title: 'CIA Triad', category: 'KJ Kelas 12', url: '/pages/kelas-12/kj.html#cia', keywords: 'cia triad confidentiality integrity availability keamanan informasi' },
+  { title: 'Server Hardening', category: 'KJ Kelas 12', url: '/pages/kelas-12/kj.html#hardening', keywords: 'hardening server vulnerability scanning patch management selinux apparmor' },
+  { title: 'Penetration Testing', category: 'KJ Kelas 12', url: '/pages/kelas-12/kj.html#pentest', keywords: 'pentest penetration testing kali linux nmap metasploit vulnerability' },
 
   // Lab Virtual
-  { title: 'Cisco Packet Tracer', category: 'Lab Virtual', url: '/lab-virtual.html#packet-tracer', keywords: 'simulator cisco network' },
-  { title: 'GNS3', category: 'Lab Virtual', url: '/lab-virtual.html#gns3', keywords: 'emulator router' },
-  { title: 'PNETLab', category: 'Lab Virtual', url: '/lab-virtual.html#pnetlab', keywords: 'eve-ng lab virtual' },
+  { title: 'Cisco Packet Tracer', category: 'Lab Virtual', url: '/pages/lab-virtual.html#packet-tracer', keywords: 'cisco packet tracer simulator network jaringan simulasi' },
+  { title: 'GNS3', category: 'Lab Virtual', url: '/pages/lab-virtual.html#gns3', keywords: 'gns3 emulator router network virtualisasi' },
+  { title: 'VirtualBox / VMware', category: 'Lab Virtual', url: '/pages/lab-virtual.html#virtualbox', keywords: 'virtualbox vmware virtual machine vm mesin virtual hypervisor' },
+  { title: 'Download ISO', category: 'Lab Virtual', url: '/pages/lab-virtual.html#iso', keywords: 'iso download windows linux debian ubuntu server image' },
+
+  // Quiz
+  { title: 'Quiz Jaringan', category: 'Quiz', url: '/pages/quiz.html', keywords: 'quiz kuis latihan soal jaringan network ulangan' },
+
+  // Forum
+  { title: 'Forum Diskusi', category: 'Forum', url: '/pages/forum.html', keywords: 'forum diskusi tanya jawab komunitas help bantuan' },
 ];
+
 
 if (searchBtn && searchModal) {
   // Open search
@@ -258,6 +288,6 @@ document.querySelectorAll('.nav-link').forEach(link => {
 });
 
 // Console easter egg
-console.log('%c⌘ Boetoenux', 'font-size: 24px; font-weight: bold; color: #00ffc8;');
+console.log('%c⌘ Edunet', 'font-size: 24px; font-weight: bold; color: #00ffc8;');
 console.log('%cKuasai Jaringan, Taklukkan Masa Depan!', 'font-size: 14px; color: #9ca3af;');
 console.log('%cBuilt with 💚 for Indonesian students', 'font-size: 12px; color: #6b7280;');

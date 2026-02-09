@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Detail Materi - Edunet">
+    <title>Materi - Edunet</title>
+    <link rel="icon" type="image/png" href="/public/img/logos/edunet-logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/src/styles/main.css">
+    <link rel="stylesheet" href="/src/styles/pages.css">
+    <style>
+        .materi-container {
+            min-height: 100vh;
+            padding: 2rem;
+            padding-top: 6rem;
+        }
+
+        .materi-header {
+            margin-bottom: 2rem;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            transition: color 0.2s ease;
+        }
+
+        .back-btn:hover {
+            color: var(--accent-primary);
+        }
+
+        .materi-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--bg-tertiary);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .materi-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .materi-meta {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .materi-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .materi-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 968px) {
+            .materi-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .content-main {
+            background: var(--bg-card);
+            border: 1px solid var(--border-primary);
+            border-radius: 1rem;
+            padding: 2rem;
+        }
+
+        .content-main h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-primary);
+        }
+
+        .content-text {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .content-text p {
+            margin-bottom: 1rem;
+        }
+
+        .content-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .sidebar-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-primary);
+            border-radius: 1rem;
+            padding: 1.5rem;
+        }
+
+        .sidebar-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 0.5rem;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .no-video {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+        }
+
+        .no-video i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .quiz-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--gradient-primary);
+            border: none;
+            border-radius: 0.5rem;
+            color: var(--bg-primary);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .quiz-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 255, 200, 0.3);
+        }
+
+        .loading-state {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .loading-state .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border-primary);
+            border-top-color: var(--accent-primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        .error-state {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .error-state i {
+            font-size: 4rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .error-state h2 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .error-state p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="/" class="logo">
+                <img src="/public/img/logos/edunet-logo.png" alt="Edunet Logo" class="logo-icon logo-img">
+                <span class="logo-text">Edunet</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="/" class="nav-link">Beranda</a></li>
+                <li class="nav-dropdown">
+                    <a href="#" class="nav-link">Kelas</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/pages/kelas-10.html" class="dropdown-link">Kelas 10</a></li>
+                        <li><a href="/pages/kelas-11.html" class="dropdown-link">Kelas 11</a></li>
+                        <li><a href="/pages/kelas-12.html" class="dropdown-link">Kelas 12</a></li>
+                    </ul>
+                </li>
+                <li><a href="/pages/quiz.html" class="nav-link">Quiz</a></li>
+                <li><a href="/pages/forum.html" class="nav-link">Forum</a></li>
+                <li><a href="/pages/lab-virtual.html" class="nav-link">Lab Virtual</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <div class="materi-container container" id="materiContainer">
+        <div class="loading-state" id="loadingState">
+            <div class="spinner"></div>
+            <p>Memuat materi...</p>
+        </div>
+    </div>
+
+    <script type="module">
+        import { getMaterialById } from '/src/firebase/repository.js';
+
+        const container = document.getElementById('materiContainer');
+        const loadingState = document.getElementById('loadingState');
+
+        // Get ID from URL
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id');
+
+        if (!id) {
+            showError();
+        } else {
+            loadMaterial(id);
+        }
+
+        async function loadMaterial(id) {
+            const material = await getMaterialById(id);
+
+            if (!material) {
+                showError();
+                return;
+            }
+
+            document.title = `${material.title} - Edunet`;
+
+            // Get YouTube embed URL
+            let videoEmbed = null;
+            if (material.videoUrl) {
+                const videoId = extractYoutubeId(material.videoUrl);
+                if (videoId) {
+                    videoEmbed = `https://www.youtube.com/embed/${videoId}`;
+                }
+            }
+
+            const kelasPage = `/pages/kelas-${material.kelas}.html`;
+
+            container.innerHTML = `
+                <div class="materi-header">
+                    <a href="${kelasPage}" class="back-btn">
+                        <i class="bi bi-arrow-left"></i> Kembali ke Kelas ${material.kelas}
+                    </a>
+                    <div class="materi-badge">
+                        <i class="bi ${material.icon || 'bi-book'}"></i>
+                        Kelas ${material.kelas}${material.spesialisasi ? ' • ' + material.spesialisasi : ''}
+                    </div>
+                    <h1 class="materi-title">${material.title}</h1>
+                    <div class="materi-meta">
+                        <span><i class="bi bi-mortarboard"></i> Kelas ${material.kelas}</span>
+                        ${material.spesialisasi ? `<span><i class="bi bi-tag"></i> ${material.spesialisasi}</span>` : ''}
+                    </div>
+                </div>
+
+                <div class="materi-content">
+                    <div class="content-main">
+                        <h2><i class="bi bi-journal-text"></i> Materi</h2>
+                        <div class="content-text">
+                            ${material.konten ? formatContent(material.konten) : `<p>${material.deskripsi}</p>`}
+                        </div>
+                    </div>
+
+                    <div class="content-sidebar">
+                        <div class="sidebar-card">
+                            <h3><i class="bi bi-play-circle"></i> Video Tutorial</h3>
+                            ${videoEmbed ? `
+                                <div class="video-container">
+                                    <iframe src="${videoEmbed}" allowfullscreen></iframe>
+                                </div>
+                            ` : `
+                                <div class="no-video">
+                                    <i class="bi bi-camera-video-off"></i>
+                                    <p>Tidak ada video untuk materi ini</p>
+                                </div>
+                            `}
+                        </div>
+
+                        <div class="sidebar-card">
+                            <h3><i class="bi bi-question-circle"></i> Mini Quiz</h3>
+                            <button class="quiz-btn" onclick="alert('Fitur quiz akan segera hadir!')">
+                                <i class="bi bi-lightning"></i>
+                                Mulai Quiz
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function showError() {
+            container.innerHTML = `
+                <div class="error-state">
+                    <i class="bi bi-emoji-frown"></i>
+                    <h2>Materi Tidak Ditemukan</h2>
+                    <p>Materi yang Anda cari tidak tersedia atau telah dihapus.</p>
+                    <a href="/" class="btn btn-primary">
+                        <i class="bi bi-house"></i> Kembali ke Beranda
+                    </a>
+                </div>
+            `;
+        }
+
+        function extractYoutubeId(url) {
+            const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
+            const match = url.match(regex);
+            return match ? match[1] : null;
+        }
+
+        function formatContent(text) {
+            // Simple text formatting - convert line breaks to paragraphs
+            return text.split('\n\n').map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`).join('');
+        }
+    </script>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

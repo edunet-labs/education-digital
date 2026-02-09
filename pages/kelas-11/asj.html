@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="ASJ Kelas 11 - Belajar Remote Server, DHCP Server, DNS Server, dan FTP Server.">
+    <title>ASJ Kelas 11 - Administrasi Sistem Jaringan - Edunet</title>
+    <link rel="icon" type="image/png" href="/public/img/logos/edunet-logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/src/styles/main.css">
+    <link rel="stylesheet" href="/src/styles/pages.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="/" class="logo">
+                <img src="/public/img/logos/edunet-logo.png" alt="Edunet Logo" class="logo-icon logo-img">
+                <span class="logo-text">Edunet</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation"><span
+                    class="hamburger"></span></button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="/" class="nav-link">Beranda</a></li>
+                <li class="nav-dropdown">
+                    <a href="#" class="nav-link">Kelas</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/pages/kelas-10.html" class="dropdown-link">Kelas 10</a></li>
+                        <li><a href="/pages/kelas-11.html" class="dropdown-link">Kelas 11</a></li>
+                        <li><a href="/pages/kelas-12.html" class="dropdown-link">Kelas 12</a></li>
+                    </ul>
+                </li>
+                <li><a href="/pages/quiz.html" class="nav-link">Quiz</a></li>
+                <li><a href="/pages/forum.html" class="nav-link">Forum</a></li>
+                <li><a href="/pages/lab-virtual.html" class="nav-link">Lab Virtual</a></li>
+            </ul>
+            <button class="search-btn" id="searchBtn" aria-label="Search">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <span class="search-shortcut">Ctrl+K</span>
+            </button>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <header class="hero-header-full"
+        style="background: linear-gradient(180deg, rgba(59, 130, 246, 0.08) 0%, var(--bg-secondary) 100%);">
+        <div class="hero-glow primary" style="background: #3b82f6;"></div>
+        <div class="hero-glow secondary" style="background: #1d4ed8;"></div>
+        <div class="hero-floating-icons">
+            <i class="bi bi-terminal icon" style="font-size: 4rem; color: #3b82f6;"></i>
+            <i class="bi bi-database icon" style="font-size: 3rem; color: #3b82f6;"></i>
+            <i class="bi bi-globe icon" style="font-size: 3.5rem; color: #3b82f6;"></i>
+            <i class="bi bi-server icon" style="font-size: 3rem; color: #3b82f6;"></i>
+        </div>
+        <div class="container">
+            <div class="hero-content-wrapper">
+                <div class="hero-text-content">
+                    <p class="hero-subtitle" style="color: #3b82f6;"><i class="bi bi-server"></i> Kelas 11 -
+                        Spesialisasi</p>
+                    <h1 class="hero-title"><span
+                            style="background: linear-gradient(135deg, #3b82f6, #1d4ed8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">ASJ</span>
+                    </h1>
+                    <p class="hero-description">Administrasi Sistem Jaringan - Fokus pada pengelolaan server berbasis
+                        Linux. Dari Remote Server, DHCP, DNS, hingga FTP Server.</p>
+                    <div class="hero-stats-inline">
+                        <div class="hero-stat-item"><span class="hero-stat-number" style="color: #3b82f6;">4</span><span
+                                class="hero-stat-text">Modul</span></div>
+                        <div class="hero-stat-item"><span class="hero-stat-number"
+                                style="color: #3b82f6;">12</span><span class="hero-stat-text">Materi</span></div>
+                        <div class="hero-stat-item"><span class="hero-stat-number"
+                                style="color: #3b82f6;">6+</span><span class="hero-stat-text">Jam Belajar</span></div>
+                    </div>
+                    <div class="hero-buttons">
+                        <a href="#remote" class="btn-hero btn-hero-primary"
+                            style="background: #3b82f6; box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);"><span>Mulai
+                                Belajar</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg></a>
+                        <a href="/pages/kelas-11.html" class="btn-hero btn-hero-secondary"><i
+                                class="bi bi-arrow-left"></i><span>Kembali</span></a>
+                    </div>
+                </div>
+                <div class="hero-visual-content">
+                    <div class="hero-visual-card" style="border-color: rgba(59, 130, 246, 0.2);">
+                        <div class="hero-visual-icon" style="color: #3b82f6;"><i class="bi bi-server"></i></div>
+                        <p class="hero-visual-title">Linux Server Admin</p>
+                        <div class="hero-visual-tags">
+                            <span class="hero-visual-tag"
+                                style="background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.2); color: #3b82f6;">SSH</span>
+                            <span class="hero-visual-tag"
+                                style="background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.2); color: #3b82f6;">DHCP</span>
+                            <span class="hero-visual-tag"
+                                style="background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.2); color: #3b82f6;">DNS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator"><span>Scroll ke bawah</span><svg viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M19 12l-7 7-7-7" />
+            </svg></div>
+    </header>
+
+    <section class="content-section" id="remote">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" style="background: rgba(59, 130, 246, 0.1); color: #3b82f6;">Modul 1</span>
+                <h2 class="section-title">Remote Server</h2>
+                <p class="section-desc">Akses dan kelola server dari jarak jauh menggunakan protokol SSH.</p>
+            </div>
+            <div class="materials-grid">
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-terminal"></i></div>
+                    <h3 class="material-title">Konsep Remote Server</h3>
+                    <p class="material-desc">Pengertian remote access, protokol SSH vs Telnet, dan keuntungan mengelola
+                        server secara remote.</p>
+                    <div class="material-meta"><span class="material-meta-item">25 menit</span><span
+                            class="material-meta-item">Teori</span></div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-key"></i></div>
+                    <h3 class="material-title">SSH Server Configuration</h3>
+                    <p class="material-desc">Instalasi OpenSSH, konfigurasi sshd_config, port, dan izin akses user.</p>
+                    <div class="material-meta"><span class="material-meta-item">40 menit</span><span
+                            class="material-meta-item">Praktik</span></div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-shield-lock"></i></div>
+                    <h3 class="material-title">SSH Key Authentication</h3>
+                    <p class="material-desc">Generate SSH key pair, authorized_keys, dan disable password authentication
+                        untuk keamanan.</p>
+                    <div class="material-meta"><span class="material-meta-item">35 menit</span><span
+                            class="material-meta-item">Praktik</span></div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" id="dhcp">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" style="background: rgba(59, 130, 246, 0.1); color: #3b82f6;">Modul 2</span>
+                <h2 class="section-title">DHCP Server</h2>
+                <p class="section-desc">Distribusi IP address secara otomatis ke client dalam jaringan.</p>
+            </div>
+            <div class="materials-grid">
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-broadcast"></i></div>
+                    <h3 class="material-title">Konsep DHCP</h3>
+                    <p class="material-desc">Cara kerja DHCP (DORA), lease time, scope, dan reservation untuk IP statis.
+                    </p>
+                    <div class="material-meta"><span class="material-meta-item">25 menit</span><span
+                            class="material-meta-item">Teori</span></div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-gear"></i></div>
+                    <h3 class="material-title">Instalasi isc-dhcp-server</h3>
+                    <p class="material-desc">Instalasi dan konfigurasi DHCP server di Debian/Ubuntu. File dhcpd.conf dan
+                        troubleshooting.</p>
+                    <div class="material-meta"><span class="material-meta-item">40 menit</span><span
+                            class="material-meta-item">Praktik</span></div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-diagram-2"></i></div>
+                    <h3 class="material-title">Multi Subnet DHCP</h3>
+                    <p class="material-desc">Konfigurasi DHCP untuk melayani beberapa subnet dengan pool IP yang
+                        berbeda.</p>
+                    <div class="material-meta"><span class="material-meta-item">35 menit</span><span
+                            class="material-meta-item">Praktik</span></div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" id="dns">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" style="background: rgba(59, 130, 246, 0.1); color: #3b82f6;">Modul 3</span>
+                <h2 class="section-title">DNS Server</h2>
+                <p class="section-desc">Resolusi nama domain ke IP address menggunakan BIND9.</p>
+            </div>
+            <div class="materials-grid">
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-globe"></i></div>
+                    <h3 class="material-title">Konsep DNS</h3>
+                    <p class="material-desc">Hierarki DNS, record types (A, AAAA, CNAME, MX, NS, PTR), dan cara kerja
+                        resolusi DNS.</p>
+                    <div class="material-meta"><span class="material-meta-item">30 menit</span><span
+                            class="material-meta-item">Teori</span></div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-gear"></i></div>
+                    <h3 class="material-title">BIND9 Configuration</h3>
+                    <p class="material-desc">Instalasi BIND9, forward zone, reverse zone, dan named.conf configuration.
+                    </p>
+                    <div class="material-meta"><span class="material-meta-item">50 menit</span><span
+                            class="material-meta-item">Praktik</span></div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-search"></i></div>
+                    <h3 class="material-title">DNS Testing & Troubleshoot</h3>
+                    <p class="material-desc">Menggunakan nslookup, dig, dan host untuk testing dan troubleshooting DNS.
+                    </p>
+                    <div class="material-meta"><span class="material-meta-item">30 menit</span><span
+                            class="material-meta-item">Praktik</span></div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" id="ftp">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" style="background: rgba(59, 130, 246, 0.1); color: #3b82f6;">Modul 4</span>
+                <h2 class="section-title">FTP Server</h2>
+                <p class="section-desc">File Transfer Protocol untuk berbagi dan transfer file.</p>
+            </div>
+            <div class="materials-grid">
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-folder2-open"></i></div>
+                    <h3 class="material-title">Konsep FTP</h3>
+                    <p class="material-desc">Cara kerja FTP, active vs passive mode, dan perbedaan FTP, FTPS, SFTP.</p>
+                    <div class="material-meta"><span class="material-meta-item">25 menit</span><span
+                            class="material-meta-item">Teori</span></div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-gear"></i></div>
+                    <h3 class="material-title">vsftpd Configuration</h3>
+                    <p class="material-desc">Instalasi vsftpd, user-based access, anonymous access, dan konfigurasi
+                        permission.</p>
+                    <div class="material-meta"><span class="material-meta-item">40 menit</span><span
+                            class="material-meta-item">Praktik</span></div>
+                </article>
+                <article class="material-card">
+                    <div class="material-icon"><i class="bi bi-lock"></i></div>
+                    <h3 class="material-title">Secure FTP (SFTP)</h3>
+                    <p class="material-desc">FTP over SSH untuk transfer file yang aman. Chroot jail untuk isolasi user.
+                    </p>
+                    <div class="material-meta"><span class="material-meta-item">35 menit</span><span
+                            class="material-meta-item">Praktik</span></div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-card">
+                <div class="cta-glow"></div>
+                <div class="cta-content">
+                    <h2>Siap Lanjut ke Kelas 12?</h2>
+                    <p>Setelah menguasai dasar server, saatnya masuk ke Web Server, Mail Server, dan Database!</p>
+                    <a href="/pages/kelas-12/asj.html" class="btn btn-primary btn-lg"><span>ASJ Kelas 12</span><svg
+                            width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand"><a href="/" class="logo"><img src="/public/img/logos/edunet-logo.png"
+                            alt="Edunet Logo" class="logo-icon logo-img"><span class="logo-text">Edunet</span></a>
+                    <p>Portal belajar TKJ terlengkap untuk siswa SMK Indonesia.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigasi</h4>
+                    <ul>
+                        <li><a href="/">Beranda</a></li>
+                        <li><a href="/pages/kelas-10.html">Kelas 10</a></li>
+                        <li><a href="/pages/kelas-11.html">Kelas 11</a></li>
+                        <li><a href="/pages/kelas-12.html">Kelas 12</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Kelas 11</h4>
+                    <ul>
+                        <li><a href="/pages/kelas-11/aij.html">AIJ</a></li>
+                        <li><a href="/pages/kelas-11/asj.html">ASJ</a></li>
+                        <li><a href="/pages/kelas-11/kj.html">KJ</a></li>
+                        <li><a href="/pages/lab-virtual.html">Lab Virtual</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Edunet. Built with 💚 for Indonesian students.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="search-modal" id="searchModal">
+        <div class="search-overlay"></div>
+        <div class="search-container">
+            <div class="search-header">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <input type="text" class="search-input" placeholder="Cari materi..." id="searchInput">
+                <kbd class="search-kbd">ESC</kbd>
+            </div>
+            <div class="search-results" id="searchResults">
+                <div class="search-hint">
+                    <p>Mulai ketik untuk mencari materi...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

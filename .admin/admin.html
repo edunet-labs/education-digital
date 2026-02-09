@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Admin Dashboard - Edunet">
+    <title>Admin Dashboard - Edunet</title>
+    <link rel="icon" type="image/png" href="/public/img/logos/edunet-logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/src/styles/main.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+
+        /* Dashboard Layout */
+        .dashboard {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 260px;
+            background: var(--bg-secondary);
+            border-right: 1px solid var(--border-primary);
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            z-index: 100;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .sidebar-logo {
+            width: 40px;
+            height: 40px;
+        }
+
+        .sidebar-brand {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .sidebar-nav {
+            flex: 1;
+            padding: 1rem 0;
+            overflow-y: auto;
+        }
+
+        .nav-section {
+            padding: 0 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .nav-section-title {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            padding: 0 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            margin-bottom: 0.25rem;
+        }
+
+        .nav-link:hover {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+        }
+
+        .nav-link.active {
+            background: rgba(0, 176, 133, 0.15);
+            color: #00b085;
+        }
+
+        .nav-link i {
+            font-size: 1.1rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .sidebar-footer {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid var(--border-primary);
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .user-avatar {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #00b085, #00c896);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .user-details {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .user-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .user-role {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        .logout-btn {
+            width: 100%;
+            padding: 0.6rem;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            border-radius: 0.5rem;
+            color: #ef4444;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .logout-btn:hover {
+            background: rgba(239, 68, 68, 0.2);
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            margin-left: 260px;
+            min-height: 100vh;
+        }
+
+        .content-header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border-primary);
+            background: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.25rem;
+        }
+
+        .page-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .content-body {
+            padding: 2rem;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-primary);
+            border-radius: 1rem;
+            padding: 1.5rem;
+        }
+
+        .stat-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .stat-card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .stat-card-icon.green {
+            background: rgba(0, 176, 133, 0.15);
+            color: #00b085;
+        }
+
+        .stat-card-icon.blue {
+            background: rgba(59, 130, 246, 0.15);
+            color: #3b82f6;
+        }
+
+        .stat-card-icon.orange {
+            background: rgba(245, 158, 11, 0.15);
+            color: #f59e0b;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Form Section */
+        .section-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-primary);
+            border-radius: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-header {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border-primary);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .section-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-body {
+            padding: 1.5rem;
+        }
+
+        /* Form Styles */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .form-grid.single {
+            grid-template-columns: 1fr;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-primary);
+            border-radius: 0.5rem;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            font-family: inherit;
+            transition: all 0.2s ease;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #00b085;
+            box-shadow: 0 0 0 3px rgba(0, 176, 133, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: none;
+        }
+
+        .btn-primary {
+            background: #00b085;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #009973;
+        }
+
+        .btn-secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--border-primary);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* Table Styles */
+        .table-container {
+            overflow-x: auto;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-primary);
+        }
+
+        .data-table th {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            background: var(--bg-secondary);
+        }
+
+        .data-table td {
+            font-size: 0.9rem;
+            color: var(--text-primary);
+        }
+
+        .data-table tr:hover td {
+            background: var(--bg-secondary);
+        }
+
+        .table-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .action-btn {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .action-btn.edit {
+            background: rgba(59, 130, 246, 0.1);
+            color: #3b82f6;
+        }
+
+        .action-btn.edit:hover {
+            background: rgba(59, 130, 246, 0.2);
+        }
+
+        .action-btn.delete {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+        }
+
+        .action-btn.delete:hover {
+            background: rgba(239, 68, 68, 0.2);
+        }
+
+        .badge {
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .badge-green {
+            background: rgba(0, 176, 133, 0.15);
+            color: #00b085;
+        }
+
+        .badge-blue {
+            background: rgba(59, 130, 246, 0.15);
+            color: #3b82f6;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+        }
+
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast.success {
+            background: rgba(16, 185, 129, 0.95);
+            color: white;
+        }
+
+        .toast.error {
+            background: rgba(239, 68, 68, 0.95);
+            color: white;
+        }
+
+        /* Loading */
+        .loading-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .loading-overlay.hidden {
+            display: none;
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border-primary);
+            border-top-color: #00b085;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Mobile Overlay */
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 99;
+        }
+
+        .sidebar-overlay.show {
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .content-header {
+                padding: 1rem 1.5rem;
+            }
+
+            .content-body {
+                padding: 1.5rem;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .data-table th,
+            .data-table td {
+                padding: 0.75rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Sidebar Overlay (Mobile) -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <img src="/public/img/logos/edunet-logo.png" alt="Edunet" class="sidebar-logo">
+                <span class="sidebar-brand">Edunet</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-title">Menu</div>
+                    <a href="/.admin/admin.html" class="nav-link active">
+                        <i class="bi bi-collection"></i>
+                        Kelola Materi
+                    </a>
+                    <a href="/.admin/superadmin.html" class="nav-link" id="superAdminLink" style="display: none;">
+                        <i class="bi bi-people"></i>
+                        Kelola Admin
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">Navigasi</div>
+                    <a href="/" class="nav-link">
+                        <i class="bi bi-house"></i>
+                        Kembali ke Website
+                    </a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar" id="userAvatar">A</div>
+                    <div class="user-details">
+                        <div class="user-name" id="userName">Loading...</div>
+                        <div class="user-role" id="userRole">Admin</div>
+                    </div>
+                </div>
+                <button class="logout-btn" id="logoutBtn">
+                    <i class="bi bi-box-arrow-left"></i>
+                    Keluar
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header">
+                <div class="header-left">
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class="bi bi-list"></i>
+                    </button>
+                    <h1 class="page-title">Kelola Materi</h1>
+                </div>
+            </header>
+
+            <div class="content-body">
+                <!-- Stats Cards -->
+                <div class="cards-grid">
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <div class="stat-card-icon green">
+                                <i class="bi bi-collection"></i>
+                            </div>
+                        </div>
+                        <div class="stat-value" id="totalMaterials">0</div>
+                        <div class="stat-label">Total Materi</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <div class="stat-card-icon blue">
+                                <i class="bi bi-mortarboard"></i>
+                            </div>
+                        </div>
+                        <div class="stat-value" id="totalKelas">3</div>
+                        <div class="stat-label">Kelas Tersedia</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <div class="stat-card-icon orange">
+                                <i class="bi bi-bookmark"></i>
+                            </div>
+                        </div>
+                        <div class="stat-value" id="totalSpesialisasi">3</div>
+                        <div class="stat-label">Spesialisasi</div>
+                    </div>
+                </div>
+
+                <!-- Add Material Form -->
+                <div class="section-card">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <i class="bi bi-plus-circle"></i>
+                            <span id="formTitle">Tambah Materi Baru</span>
+                        </h2>
+                    </div>
+                    <div class="section-body">
+                        <form id="materialForm">
+                            <input type="hidden" id="editId" value="">
+                            <div class="form-grid">
+                                <div class="form-group full-width">
+                                    <label class="form-label">Judul Materi *</label>
+                                    <input type="text" id="title" class="form-input"
+                                        placeholder="Contoh: Konfigurasi DNS Server" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Kelas *</label>
+                                    <select id="kelas" class="form-select" required>
+                                        <option value="">Pilih Kelas</option>
+                                        <option value="10">Kelas 10</option>
+                                        <option value="11">Kelas 11</option>
+                                        <option value="12">Kelas 12</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Spesialisasi</label>
+                                    <select id="spesialisasi" class="form-select">
+                                        <option value="">Tidak Ada</option>
+                                        <option value="AIJ">AIJ</option>
+                                        <option value="ASJ">ASJ</option>
+                                        <option value="KJ">KJ</option>
+                                    </select>
+                                </div>
+                                <div class="form-group full-width">
+                                    <label class="form-label">Deskripsi Singkat *</label>
+                                    <textarea id="deskripsi" class="form-textarea"
+                                        placeholder="Deskripsi singkat materi..." required></textarea>
+                                </div>
+                                <div class="form-group full-width">
+                                    <label class="form-label">Konten Lengkap</label>
+                                    <textarea id="konten" class="form-textarea" placeholder="Isi materi lengkap..."
+                                        style="min-height: 150px;"></textarea>
+                                </div>
+                                <div class="form-group full-width">
+                                    <label class="form-label">URL Video (YouTube)</label>
+                                    <input type="url" id="videoUrl" class="form-input"
+                                        placeholder="https://www.youtube.com/watch?v=...">
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                                <button type="submit" class="btn btn-primary" id="submitBtn">
+                                    <i class="bi bi-plus-lg"></i>
+                                    <span id="submitText">Simpan Materi</span>
+                                </button>
+                                <button type="button" class="btn btn-secondary" id="cancelBtn" style="display: none;">
+                                    <i class="bi bi-x-lg"></i>
+                                    Batal
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Materials List -->
+                <div class="section-card">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <i class="bi bi-list-ul"></i>
+                            Daftar Materi
+                        </h2>
+                        <span class="badge badge-green" id="materialsCount">0 materi</span>
+                    </div>
+                    <div class="section-body" style="padding: 0;">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Judul</th>
+                                        <th>Kelas</th>
+                                        <th>Spesialisasi</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="materialsList">
+                                    <tr>
+                                        <td colspan="4">
+                                            <div class="empty-state">
+                                                <i class="bi bi-inbox"></i>
+                                                <p>Belum ada materi</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <script type="module">
+        import { onAuthChange, signOut } from '/src/firebase/auth.js';
+        import { getAllMaterials, addMaterial, updateMaterial, deleteMaterial } from '/src/firebase/repository.js';
+        import { getUserRole } from '/src/firebase/users.js';
+
+        // Auto-assign icon based on title keywords
+        function autoAssignIcon(title) {
+            const t = title.toLowerCase();
+            const iconMap = [
+                { keywords: ['subnetting', 'subnet', 'ip address', 'ipv4', 'ipv6', 'cidr'], icon: 'bi-diagram-3' },
+                { keywords: ['routing', 'ospf', 'bgp', 'rip', 'eigrp', 'router'], icon: 'bi-signpost-split' },
+                { keywords: ['vlan', 'trunking', 'switch', 'switching'], icon: 'bi-bezier2' },
+                { keywords: ['mikrotik', 'routeros'], icon: 'bi-router' },
+                { keywords: ['server', 'dns', 'dhcp', 'ftp', 'ssh', 'web server', 'apache', 'nginx'], icon: 'bi-hdd-stack' },
+                { keywords: ['database', 'mysql', 'sql', 'mariadb'], icon: 'bi-database' },
+                { keywords: ['vpn', 'tunnel', 'remote'], icon: 'bi-shield-lock' },
+                { keywords: ['hosting', 'vps', 'dedicated', 'cloud'], icon: 'bi-cloud-upload' },
+                { keywords: ['firewall', 'ufw', 'iptables'], icon: 'bi-bricks' },
+                { keywords: ['security', 'keamanan', 'cyber', 'hacking', 'penetration'], icon: 'bi-shield-check' },
+                { keywords: ['k3lh', 'keselamatan', 'safety'], icon: 'bi-cone-striped' },
+                { keywords: ['perakitan', 'komponen', 'hardware', 'pc', 'komputer'], icon: 'bi-pc-display' },
+                { keywords: ['crimping', 'kabel', 'cable', 'rj45', 'utp'], icon: 'bi-ethernet' },
+                { keywords: ['wireless', 'wifi', 'wlan', 'access point'], icon: 'bi-wifi' },
+            ];
+
+            for (const mapping of iconMap) {
+                if (mapping.keywords.some(keyword => t.includes(keyword))) {
+                    return mapping.icon;
+                }
+            }
+            return 'bi-book';
+        }
+
+        // DOM Elements
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        const menuToggle = document.getElementById('menuToggle');
+        const userName = document.getElementById('userName');
+        const userRole = document.getElementById('userRole');
+        const userAvatar = document.getElementById('userAvatar');
+        const superAdminLink = document.getElementById('superAdminLink');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const materialForm = document.getElementById('materialForm');
+        const materialsList = document.getElementById('materialsList');
+        const materialsCount = document.getElementById('materialsCount');
+        const totalMaterials = document.getElementById('totalMaterials');
+        const formTitle = document.getElementById('formTitle');
+        const submitText = document.getElementById('submitText');
+        const submitBtn = document.getElementById('submitBtn');
+        const cancelBtn = document.getElementById('cancelBtn');
+        const editIdInput = document.getElementById('editId');
+        const toast = document.getElementById('toast');
+
+        // Mobile menu toggle
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('open');
+            sidebarOverlay.classList.toggle('show');
+        });
+
+        sidebarOverlay.addEventListener('click', () => {
+            sidebar.classList.remove('open');
+            sidebarOverlay.classList.remove('show');
+        });
+
+        // Auth check
+        onAuthChange(async (user) => {
+            loadingOverlay.classList.add('hidden');
+            if (!user) {
+                window.location.href = '/.admin/login.html';
+                return;
+            }
+
+            const userData = await getUserRole(user.uid);
+            if (!userData || (userData.role !== 'admin' && userData.role !== 'superadmin')) {
+                window.location.href = '/.admin/login.html';
+                return;
+            }
+
+            userName.textContent = userData.name || user.email;
+            userRole.textContent = userData.role === 'superadmin' ? 'Super Admin' : 'Admin';
+            userAvatar.textContent = (userData.name || user.email).charAt(0).toUpperCase();
+
+            if (userData.role === 'superadmin') {
+                superAdminLink.style.display = 'flex';
+            }
+
+            loadMaterials();
+        });
+
+        // Logout
+        logoutBtn.addEventListener('click', async () => {
+            await signOut();
+            window.location.href = '/.admin/login.html';
+        });
+
+        // Load materials
+        async function loadMaterials() {
+            const materials = await getAllMaterials();
+            renderMaterials(materials);
+            totalMaterials.textContent = materials.length;
+            materialsCount.textContent = `${materials.length} materi`;
+        }
+
+        // Render materials table
+        function renderMaterials(materials) {
+            if (materials.length === 0) {
+                materialsList.innerHTML = `
+                    <tr>
+                        <td colspan="4">
+                            <div class="empty-state">
+                                <i class="bi bi-inbox"></i>
+                                <p>Belum ada materi</p>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            } else {
+                materialsList.innerHTML = materials.map(m => `
+                    <tr>
+                        <td>
+                            <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                <i class="${m.icon || 'bi-book'}" style="font-size: 1.25rem; color: var(--accent-primary);"></i>
+                                <span>${m.title}</span>
+                            </div>
+                        </td>
+                        <td><span class="badge badge-blue">Kelas ${m.kelas}</span></td>
+                        <td>${m.spesialisasi ? `<span class="badge badge-green">${m.spesialisasi}</span>` : '-'}</td>
+                        <td>
+                            <div class="table-actions">
+                                <button class="action-btn edit" onclick="editMaterial('${m.id}')" title="Edit">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                                <button class="action-btn delete" onclick="deleteMat('${m.id}')" title="Hapus">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `).join('');
+            }
+        }
+
+        // Form submit
+        materialForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            submitBtn.disabled = true;
+
+            const data = {
+                title: document.getElementById('title').value.trim(),
+                kelas: parseInt(document.getElementById('kelas').value),
+                spesialisasi: document.getElementById('spesialisasi').value || null,
+                icon: autoAssignIcon(document.getElementById('title').value.trim()),
+                deskripsi: document.getElementById('deskripsi').value.trim(),
+                konten: document.getElementById('konten').value.trim(),
+                videoUrl: document.getElementById('videoUrl').value.trim() || null,
+            };
+
+            const editId = editIdInput.value;
+            let result;
+
+            if (editId) {
+                result = await updateMaterial(editId, data);
+            } else {
+                result = await addMaterial(data);
+            }
+
+            submitBtn.disabled = false;
+
+            if (result.success) {
+                showToast(editId ? 'Materi berhasil diperbarui!' : 'Materi berhasil ditambahkan!', 'success');
+                materialForm.reset();
+                resetForm();
+                loadMaterials();
+            } else {
+                showToast('Gagal menyimpan: ' + result.error, 'error');
+            }
+        });
+
+        // Edit material
+        window.editMaterial = async (id) => {
+            const materials = await getAllMaterials();
+            const material = materials.find(m => m.id === id);
+            if (material) {
+                editIdInput.value = id;
+                document.getElementById('title').value = material.title;
+                document.getElementById('kelas').value = material.kelas;
+                document.getElementById('spesialisasi').value = material.spesialisasi || '';
+                document.getElementById('deskripsi').value = material.deskripsi;
+                document.getElementById('konten').value = material.konten || '';
+                document.getElementById('videoUrl').value = material.videoUrl || '';
+
+                formTitle.textContent = 'Edit Materi';
+                submitText.textContent = 'Update Materi';
+                cancelBtn.style.display = 'inline-flex';
+
+                document.querySelector('.section-card').scrollIntoView({ behavior: 'smooth' });
+            }
+        };
+
+        // Cancel edit
+        cancelBtn.addEventListener('click', () => {
+            materialForm.reset();
+            resetForm();
+        });
+
+        function resetForm() {
+            editIdInput.value = '';
+            formTitle.textContent = 'Tambah Materi Baru';
+            submitText.textContent = 'Simpan Materi';
+            cancelBtn.style.display = 'none';
+        }
+
+        // Delete material
+        window.deleteMat = async (id) => {
+            if (confirm('Yakin ingin menghapus materi ini?')) {
+                const result = await deleteMaterial(id);
+                if (result.success) {
+                    showToast('Materi berhasil dihapus!', 'success');
+                    loadMaterials();
+                } else {
+                    showToast('Gagal menghapus: ' + result.error, 'error');
+                }
+            }
+        };
+
+        // Toast
+        function showToast(message, type) {
+            toast.textContent = message;
+            toast.className = `toast ${type} show`;
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>
