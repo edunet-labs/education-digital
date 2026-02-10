@@ -89,15 +89,15 @@
                     <p class="hero-description">Administrasi Sistem Jaringan - Fokus pada pengelolaan server berbasis
                         Linux. Dari Remote Server, DHCP, DNS, hingga FTP Server.</p>
                     <div class="hero-stats-inline">
-                        <div class="hero-stat-item"><span class="hero-stat-number" style="color: #3b82f6;">4</span><span
-                                class="hero-stat-text">Modul</span></div>
-                        <div class="hero-stat-item"><span class="hero-stat-number"
-                                style="color: #3b82f6;">12</span><span class="hero-stat-text">Materi</span></div>
+                        <div class="hero-stat-item"><span class="hero-stat-number" style="color: #3b82f6;"
+                                id="totalModules">-</span><span class="hero-stat-text">Modul</span></div>
+                        <div class="hero-stat-item"><span class="hero-stat-number" style="color: #3b82f6;"
+                                id="totalMaterials">-</span><span class="hero-stat-text">Materi</span></div>
                         <div class="hero-stat-item"><span class="hero-stat-number"
                                 style="color: #3b82f6;">6+</span><span class="hero-stat-text">Jam Belajar</span></div>
                     </div>
                     <div class="hero-buttons">
-                        <a href="#remote" class="btn-hero btn-hero-primary"
+                        <a href="#materials" class="btn-hero btn-hero-primary"
                             style="background: #3b82f6; box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);"><span>Mulai
                                 Belajar</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2">
@@ -129,144 +129,33 @@
             </svg></div>
     </header>
 
-    <section class="content-section" id="remote">
+    <!-- Dynamic Materials Section -->
+    <section class="content-section" id="materials">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag" style="background: rgba(59, 130, 246, 0.1); color: #3b82f6;">Modul 1</span>
-                <h2 class="section-title">Remote Server</h2>
-                <p class="section-desc">Akses dan kelola server dari jarak jauh menggunakan protokol SSH.</p>
+                <span class="section-tag" style="background: rgba(59, 130, 246, 0.1); color: #3b82f6;">Materi</span>
+                <h2 class="section-title">Daftar Materi ASJ</h2>
+                <p class="section-desc">Semua materi Administrasi Sistem Jaringan Kelas 11.</p>
             </div>
-            <div class="materials-grid">
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-terminal"></i></div>
-                    <h3 class="material-title">Konsep Remote Server</h3>
-                    <p class="material-desc">Pengertian remote access, protokol SSH vs Telnet, dan keuntungan mengelola
-                        server secara remote.</p>
-                    <div class="material-meta"><span class="material-meta-item">25 menit</span><span
-                            class="material-meta-item">Teori</span></div>
-                </article>
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-key"></i></div>
-                    <h3 class="material-title">SSH Server Configuration</h3>
-                    <p class="material-desc">Instalasi OpenSSH, konfigurasi sshd_config, port, dan izin akses user.</p>
-                    <div class="material-meta"><span class="material-meta-item">40 menit</span><span
-                            class="material-meta-item">Praktik</span></div>
-                </article>
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-shield-lock"></i></div>
-                    <h3 class="material-title">SSH Key Authentication</h3>
-                    <p class="material-desc">Generate SSH key pair, authorized_keys, dan disable password authentication
-                        untuk keamanan.</p>
-                    <div class="material-meta"><span class="material-meta-item">35 menit</span><span
-                            class="material-meta-item">Praktik</span></div>
-                </article>
-            </div>
-        </div>
-    </section>
 
-    <section class="content-section" id="dhcp">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag" style="background: rgba(59, 130, 246, 0.1); color: #3b82f6;">Modul 2</span>
-                <h2 class="section-title">DHCP Server</h2>
-                <p class="section-desc">Distribusi IP address secara otomatis ke client dalam jaringan.</p>
+            <!-- Loading State -->
+            <div id="loadingState" style="text-align: center; padding: 3rem;">
+                <div class="spinner"
+                    style="width: 40px; height: 40px; border: 3px solid var(--border-color); border-top-color: #3b82f6; border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 1rem;">
+                </div>
+                <p style="color: var(--text-secondary);">Memuat materi...</p>
             </div>
-            <div class="materials-grid">
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-broadcast"></i></div>
-                    <h3 class="material-title">Konsep DHCP</h3>
-                    <p class="material-desc">Cara kerja DHCP (DORA), lease time, scope, dan reservation untuk IP statis.
-                    </p>
-                    <div class="material-meta"><span class="material-meta-item">25 menit</span><span
-                            class="material-meta-item">Teori</span></div>
-                </article>
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-gear"></i></div>
-                    <h3 class="material-title">Instalasi isc-dhcp-server</h3>
-                    <p class="material-desc">Instalasi dan konfigurasi DHCP server di Debian/Ubuntu. File dhcpd.conf dan
-                        troubleshooting.</p>
-                    <div class="material-meta"><span class="material-meta-item">40 menit</span><span
-                            class="material-meta-item">Praktik</span></div>
-                </article>
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-diagram-2"></i></div>
-                    <h3 class="material-title">Multi Subnet DHCP</h3>
-                    <p class="material-desc">Konfigurasi DHCP untuk melayani beberapa subnet dengan pool IP yang
-                        berbeda.</p>
-                    <div class="material-meta"><span class="material-meta-item">35 menit</span><span
-                            class="material-meta-item">Praktik</span></div>
-                </article>
-            </div>
-        </div>
-    </section>
 
-    <section class="content-section" id="dns">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag" style="background: rgba(59, 130, 246, 0.1); color: #3b82f6;">Modul 3</span>
-                <h2 class="section-title">DNS Server</h2>
-                <p class="section-desc">Resolusi nama domain ke IP address menggunakan BIND9.</p>
-            </div>
-            <div class="materials-grid">
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-globe"></i></div>
-                    <h3 class="material-title">Konsep DNS</h3>
-                    <p class="material-desc">Hierarki DNS, record types (A, AAAA, CNAME, MX, NS, PTR), dan cara kerja
-                        resolusi DNS.</p>
-                    <div class="material-meta"><span class="material-meta-item">30 menit</span><span
-                            class="material-meta-item">Teori</span></div>
-                </article>
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-gear"></i></div>
-                    <h3 class="material-title">BIND9 Configuration</h3>
-                    <p class="material-desc">Instalasi BIND9, forward zone, reverse zone, dan named.conf configuration.
-                    </p>
-                    <div class="material-meta"><span class="material-meta-item">50 menit</span><span
-                            class="material-meta-item">Praktik</span></div>
-                </article>
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-search"></i></div>
-                    <h3 class="material-title">DNS Testing & Troubleshoot</h3>
-                    <p class="material-desc">Menggunakan nslookup, dig, dan host untuk testing dan troubleshooting DNS.
-                    </p>
-                    <div class="material-meta"><span class="material-meta-item">30 menit</span><span
-                            class="material-meta-item">Praktik</span></div>
-                </article>
-            </div>
-        </div>
-    </section>
+            <!-- Materials Grid -->
+            <div class="materials-grid" id="materialsGrid" style="display: none;"></div>
 
-    <section class="content-section" id="ftp">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag" style="background: rgba(59, 130, 246, 0.1); color: #3b82f6;">Modul 4</span>
-                <h2 class="section-title">FTP Server</h2>
-                <p class="section-desc">File Transfer Protocol untuk berbagi dan transfer file.</p>
-            </div>
-            <div class="materials-grid">
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-folder2-open"></i></div>
-                    <h3 class="material-title">Konsep FTP</h3>
-                    <p class="material-desc">Cara kerja FTP, active vs passive mode, dan perbedaan FTP, FTPS, SFTP.</p>
-                    <div class="material-meta"><span class="material-meta-item">25 menit</span><span
-                            class="material-meta-item">Teori</span></div>
-                </article>
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-gear"></i></div>
-                    <h3 class="material-title">vsftpd Configuration</h3>
-                    <p class="material-desc">Instalasi vsftpd, user-based access, anonymous access, dan konfigurasi
-                        permission.</p>
-                    <div class="material-meta"><span class="material-meta-item">40 menit</span><span
-                            class="material-meta-item">Praktik</span></div>
-                </article>
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-lock"></i></div>
-                    <h3 class="material-title">Secure FTP (SFTP)</h3>
-                    <p class="material-desc">FTP over SSH untuk transfer file yang aman. Chroot jail untuk isolasi user.
-                    </p>
-                    <div class="material-meta"><span class="material-meta-item">35 menit</span><span
-                            class="material-meta-item">Praktik</span></div>
-                </article>
+            <!-- Empty State -->
+            <div id="emptyState" style="display: none; text-align: center; padding: 3rem;">
+                <i class="bi bi-inbox"
+                    style="font-size: 3rem; color: var(--text-muted); margin-bottom: 1rem; display: block;"></i>
+                <p style="color: var(--text-secondary);">Belum ada materi untuk ASJ Kelas 11.</p>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Materi akan ditambahkan oleh admin melalui panel
+                    admin.</p>
             </div>
         </div>
     </section>
@@ -338,6 +227,61 @@
             </div>
         </div>
     </div>
+
+    <style>
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+
+    <script type="module">
+        import { getMaterialsByClass } from '/src/firebase/repository.js';
+
+        const loadingState = document.getElementById('loadingState');
+        const materialsGrid = document.getElementById('materialsGrid');
+        const emptyState = document.getElementById('emptyState');
+        const totalMaterials = document.getElementById('totalMaterials');
+        const totalModules = document.getElementById('totalModules');
+
+        loadMaterials();
+
+        async function loadMaterials() {
+            // Get materials for Kelas 11, ASJ
+            const materials = await getMaterialsByClass(11, 'ASJ');
+
+            loadingState.style.display = 'none';
+
+            if (materials.length === 0) {
+                emptyState.style.display = 'block';
+                totalMaterials.textContent = '0';
+                totalModules.textContent = '0';
+                return;
+            }
+
+            // Count unique modules
+            const uniqueModules = new Set(materials.map(m => m.modul).filter(Boolean));
+            totalMaterials.textContent = materials.length;
+            totalModules.textContent = uniqueModules.size || Math.ceil(materials.length / 3);
+
+            // Render materials
+            materialsGrid.innerHTML = materials.map(m => `
+                <a href="/pages/materi.html?id=${m.id}" class="material-card" style="text-decoration: none;">
+                    <div class="material-icon"><i class="bi ${m.icon || 'bi-book'}"></i></div>
+                    <h3 class="material-title">${m.title}</h3>
+                    <p class="material-desc">${m.deskripsi}</p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">${m.durasi || 30} menit</span>
+                        <span class="material-meta-item">${m.tingkat || 'Menengah'}</span>
+                    </div>
+                </a>
+            `).join('');
+
+            materialsGrid.style.display = 'grid';
+        }
+    </script>
+
     <script type="module" src="/src/main.js"></script>
 </body>
 

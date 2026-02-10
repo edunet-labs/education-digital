@@ -15,221 +15,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="/src/styles/main.css">
     <link rel="stylesheet" href="/src/styles/pages.css">
-    <style>
-        .materi-container {
-            min-height: 100vh;
-            padding: 2rem;
-            padding-top: 6rem;
-        }
-
-        .materi-header {
-            margin-bottom: 2rem;
-        }
-
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            transition: color 0.2s ease;
-        }
-
-        .back-btn:hover {
-            color: var(--accent-primary);
-        }
-
-        .materi-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--bg-tertiary);
-            padding: 0.5rem 1rem;
-            border-radius: 2rem;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-        }
-
-        .materi-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-        }
-
-        .materi-meta {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        .materi-meta span {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .materi-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        @media (max-width: 968px) {
-            .materi-content {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .content-main {
-            background: var(--bg-card);
-            border: 1px solid var(--border-primary);
-            border-radius: 1rem;
-            padding: 2rem;
-        }
-
-        .content-main h2 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--border-primary);
-        }
-
-        .content-text {
-            color: var(--text-secondary);
-            line-height: 1.8;
-            font-size: 1rem;
-        }
-
-        .content-text p {
-            margin-bottom: 1rem;
-        }
-
-        .content-sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .sidebar-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-primary);
-            border-radius: 1rem;
-            padding: 1.5rem;
-        }
-
-        .sidebar-card h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: 0.5rem;
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .no-video {
-            text-align: center;
-            padding: 2rem;
-            color: var(--text-muted);
-        }
-
-        .no-video i {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-
-        .quiz-btn {
-            width: 100%;
-            padding: 1rem;
-            background: var(--gradient-primary);
-            border: none;
-            border-radius: 0.5rem;
-            color: var(--bg-primary);
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-
-        .quiz-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 255, 200, 0.3);
-        }
-
-        .loading-state {
-            text-align: center;
-            padding: 4rem 2rem;
-        }
-
-        .loading-state .spinner {
-            width: 40px;
-            height: 40px;
-            border: 3px solid var(--border-primary);
-            border-top-color: var(--accent-primary);
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-            margin: 0 auto 1rem;
-        }
-
-        .error-state {
-            text-align: center;
-            padding: 4rem 2rem;
-        }
-
-        .error-state i {
-            font-size: 4rem;
-            color: var(--text-muted);
-            margin-bottom: 1rem;
-        }
-
-        .error-state h2 {
-            font-size: 1.5rem;
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .error-state p {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="/src/styles/material.css">
 </head>
 
 <body>
@@ -257,6 +43,13 @@
                 <li><a href="/pages/forum.html" class="nav-link">Forum</a></li>
                 <li><a href="/pages/lab-virtual.html" class="nav-link">Lab Virtual</a></li>
             </ul>
+            <button class="search-btn" id="searchBtn" aria-label="Search">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <span class="search-shortcut">Ctrl+K</span>
+            </button>
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
                 <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                     stroke-width="2">
@@ -278,18 +71,136 @@
         </div>
     </nav>
 
-    <div class="materi-container container" id="materiContainer">
-        <div class="loading-state" id="loadingState">
-            <div class="spinner"></div>
-            <p>Memuat materi...</p>
+    <!-- Loading State -->
+    <div id="loadingState" class="material-header"
+        style="min-height: 50vh; display: flex; align-items: center; justify-content: center;">
+        <div class="container" style="text-align: center;">
+            <div class="spinner"
+                style="width: 40px; height: 40px; border: 3px solid var(--border-color); border-top-color: var(--accent-primary); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 1rem;">
+            </div>
+            <p style="color: var(--text-secondary);">Memuat materi...</p>
         </div>
     </div>
+
+    <!-- Content Container -->
+    <div id="contentContainer" style="display: none;">
+        <!-- Material Header -->
+        <header class="material-header" id="materialHeader"></header>
+
+        <!-- Main Content -->
+        <main class="material-main">
+            <div class="container">
+                <div class="material-layout">
+                    <!-- Article Content -->
+                    <article class="material-article" id="materialArticle"></article>
+
+                    <!-- Sidebar -->
+                    <aside class="material-sidebar" id="materialSidebar"></aside>
+                </div>
+            </div>
+        </main>
+
+        <!-- Navigation Buttons -->
+        <section class="material-nav" id="materialNav"></section>
+    </div>
+
+    <!-- Error State -->
+    <div id="errorState"
+        style="display: none; min-height: 80vh; display: flex; align-items: center; justify-content: center;">
+        <div class="container" style="text-align: center;">
+            <i class="bi bi-emoji-frown"
+                style="font-size: 4rem; color: var(--text-muted); margin-bottom: 1rem; display: block;"></i>
+            <h2 style="font-size: 1.5rem; color: var(--text-primary); margin-bottom: 0.5rem;">Materi Tidak Ditemukan
+            </h2>
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Materi yang Anda cari tidak tersedia atau
+                telah dihapus.</p>
+            <a href="/" class="btn btn-primary">
+                <i class="bi bi-house"></i> Kembali ke Beranda
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="logo">
+                        <img src="/public/img/logos/edunet-logo.png" alt="Edunet Logo" class="logo-icon logo-img">
+                        <span class="logo-text">Edunet</span>
+                    </a>
+                    <p>Portal belajar TKJ terlengkap untuk siswa SMK Indonesia.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigasi</h4>
+                    <ul>
+                        <li><a href="/">Beranda</a></li>
+                        <li><a href="/pages/kelas-10.html">Kelas 10</a></li>
+                        <li><a href="/pages/kelas-11.html">Kelas 11</a></li>
+                        <li><a href="/pages/kelas-12.html">Kelas 12</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/pages/quiz.html">Quiz</a></li>
+                        <li><a href="/pages/forum.html">Forum</a></li>
+                        <li><a href="/pages/lab-virtual.html">Lab Virtual</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Edunet. Built with 💙 for Indonesian students.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Search Modal -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-overlay"></div>
+        <div class="search-container">
+            <div class="search-header">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <input type="text" class="search-input" placeholder="Cari materi..." id="searchInput">
+                <kbd class="search-kbd">ESC</kbd>
+            </div>
+            <div class="search-results" id="searchResults">
+                <div class="search-hint">
+                    <p>Mulai ketik untuk mencari materi...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        #errorState {
+            display: none !important;
+        }
+
+        #errorState.show {
+            display: flex !important;
+        }
+    </style>
 
     <script type="module">
         import { getMaterialById } from '/src/firebase/repository.js';
 
-        const container = document.getElementById('materiContainer');
         const loadingState = document.getElementById('loadingState');
+        const contentContainer = document.getElementById('contentContainer');
+        const errorState = document.getElementById('errorState');
+        const materialHeader = document.getElementById('materialHeader');
+        const materialArticle = document.getElementById('materialArticle');
+        const materialSidebar = document.getElementById('materialSidebar');
+        const materialNav = document.getElementById('materialNav');
 
         // Get ID from URL
         const params = new URLSearchParams(window.location.search);
@@ -316,74 +227,144 @@
             if (material.videoUrl) {
                 const videoId = extractYoutubeId(material.videoUrl);
                 if (videoId) {
-                    videoEmbed = `https://www.youtube.com/embed/${videoId}`;
+                    videoEmbed = `https://www.youtube-nocookie.com/embed/${videoId}`;
                 }
             }
 
-            const kelasPage = `/pages/kelas-${material.kelas}.html`;
+            // Build breadcrumb path
+            const specPath = material.spesialisasi
+                ? `/pages/kelas-${material.kelas}/${material.spesialisasi.toLowerCase()}.html`
+                : `/pages/kelas-${material.kelas}.html`;
 
-            container.innerHTML = `
-                <div class="materi-header">
-                    <a href="${kelasPage}" class="back-btn">
-                        <i class="bi bi-arrow-left"></i> Kembali ke Kelas ${material.kelas}
-                    </a>
-                    <div class="materi-badge">
-                        <i class="bi ${material.icon || 'bi-book'}"></i>
-                        Kelas ${material.kelas}${material.spesialisasi ? ' • ' + material.spesialisasi : ''}
-                    </div>
-                    <h1 class="materi-title">${material.title}</h1>
-                    <div class="materi-meta">
-                        <span><i class="bi bi-mortarboard"></i> Kelas ${material.kelas}</span>
-                        ${material.spesialisasi ? `<span><i class="bi bi-tag"></i> ${material.spesialisasi}</span>` : ''}
-                    </div>
-                </div>
+            // Format date
+            const updateDate = material.updatedAt
+                ? new Date(material.updatedAt.seconds * 1000).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })
+                : '-';
 
-                <div class="materi-content">
-                    <div class="content-main">
-                        <h2><i class="bi bi-journal-text"></i> Materi</h2>
-                        <div class="content-text">
-                            ${material.konten ? formatContent(material.konten) : `<p>${material.deskripsi}</p>`}
+            // Render Header
+            materialHeader.innerHTML = `
+                <div class="container">
+                    <nav class="breadcrumb">
+                        <a href="/">Beranda</a>
+                        <i class="bi bi-chevron-right"></i>
+                        <a href="/pages/kelas-${material.kelas}.html">Kelas ${material.kelas}</a>
+                        ${material.spesialisasi ? `
+                            <i class="bi bi-chevron-right"></i>
+                            <a href="${specPath}">${material.spesialisasi}</a>
+                        ` : ''}
+                        <i class="bi bi-chevron-right"></i>
+                        <span>${material.title}</span>
+                    </nav>
+
+                    <div class="material-header-content">
+                        <div class="material-badge">
+                            <i class="bi bi-folder2-open"></i>
+                            <span>${material.spesialisasi || ''} Kelas ${material.kelas}${material.modul ? ` - ${material.modul}` : ''}</span>
                         </div>
-                    </div>
-
-                    <div class="content-sidebar">
-                        <div class="sidebar-card">
-                            <h3><i class="bi bi-play-circle"></i> Video Tutorial</h3>
-                            ${videoEmbed ? `
-                                <div class="video-container">
-                                    <iframe src="${videoEmbed}" allowfullscreen></iframe>
-                                </div>
-                            ` : `
-                                <div class="no-video">
-                                    <i class="bi bi-camera-video-off"></i>
-                                    <p>Tidak ada video untuk materi ini</p>
-                                </div>
-                            `}
-                        </div>
-
-                        <div class="sidebar-card">
-                            <h3><i class="bi bi-question-circle"></i> Mini Quiz</h3>
-                            <button class="quiz-btn" onclick="alert('Fitur quiz akan segera hadir!')">
-                                <i class="bi bi-lightning"></i>
-                                Mulai Quiz
-                            </button>
+                        <h1 class="material-title">${material.title}</h1>
+                        <p class="material-subtitle">${material.deskripsi}</p>
+                        <div class="material-meta-info">
+                            <span class="meta-item">
+                                <i class="bi bi-clock"></i>
+                                ${material.durasi || 30} menit
+                            </span>
+                            <span class="meta-item">
+                                <i class="bi bi-bar-chart"></i>
+                                ${material.tingkat || 'Menengah'}
+                            </span>
+                            <span class="meta-item">
+                                <i class="bi bi-calendar3"></i>
+                                Update: ${updateDate}
+                            </span>
                         </div>
                     </div>
                 </div>
             `;
+
+            // Render Article Content
+            materialArticle.innerHTML = `
+                <section class="article-section">
+                    ${material.konten ? material.konten : `<p>${material.deskripsi}</p>`}
+                </section>
+            `;
+
+            // Render Sidebar
+            let resourcesHtml = '';
+            if (material.pdfUrl || material.jobsheetUrl) {
+                resourcesHtml = `
+                    <div class="sidebar-card resources-card">
+                        <h3><i class="bi bi-folder2"></i> Resources</h3>
+                        <div class="resource-buttons">
+                            ${material.pdfUrl ? `
+                                <a href="${material.pdfUrl}" class="resource-btn pdf-btn" target="_blank">
+                                    <i class="bi bi-file-earmark-pdf"></i>
+                                    <div class="resource-info">
+                                        <span class="resource-title">Modul PDF</span>
+                                        <span class="resource-size">Download</span>
+                                    </div>
+                                    <i class="bi bi-download"></i>
+                                </a>
+                            ` : ''}
+                            ${material.jobsheetUrl ? `
+                                <a href="${material.jobsheetUrl}" class="resource-btn jobsheet-btn" target="_blank">
+                                    <i class="bi bi-file-earmark-text"></i>
+                                    <div class="resource-info">
+                                        <span class="resource-title">Jobsheet</span>
+                                        <span class="resource-size">Download</span>
+                                    </div>
+                                    <i class="bi bi-download"></i>
+                                </a>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+            }
+
+            let videoHtml = '';
+            if (videoEmbed) {
+                videoHtml = `
+                    <div class="sidebar-card video-card">
+                        <h3><i class="bi bi-play-circle"></i> Video Tutorial</h3>
+                        <div class="video-wrapper">
+                            <iframe src="${videoEmbed}" title="Tutorial ${material.title}"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <p class="video-caption">
+                            <i class="bi bi-info-circle"></i>
+                            Video tutorial ${material.title}
+                        </p>
+                    </div>
+                `;
+            }
+
+            materialSidebar.innerHTML = `
+                ${resourcesHtml}
+                ${videoHtml}
+            `;
+
+            // Render Navigation
+            materialNav.innerHTML = `
+                <div class="container">
+                    <div class="nav-buttons">
+                        <a href="${specPath}" class="nav-btn list-btn">
+                            <i class="bi bi-grid-3x3-gap"></i>
+                            <span>Semua Materi</span>
+                        </a>
+                    </div>
+                </div>
+            `;
+
+            // Show content
+            loadingState.style.display = 'none';
+            contentContainer.style.display = 'block';
         }
 
         function showError() {
-            container.innerHTML = `
-                <div class="error-state">
-                    <i class="bi bi-emoji-frown"></i>
-                    <h2>Materi Tidak Ditemukan</h2>
-                    <p>Materi yang Anda cari tidak tersedia atau telah dihapus.</p>
-                    <a href="/" class="btn btn-primary">
-                        <i class="bi bi-house"></i> Kembali ke Beranda
-                    </a>
-                </div>
-            `;
+            loadingState.style.display = 'none';
+            errorState.classList.add('show');
         }
 
         function extractYoutubeId(url) {
@@ -391,10 +372,19 @@
             const match = url.match(regex);
             return match ? match[1] : null;
         }
+    </script>
 
-        function formatContent(text) {
-            // Simple text formatting - convert line breaks to paragraphs
-            return text.split('\n\n').map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`).join('');
+    <script>
+        // Copy code functionality
+        function copyCode(button) {
+            const codeBlock = button.closest('.code-block');
+            const code = codeBlock.querySelector('code').textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                button.innerHTML = '<i class="bi bi-check"></i>';
+                setTimeout(() => {
+                    button.innerHTML = '<i class="bi bi-clipboard"></i>';
+                }, 2000);
+            });
         }
     </script>
 

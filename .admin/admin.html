@@ -614,6 +614,70 @@
                 padding: 0.75rem;
             }
         }
+
+        /* File Input Styles */
+        .file-input-wrapper {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .file-input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .file-input-display {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            background: var(--bg-secondary);
+            border: 2px dashed var(--border-primary);
+            border-radius: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .file-input-display i {
+            font-size: 1.25rem;
+            color: var(--accent-primary);
+        }
+
+        .file-input-wrapper:hover .file-input-display {
+            border-color: var(--accent-primary);
+            background: rgba(0, 255, 200, 0.05);
+        }
+
+        .file-input-display.has-file {
+            border-style: solid;
+            border-color: var(--accent-primary);
+            color: var(--text-primary);
+        }
+
+        /* Progress Bar */
+        .progress-bar-wrapper {
+            width: 100%;
+            height: 8px;
+            background: var(--bg-secondary);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
     </style>
 </head>
 
@@ -749,20 +813,73 @@
                                         <option value="KJ">KJ</option>
                                     </select>
                                 </div>
+                                <div class="form-group">
+                                    <label class="form-label">Modul</label>
+                                    <input type="text" id="modul" class="form-input"
+                                        placeholder="Contoh: Modul 1, Bab 2, dll">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Durasi (menit) *</label>
+                                    <input type="number" id="durasi" class="form-input" placeholder="45" min="1"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Tingkat *</label>
+                                    <select id="tingkat" class="form-select" required>
+                                        <option value="">Pilih Tingkat</option>
+                                        <option value="Pemula">Pemula</option>
+                                        <option value="Menengah">Menengah</option>
+                                        <option value="Mahir">Mahir</option>
+                                    </select>
+                                </div>
                                 <div class="form-group full-width">
                                     <label class="form-label">Deskripsi Singkat *</label>
                                     <textarea id="deskripsi" class="form-textarea"
                                         placeholder="Deskripsi singkat materi..." required></textarea>
                                 </div>
                                 <div class="form-group full-width">
-                                    <label class="form-label">Konten Lengkap</label>
-                                    <textarea id="konten" class="form-textarea" placeholder="Isi materi lengkap..."
-                                        style="min-height: 150px;"></textarea>
+                                    <label class="form-label">Konten Lengkap (HTML)</label>
+                                    <textarea id="konten" class="form-textarea"
+                                        placeholder="Isi materi lengkap dalam format HTML..."
+                                        style="min-height: 200px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;"></textarea>
+                                    <small style="color: var(--text-muted); font-size: 0.75rem;">
+                                        Mendukung HTML. Gunakan tag seperti &lt;h2&gt;, &lt;p&gt;, &lt;code&gt;,
+                                        &lt;pre&gt;, &lt;ul&gt;, dll.
+                                    </small>
                                 </div>
                                 <div class="form-group full-width">
                                     <label class="form-label">URL Video (YouTube)</label>
                                     <input type="url" id="videoUrl" class="form-input"
                                         placeholder="https://www.youtube.com/watch?v=...">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Upload Modul PDF</label>
+                                    <div class="file-input-wrapper">
+                                        <input type="file" id="pdfFile" accept=".pdf" class="file-input">
+                                        <div class="file-input-display">
+                                            <i class="bi bi-file-earmark-pdf"></i>
+                                            <span id="pdfFileName">Pilih file PDF...</span>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id="pdfUrl">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Upload Jobsheet</label>
+                                    <div class="file-input-wrapper">
+                                        <input type="file" id="jobsheetFile" accept=".pdf" class="file-input">
+                                        <div class="file-input-display">
+                                            <i class="bi bi-file-earmark-text"></i>
+                                            <span id="jobsheetFileName">Pilih file Jobsheet...</span>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id="jobsheetUrl">
+                                </div>
+                                <div class="form-group full-width" id="uploadProgressWrapper" style="display: none;">
+                                    <label class="form-label">Upload Progress</label>
+                                    <div class="progress-bar-wrapper">
+                                        <div class="progress-bar" id="uploadProgress"></div>
+                                    </div>
+                                    <small id="uploadStatus" style="color: var(--text-muted);">Uploading...</small>
                                 </div>
                             </div>
                             <div style="display: flex; gap: 1rem; margin-top: 1rem;">
@@ -824,6 +941,7 @@
         import { onAuthChange, signOut } from '/src/firebase/auth.js';
         import { getAllMaterials, addMaterial, updateMaterial, deleteMaterial } from '/src/firebase/repository.js';
         import { getUserRole } from '/src/firebase/users.js';
+        import { uploadFile, generateUniqueFilename } from '/src/firebase/storage.js';
 
         // Auto-assign icon based on title keywords
         function autoAssignIcon(title) {
@@ -968,14 +1086,75 @@
             e.preventDefault();
             submitBtn.disabled = true;
 
+            const pdfFile = document.getElementById('pdfFile').files[0];
+            const jobsheetFile = document.getElementById('jobsheetFile').files[0];
+            const progressWrapper = document.getElementById('uploadProgressWrapper');
+            const progressBar = document.getElementById('uploadProgress');
+            const uploadStatus = document.getElementById('uploadStatus');
+
+            let pdfUrl = document.getElementById('pdfUrl').value || null;
+            let jobsheetUrl = document.getElementById('jobsheetUrl').value || null;
+
+            // Upload files if selected
+            if (pdfFile || jobsheetFile) {
+                progressWrapper.style.display = 'block';
+                let totalProgress = 0;
+                let fileCount = (pdfFile ? 1 : 0) + (jobsheetFile ? 1 : 0);
+
+                // Upload PDF
+                if (pdfFile) {
+                    uploadStatus.textContent = 'Mengupload PDF...';
+                    const pdfPath = `materials/pdf/${generateUniqueFilename(pdfFile.name)}`;
+                    const pdfResult = await uploadFile(pdfFile, pdfPath, (progress) => {
+                        const overallProgress = (progress / fileCount);
+                        progressBar.style.width = overallProgress + '%';
+                    });
+                    if (pdfResult.success) {
+                        pdfUrl = pdfResult.url;
+                        totalProgress = 100 / fileCount;
+                    } else {
+                        showToast('Gagal upload PDF: ' + pdfResult.error, 'error');
+                        submitBtn.disabled = false;
+                        progressWrapper.style.display = 'none';
+                        return;
+                    }
+                }
+
+                // Upload Jobsheet
+                if (jobsheetFile) {
+                    uploadStatus.textContent = 'Mengupload Jobsheet...';
+                    const jobsheetPath = `materials/jobsheet/${generateUniqueFilename(jobsheetFile.name)}`;
+                    const jobsheetResult = await uploadFile(jobsheetFile, jobsheetPath, (progress) => {
+                        const overallProgress = totalProgress + (progress / fileCount);
+                        progressBar.style.width = overallProgress + '%';
+                    });
+                    if (jobsheetResult.success) {
+                        jobsheetUrl = jobsheetResult.url;
+                    } else {
+                        showToast('Gagal upload Jobsheet: ' + jobsheetResult.error, 'error');
+                        submitBtn.disabled = false;
+                        progressWrapper.style.display = 'none';
+                        return;
+                    }
+                }
+
+                uploadStatus.textContent = 'Menyimpan materi...';
+                progressBar.style.width = '100%';
+            }
+
             const data = {
                 title: document.getElementById('title').value.trim(),
                 kelas: parseInt(document.getElementById('kelas').value),
                 spesialisasi: document.getElementById('spesialisasi').value || null,
+                modul: document.getElementById('modul').value.trim() || null,
+                durasi: parseInt(document.getElementById('durasi').value) || 30,
+                tingkat: document.getElementById('tingkat').value,
                 icon: autoAssignIcon(document.getElementById('title').value.trim()),
                 deskripsi: document.getElementById('deskripsi').value.trim(),
                 konten: document.getElementById('konten').value.trim(),
                 videoUrl: document.getElementById('videoUrl').value.trim() || null,
+                pdfUrl: pdfUrl,
+                jobsheetUrl: jobsheetUrl,
             };
 
             const editId = editIdInput.value;
@@ -988,14 +1167,44 @@
             }
 
             submitBtn.disabled = false;
+            progressWrapper.style.display = 'none';
+            progressBar.style.width = '0%';
 
             if (result.success) {
                 showToast(editId ? 'Materi berhasil diperbarui!' : 'Materi berhasil ditambahkan!', 'success');
                 materialForm.reset();
                 resetForm();
+                // Reset file display
+                document.getElementById('pdfFileName').textContent = 'Pilih file PDF...';
+                document.getElementById('jobsheetFileName').textContent = 'Pilih file Jobsheet...';
+                document.querySelector('#pdfFile').parentElement.querySelector('.file-input-display').classList.remove('has-file');
+                document.querySelector('#jobsheetFile').parentElement.querySelector('.file-input-display').classList.remove('has-file');
                 loadMaterials();
             } else {
                 showToast('Gagal menyimpan: ' + result.error, 'error');
+            }
+        });
+
+        // File input change handlers
+        document.getElementById('pdfFile').addEventListener('change', function () {
+            const fileName = this.files[0]?.name || 'Pilih file PDF...';
+            document.getElementById('pdfFileName').textContent = fileName;
+            const display = this.parentElement.querySelector('.file-input-display');
+            if (this.files[0]) {
+                display.classList.add('has-file');
+            } else {
+                display.classList.remove('has-file');
+            }
+        });
+
+        document.getElementById('jobsheetFile').addEventListener('change', function () {
+            const fileName = this.files[0]?.name || 'Pilih file Jobsheet...';
+            document.getElementById('jobsheetFileName').textContent = fileName;
+            const display = this.parentElement.querySelector('.file-input-display');
+            if (this.files[0]) {
+                display.classList.add('has-file');
+            } else {
+                display.classList.remove('has-file');
             }
         });
 
@@ -1008,9 +1217,14 @@
                 document.getElementById('title').value = material.title;
                 document.getElementById('kelas').value = material.kelas;
                 document.getElementById('spesialisasi').value = material.spesialisasi || '';
+                document.getElementById('modul').value = material.modul || '';
+                document.getElementById('durasi').value = material.durasi || '';
+                document.getElementById('tingkat').value = material.tingkat || '';
                 document.getElementById('deskripsi').value = material.deskripsi;
                 document.getElementById('konten').value = material.konten || '';
                 document.getElementById('videoUrl').value = material.videoUrl || '';
+                document.getElementById('pdfUrl').value = material.pdfUrl || '';
+                document.getElementById('jobsheetUrl').value = material.jobsheetUrl || '';
 
                 formTitle.textContent = 'Edit Materi';
                 submitText.textContent = 'Update Materi';

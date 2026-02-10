@@ -19,16 +19,14 @@
 </head>
 
 <body>
-    <!-- Navigation -->
     <nav class="navbar">
         <div class="container nav-container">
             <a href="/" class="logo">
                 <img src="/public/img/logos/edunet-logo.png" alt="Edunet Logo" class="logo-icon logo-img">
                 <span class="logo-text">Edunet</span>
             </a>
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-                <span class="hamburger"></span>
-            </button>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation"><span
+                    class="hamburger"></span></button>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="/" class="nav-link">Beranda</a></li>
                 <li class="nav-dropdown">
@@ -71,78 +69,48 @@
         </div>
     </nav>
 
-    <!-- Hero Header -->
     <header class="hero-header-full"
         style="background: linear-gradient(180deg, rgba(0, 255, 200, 0.08) 0%, var(--bg-secondary) 100%);">
-
-        <!-- Animated Glow Orbs -->
         <div class="hero-glow primary" style="background: #00ffc8;"></div>
         <div class="hero-glow secondary" style="background: #00d4a8;"></div>
-
-        <!-- Floating Background Icons -->
         <div class="hero-floating-icons">
             <i class="bi bi-router icon" style="font-size: 4rem; color: #00ffc8;"></i>
             <i class="bi bi-diagram-3 icon" style="font-size: 3rem; color: #00ffc8;"></i>
             <i class="bi bi-hdd-stack icon" style="font-size: 3.5rem; color: #00ffc8;"></i>
             <i class="bi bi-ethernet icon" style="font-size: 3rem; color: #00ffc8;"></i>
-            <i class="bi bi-broadcast icon" style="font-size: 3.5rem; color: #00ffc8;"></i>
-            <i class="bi bi-wifi icon" style="font-size: 4rem; color: #00ffc8;"></i>
         </div>
-
         <div class="container">
             <div class="hero-content-wrapper">
-                <!-- Text Content -->
                 <div class="hero-text-content">
-                    <p class="hero-subtitle" style="color: #00ffc8;">
-                        <i class="bi bi-hdd-network-fill"></i> Kelas 11 - Spesialisasi
-                    </p>
-                    <h1 class="hero-title">
-                        <span
+                    <p class="hero-subtitle" style="color: #00ffc8;"><i class="bi bi-hdd-network-fill"></i> Kelas 11 -
+                        Spesialisasi</p>
+                    <h1 class="hero-title"><span
                             style="background: linear-gradient(135deg, #00ffc8, #00d4a8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">AIJ</span>
                     </h1>
-                    <p class="hero-description">
-                        Administrasi Infrastruktur Jaringan - Fokus pada konfigurasi perangkat jaringan
-                        seperti Router dan Switch. Belajar VLAN, Routing, dan instalasi jaringan.
-                    </p>
-
-                    <!-- Stats -->
+                    <p class="hero-description">Administrasi Infrastruktur Jaringan - Fokus pada konfigurasi perangkat
+                        jaringan seperti Router dan Switch. Belajar VLAN, Routing, dan instalasi jaringan.</p>
                     <div class="hero-stats-inline">
-                        <div class="hero-stat-item">
-                            <span class="hero-stat-number" style="color: #00ffc8;">3</span>
-                            <span class="hero-stat-text">Modul</span>
-                        </div>
-                        <div class="hero-stat-item">
-                            <span class="hero-stat-number" style="color: #00ffc8;">9</span>
-                            <span class="hero-stat-text">Materi</span>
-                        </div>
-                        <div class="hero-stat-item">
-                            <span class="hero-stat-number" style="color: #00ffc8;">8+</span>
-                            <span class="hero-stat-text">Jam Belajar</span>
-                        </div>
+                        <div class="hero-stat-item"><span class="hero-stat-number" style="color: #00ffc8;"
+                                id="totalModules">-</span><span class="hero-stat-text">Modul</span></div>
+                        <div class="hero-stat-item"><span class="hero-stat-number" style="color: #00ffc8;"
+                                id="totalMaterials">-</span><span class="hero-stat-text">Materi</span></div>
+                        <div class="hero-stat-item"><span class="hero-stat-number"
+                                style="color: #00ffc8;">8+</span><span class="hero-stat-text">Jam Belajar</span></div>
                     </div>
-
-                    <!-- CTA Buttons -->
                     <div class="hero-buttons">
-                        <a href="#vlan" class="btn-hero btn-hero-primary"
-                            style="background: #00ffc8; box-shadow: 0 4px 20px rgba(0, 255, 200, 0.3); color: #0a0a0a;">
-                            <span>Mulai Belajar</span>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
+                        <a href="#materials" class="btn-hero btn-hero-primary"
+                            style="background: #00ffc8; box-shadow: 0 4px 20px rgba(0, 255, 200, 0.3); color: #0a0a0a;"><span>Mulai
+                                Belajar</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
                                 <path d="M5 12h14M12 5l7 7-7 7" />
-                            </svg>
-                        </a>
-                        <a href="/pages/kelas-11.html" class="btn-hero btn-hero-secondary">
-                            <i class="bi bi-arrow-left"></i>
-                            <span>Kembali</span>
-                        </a>
+                            </svg></a>
+                        <a href="/pages/kelas-11.html" class="btn-hero btn-hero-secondary"><i
+                                class="bi bi-arrow-left"></i><span>Kembali</span></a>
                     </div>
                 </div>
-
-                <!-- Visual Card -->
                 <div class="hero-visual-content">
                     <div class="hero-visual-card" style="border-color: rgba(0, 255, 200, 0.2);">
-                        <div class="hero-visual-icon" style="color: #00ffc8;">
-                            <i class="bi bi-hdd-network-fill"></i>
+                        <div class="hero-visual-icon" style="color: #00ffc8;"><i class="bi bi-hdd-network-fill"></i>
                         </div>
                         <p class="hero-visual-title">Network Infrastructure</p>
                         <div class="hero-visual-tags">
@@ -157,170 +125,34 @@
                 </div>
             </div>
         </div>
-
-        <!-- Scroll Indicator -->
-        <div class="scroll-indicator">
-            <span>Scroll ke bawah</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <div class="scroll-indicator"><span>Scroll ke bawah</span><svg viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
                 <path d="M12 5v14M19 12l-7 7-7-7" />
-            </svg>
-        </div>
+            </svg></div>
     </header>
 
-    <!-- VLAN Trunking Section -->
-    <section class="content-section" id="vlan">
+    <section class="content-section" id="materials">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">Modul 1</span>
-                <h2 class="section-title">VLAN Trunking</h2>
-                <p class="section-desc">
-                    Memahami konsep VLAN dan cara menghubungkan antar switch menggunakan trunk.
-                </p>
+                <span class="section-tag">Materi</span>
+                <h2 class="section-title">Daftar Materi AIJ</h2>
+                <p class="section-desc">Semua materi Administrasi Infrastruktur Jaringan Kelas 11.</p>
             </div>
-            <div class="materials-grid">
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-tag"></i></div>
-                    <h3 class="material-title">Konsep VLAN</h3>
-                    <p class="material-desc">
-                        Pengertian Virtual LAN, keuntungan segmentasi jaringan, VLAN ID,
-                        dan cara kerja VLAN dalam switch.
-                    </p>
-                    <div class="material-meta">
-                        <span class="material-meta-item"><i class="bi bi-clock"></i> 25 menit</span>
-                        <span class="material-meta-item"><i class="bi bi-book"></i> Teori</span>
-                    </div>
-                </article>
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-plug"></i></div>
-                    <h3 class="material-title">Access & Trunk Port</h3>
-                    <p class="material-desc">
-                        Perbedaan port access dan trunk. Konfigurasi trunk untuk
-                        menghubungkan VLAN antar switch.
-                    </p>
-                    <div class="material-meta">
-                        <span class="material-meta-item"><i class="bi bi-clock"></i> 35 menit</span>
-                        <span class="material-meta-item"><i class="bi bi-code-slash"></i> Praktik</span>
-                    </div>
-                </article>
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-diagram-3"></i></div>
-                    <h3 class="material-title">Inter-VLAN Routing</h3>
-                    <p class="material-desc">
-                        Router on a stick dan Layer 3 switch untuk menghubungkan
-                        VLAN yang berbeda.
-                    </p>
-                    <div class="material-meta">
-                        <span class="material-meta-item"><i class="bi bi-clock"></i> 40 menit</span>
-                        <span class="material-meta-item"><i class="bi bi-code-slash"></i> Praktik</span>
-                    </div>
-                </article>
+            <div id="loadingState" style="text-align: center; padding: 3rem;">
+                <div class="spinner"
+                    style="width: 40px; height: 40px; border: 3px solid var(--border-color); border-top-color: #00ffc8; border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 1rem;">
+                </div>
+                <p style="color: var(--text-secondary);">Memuat materi...</p>
+            </div>
+            <div class="materials-grid" id="materialsGrid" style="display: none;"></div>
+            <div id="emptyState" style="display: none; text-align: center; padding: 3rem;">
+                <i class="bi bi-inbox"
+                    style="font-size: 3rem; color: var(--text-muted); margin-bottom: 1rem; display: block;"></i>
+                <p style="color: var(--text-secondary);">Belum ada materi untuk AIJ Kelas 11.</p>
             </div>
         </div>
     </section>
 
-    <!-- Routing Statis Section -->
-    <section class="content-section" id="routing">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Modul 2</span>
-                <h2 class="section-title">Routing Statis</h2>
-                <p class="section-desc">
-                    Konfigurasi routing secara manual untuk menghubungkan network yang berbeda.
-                </p>
-            </div>
-            <div class="materials-grid">
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-signpost-split"></i></div>
-                    <h3 class="material-title">Konsep Routing</h3>
-                    <p class="material-desc">
-                        Apa itu routing? Static vs Dynamic routing, routing table,
-                        dan cara kerja router dalam meneruskan paket data.
-                    </p>
-                    <div class="material-meta">
-                        <span class="material-meta-item"><i class="bi bi-clock"></i> 30 menit</span>
-                        <span class="material-meta-item"><i class="bi bi-book"></i> Teori</span>
-                    </div>
-                </article>
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-gear"></i></div>
-                    <h3 class="material-title">Konfigurasi Static Route</h3>
-                    <p class="material-desc">
-                        Konfigurasi static route pada Cisco dan MikroTik.
-                        Menghubungkan dua atau lebih network dengan route manual.
-                    </p>
-                    <div class="material-meta">
-                        <span class="material-meta-item"><i class="bi bi-clock"></i> 45 menit</span>
-                        <span class="material-meta-item"><i class="bi bi-code-slash"></i> Praktik</span>
-                    </div>
-                </article>
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-arrow-left-right"></i></div>
-                    <h3 class="material-title">Default Route & Gateway</h3>
-                    <p class="material-desc">
-                        Konfigurasi default gateway untuk mengarahkan traffic
-                        ke network yang tidak dikenal.
-                    </p>
-                    <div class="material-meta">
-                        <span class="material-meta-item"><i class="bi bi-clock"></i> 30 menit</span>
-                        <span class="material-meta-item"><i class="bi bi-code-slash"></i> Praktik</span>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- Subnetting Section -->
-    <section class="content-section" id="subnetting">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Modul 3</span>
-                <h2 class="section-title">Subnetting</h2>
-                <p class="section-desc">
-                    Teknik pembagian jaringan untuk efisiensi pengalamatan IP.
-                </p>
-            </div>
-            <div class="materials-grid">
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-diagram-3"></i></div>
-                    <h3 class="material-title">Konsep Subnetting</h3>
-                    <p class="material-desc">
-                        Pengertian subnet, subnet mask, network address, broadcast address,
-                        dan range IP yang valid untuk host.
-                    </p>
-                    <div class="material-meta">
-                        <span class="material-meta-item"><i class="bi bi-clock"></i> 30 menit</span>
-                        <span class="material-meta-item"><i class="bi bi-book"></i> Teori</span>
-                    </div>
-                </article>
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-calculator"></i></div>
-                    <h3 class="material-title">Perhitungan Subnet</h3>
-                    <p class="material-desc">
-                        Menghitung jumlah subnet, jumlah host per subnet, CIDR notation,
-                        dan konversi antar format subnet mask.
-                    </p>
-                    <div class="material-meta">
-                        <span class="material-meta-item"><i class="bi bi-clock"></i> 45 menit</span>
-                        <span class="material-meta-item"><i class="bi bi-code-slash"></i> Praktik</span>
-                    </div>
-                </article>
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-grid-3x3"></i></div>
-                    <h3 class="material-title">VLSM & Supernetting</h3>
-                    <p class="material-desc">
-                        Variable Length Subnet Mask untuk efisiensi maksimal.
-                        Supernetting untuk menggabungkan network.
-                    </p>
-                    <div class="material-meta">
-                        <span class="material-meta-item"><i class="bi bi-clock"></i> 40 menit</span>
-                        <span class="material-meta-item"><i class="bi bi-code-slash"></i> Praktik</span>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- Next Step CTA -->
     <section class="cta-section">
         <div class="container">
             <div class="cta-card">
@@ -328,34 +160,21 @@
                 <div class="cta-content">
                     <h2>Siap Lanjut ke Kelas 12?</h2>
                     <p>Setelah menguasai dasar infrastruktur, saatnya masuk ke materi MikroTik, OSPF, dan BGP!</p>
-                    <a href="/pages/kelas-12/aij.html" class="btn btn-primary btn-lg">
-                        <span>AIJ Kelas 12</span>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    <a href="/pages/kelas-12/aij.html" class="btn btn-primary btn-lg"><span>AIJ Kelas 12</span><svg
+                            width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <path d="M5 12h14M12 5l7 7-7 7" />
-                        </svg>
-                    </a>
-                </div>
-                <div class="cta-decoration">
-                    <div class="code-block-preview">
-                        <span class="line"><span class="prompt">$</span> progress --kelas 11</span>
-                        <span class="line output">AIJ: ████████████ 100%</span>
-                        <span class="line output success">✓ Ready for next level!</span>
-                    </div>
+                        </svg></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="/" class="logo">
-                        <img src="/public/img/logos/edunet-logo.png" alt="Edunet Logo" class="logo-icon logo-img">
-                        <span class="logo-text">Edunet</span>
-                    </a>
+                <div class="footer-brand"><a href="/" class="logo"><img src="/public/img/logos/edunet-logo.png"
+                            alt="Edunet Logo" class="logo-icon logo-img"><span class="logo-text">Edunet</span></a>
                     <p>Portal belajar TKJ terlengkap untuk siswa SMK Indonesia.</p>
                 </div>
                 <div class="footer-links">
@@ -373,7 +192,6 @@
                         <li><a href="/pages/kelas-11/aij.html">AIJ</a></li>
                         <li><a href="/pages/kelas-11/asj.html">ASJ</a></li>
                         <li><a href="/pages/kelas-11/kj.html">KJ</a></li>
-                        <li><a href="/pages/lab-virtual.html">Lab Virtual</a></li>
                     </ul>
                 </div>
             </div>
@@ -383,18 +201,15 @@
         </div>
     </footer>
 
-    <!-- Search Modal -->
     <div class="search-modal" id="searchModal">
         <div class="search-overlay"></div>
         <div class="search-container">
-            <div class="search-header">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <div class="search-header"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
                     <circle cx="11" cy="11" r="8"></circle>
                     <path d="m21 21-4.35-4.35"></path>
-                </svg>
-                <input type="text" class="search-input" placeholder="Cari materi..." id="searchInput">
-                <kbd class="search-kbd">ESC</kbd>
-            </div>
+                </svg><input type="text" class="search-input" placeholder="Cari materi..." id="searchInput"><kbd
+                    class="search-kbd">ESC</kbd></div>
             <div class="search-results" id="searchResults">
                 <div class="search-hint">
                     <p>Mulai ketik untuk mencari materi...</p>
@@ -403,6 +218,50 @@
         </div>
     </div>
 
+    <style>
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+
+    <script type="module">
+        import { getMaterialsByClass } from '/src/firebase/repository.js';
+        const loadingState = document.getElementById('loadingState');
+        const materialsGrid = document.getElementById('materialsGrid');
+        const emptyState = document.getElementById('emptyState');
+        const totalMaterials = document.getElementById('totalMaterials');
+        const totalModules = document.getElementById('totalModules');
+
+        loadMaterials();
+
+        async function loadMaterials() {
+            const materials = await getMaterialsByClass(11, 'AIJ');
+            loadingState.style.display = 'none';
+            if (materials.length === 0) {
+                emptyState.style.display = 'block';
+                totalMaterials.textContent = '0';
+                totalModules.textContent = '0';
+                return;
+            }
+            const uniqueModules = new Set(materials.map(m => m.modul).filter(Boolean));
+            totalMaterials.textContent = materials.length;
+            totalModules.textContent = uniqueModules.size || Math.ceil(materials.length / 3);
+            materialsGrid.innerHTML = materials.map(m => `
+                <a href="/pages/materi.html?id=${m.id}" class="material-card" style="text-decoration: none;">
+                    <div class="material-icon"><i class="bi ${m.icon || 'bi-book'}"></i></div>
+                    <h3 class="material-title">${m.title}</h3>
+                    <p class="material-desc">${m.deskripsi}</p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">${m.durasi || 30} menit</span>
+                        <span class="material-meta-item">${m.tingkat || 'Menengah'}</span>
+                    </div>
+                </a>
+            `).join('');
+            materialsGrid.style.display = 'grid';
+        }
+    </script>
     <script type="module" src="/src/main.js"></script>
 </body>
 

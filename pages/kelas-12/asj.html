@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description"
-        content="ASJ Kelas 12 - Belajar Linux Server, Web Server, Mail Server, Database Server, dan Network Monitoring.">
+        content="ASJ Kelas 12 - Belajar Web Server, Mail Server, Database Server, dan Cloud Computing.">
     <title>ASJ Kelas 12 - Administrasi Sistem Jaringan - Edunet</title>
     <link rel="icon" type="image/png" href="/public/img/logos/edunet-logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -66,10 +66,10 @@
         <div class="hero-glow primary" style="background: #3b82f6;"></div>
         <div class="hero-glow secondary" style="background: #1d4ed8;"></div>
         <div class="hero-floating-icons">
-            <i class="bi bi-terminal icon" style="font-size: 4rem; color: #3b82f6;"></i>
-            <i class="bi bi-database icon" style="font-size: 3rem; color: #3b82f6;"></i>
-            <i class="bi bi-globe icon" style="font-size: 3.5rem; color: #3b82f6;"></i>
-            <i class="bi bi-server icon" style="font-size: 3rem; color: #3b82f6;"></i>
+            <i class="bi bi-globe icon" style="font-size: 4rem; color: #3b82f6;"></i>
+            <i class="bi bi-envelope icon" style="font-size: 3rem; color: #3b82f6;"></i>
+            <i class="bi bi-database icon" style="font-size: 3.5rem; color: #3b82f6;"></i>
+            <i class="bi bi-cloud icon" style="font-size: 3rem; color: #3b82f6;"></i>
         </div>
         <div class="container">
             <div class="hero-content-wrapper">
@@ -79,18 +79,18 @@
                     <h1 class="hero-title"><span
                             style="background: linear-gradient(135deg, #3b82f6, #1d4ed8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">ASJ</span>
                     </h1>
-                    <p class="hero-description">Administrasi Sistem Jaringan - Level lanjutan dengan Linux Server, Web
-                        Server, Mail Server, Database, dan Monitoring.</p>
+                    <p class="hero-description">Administrasi Sistem Jaringan Lanjutan - Fokus pada Web Server, Mail
+                        Server, Database Server, dan Cloud Computing.</p>
                     <div class="hero-stats-inline">
-                        <div class="hero-stat-item"><span class="hero-stat-number" style="color: #3b82f6;">5</span><span
-                                class="hero-stat-text">Modul</span></div>
+                        <div class="hero-stat-item"><span class="hero-stat-number" style="color: #3b82f6;"
+                                id="totalModules">-</span><span class="hero-stat-text">Modul</span></div>
+                        <div class="hero-stat-item"><span class="hero-stat-number" style="color: #3b82f6;"
+                                id="totalMaterials">-</span><span class="hero-stat-text">Materi</span></div>
                         <div class="hero-stat-item"><span class="hero-stat-number"
-                                style="color: #3b82f6;">15</span><span class="hero-stat-text">Materi</span></div>
-                        <div class="hero-stat-item"><span class="hero-stat-number"
-                                style="color: #3b82f6;">9+</span><span class="hero-stat-text">Jam Belajar</span></div>
+                                style="color: #3b82f6;">10+</span><span class="hero-stat-text">Jam Belajar</span></div>
                     </div>
                     <div class="hero-buttons">
-                        <a href="#linux" class="btn-hero btn-hero-primary"
+                        <a href="#materials" class="btn-hero btn-hero-primary"
                             style="background: #3b82f6; box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);"><span>Mulai
                                 Belajar</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2">
@@ -103,14 +103,15 @@
                 <div class="hero-visual-content">
                     <div class="hero-visual-card" style="border-color: rgba(59, 130, 246, 0.2);">
                         <div class="hero-visual-icon" style="color: #3b82f6;"><i class="bi bi-server"></i></div>
-                        <p class="hero-visual-title">Advanced Server</p>
+                        <p class="hero-visual-title">Advanced Server Admin</p>
                         <div class="hero-visual-tags">
                             <span class="hero-visual-tag"
-                                style="background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.2); color: #3b82f6;">Web</span>
+                                style="background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.2); color: #3b82f6;">Web
+                                Server</span>
                             <span class="hero-visual-tag"
-                                style="background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.2); color: #3b82f6;">Mail</span>
+                                style="background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.2); color: #3b82f6;">Database</span>
                             <span class="hero-visual-tag"
-                                style="background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.2); color: #3b82f6;">DB</span>
+                                style="background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.2); color: #3b82f6;">Cloud</span>
                         </div>
                     </div>
                 </div>
@@ -122,196 +123,24 @@
             </svg></div>
     </header>
 
-    <section class="content-section" id="linux">
+    <section class="content-section" id="materials">
         <div class="container">
-            <div class="section-header"><span class="section-tag"
-                    style="background: rgba(59, 130, 246, 0.1); color: #3b82f6;">Modul 1</span>
-                <h2 class="section-title">Linux Server</h2>
-                <p class="section-desc">Instalasi dan konfigurasi dasar Linux server menggunakan Debian/Ubuntu.</p>
+            <div class="section-header">
+                <span class="section-tag" style="background: rgba(59, 130, 246, 0.1); color: #3b82f6;">Materi</span>
+                <h2 class="section-title">Daftar Materi ASJ</h2>
+                <p class="section-desc">Semua materi Administrasi Sistem Jaringan Kelas 12.</p>
             </div>
-            <div class="materials-grid">
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-ubuntu"></i></div>
-                    <h3 class="material-title">Instalasi Debian Server</h3>
-                    <p class="material-desc">Instalasi Debian minimal tanpa GUI. Partisi, user management, dan
-                        konfigurasi dasar pasca instalasi.</p>
-                    <div class="material-meta"><span class="material-meta-item">45 menit</span><span
-                            class="material-meta-item">Praktik</span></div>
-                </article>
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-terminal"></i></div>
-                    <h3 class="material-title">Linux Command Line</h3>
-                    <p class="material-desc">Navigasi filesystem, manajemen file dan folder, text editor (nano/vim), dan
-                        perintah-perintah penting lainnya.</p>
-                    <div class="material-meta"><span class="material-meta-item">40 menit</span><span
-                            class="material-meta-item">Praktik</span></div>
-                </article>
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-person-lock"></i></div>
-                    <h3 class="material-title">User & Permission</h3>
-                    <p class="material-desc">Manajemen user dan group. File permission (chmod, chown), dan sudo
-                        configuration.</p>
-                    <div class="material-meta"><span class="material-meta-item">35 menit</span><span
-                            class="material-meta-item">Praktik</span></div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section class="content-section" id="webserver">
-        <div class="container">
-            <div class="section-header"><span class="section-tag"
-                    style="background: rgba(59, 130, 246, 0.1); color: #3b82f6;">Modul 2</span>
-                <h2 class="section-title">Web Server</h2>
-                <p class="section-desc">Instalasi dan konfigurasi Apache2 atau Nginx sebagai web server.</p>
-            </div>
-            <div class="materials-grid">
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-globe"></i></div>
-                    <h3 class="material-title">Apache2 Web Server</h3>
-                    <p class="material-desc">Instalasi Apache2, document root, directory listing, dan konfigurasi dasar
-                        httpd.conf.</p>
-                    <div class="material-meta"><span class="material-meta-item">40 menit</span><span
-                            class="material-meta-item">Praktik</span></div>
-                </article>
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-lightning"></i></div>
-                    <h3 class="material-title">Nginx Web Server</h3>
-                    <p class="material-desc">Alternatif yang lebih ringan dan cepat. Server blocks, reverse proxy, dan
-                        load balancing dasar.</p>
-                    <div class="material-meta"><span class="material-meta-item">45 menit</span><span
-                            class="material-meta-item">Praktik</span></div>
-                </article>
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-house-door"></i></div>
-                    <h3 class="material-title">Virtual Host</h3>
-                    <p class="material-desc">Hosting multiple website dalam satu server menggunakan virtual host/server
-                        blocks.</p>
-                    <div class="material-meta"><span class="material-meta-item">35 menit</span><span
-                            class="material-meta-item">Praktik</span></div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section class="content-section" id="mail">
-        <div class="container">
-            <div class="section-header"><span class="section-tag"
-                    style="background: rgba(59, 130, 246, 0.1); color: #3b82f6;">Modul 3</span>
-                <h2 class="section-title">Mail Server</h2>
-                <p class="section-desc">Konfigurasi Postfix dan Dovecot untuk layanan email.</p>
-            </div>
-            <div class="materials-grid">
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-envelope"></i></div>
-                    <h3 class="material-title">Postfix SMTP</h3>
-                    <p class="material-desc">Mail Transfer Agent (MTA) untuk mengirim email. Konfigurasi main.cf dan
-                        relay settings.</p>
-                    <div class="material-meta"><span class="material-meta-item">45 menit</span><span
-                            class="material-meta-item">Praktik</span></div>
-                </article>
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-mailbox"></i></div>
-                    <h3 class="material-title">Dovecot IMAP/POP3</h3>
-                    <p class="material-desc">Mail Delivery Agent (MDA) untuk menerima email. Konfigurasi mailbox dan
-                        authentication.</p>
-                    <div class="material-meta"><span class="material-meta-item">40 menit</span><span
-                            class="material-meta-item">Praktik</span></div>
-                </article>
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-browser-chrome"></i></div>
-                    <h3 class="material-title">Webmail (Roundcube)</h3>
-                    <p class="material-desc">Akses email melalui browser menggunakan Roundcube webmail client.</p>
-                    <div class="material-meta"><span class="material-meta-item">35 menit</span><span
-                            class="material-meta-item">Praktik</span></div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section class="content-section" id="database">
-        <div class="container">
-            <div class="section-header"><span class="section-tag"
-                    style="background: rgba(59, 130, 246, 0.1); color: #3b82f6;">Modul 4</span>
-                <h2 class="section-title">Database Server</h2>
-                <p class="section-desc">Instalasi dan manajemen MySQL/MariaDB database server.</p>
-            </div>
-            <div class="materials-grid">
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-database"></i></div>
-                    <h3 class="material-title">MariaDB Installation</h3>
-                    <p class="material-desc">Instalasi MariaDB, secure installation, dan konfigurasi my.cnf.</p>
-                    <div class="material-meta"><span class="material-meta-item">30 menit</span><span
-                            class="material-meta-item">Praktik</span></div>
-                </article>
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-file-code"></i></div>
-                    <h3 class="material-title">SQL Basics</h3>
-                    <p class="material-desc">CREATE, SELECT, INSERT, UPDATE, DELETE. Dasar-dasar query SQL untuk admin.
-                    </p>
-                    <div class="material-meta"><span class="material-meta-item">40 menit</span><span
-                            class="material-meta-item">Praktik</span></div>
-                </article>
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-people"></i></div>
-                    <h3 class="material-title">User & Privileges</h3>
-                    <p class="material-desc">Membuat user database, GRANT privileges, dan remote access configuration.
-                    </p>
-                    <div class="material-meta"><span class="material-meta-item">35 menit</span><span
-                            class="material-meta-item">Praktik</span></div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section class="content-section" id="monitoring">
-        <div class="container">
-            <div class="section-header"><span class="section-tag"
-                    style="background: rgba(59, 130, 246, 0.1); color: #3b82f6;">Modul 5</span>
-                <h2 class="section-title">Network Monitoring</h2>
-                <p class="section-desc">Tools untuk memonitor performa server dan jaringan.</p>
-            </div>
-            <div class="materials-grid">
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-graph-up"></i></div>
-                    <h3 class="material-title">Monitoring Tools</h3>
-                    <p class="material-desc">htop, netstat, ss, iftop, dan iotop untuk memonitor sistem secara
-                        real-time.</p>
-                    <div class="material-meta"><span class="material-meta-item">30 menit</span><span
-                            class="material-meta-item">Praktik</span></div>
-                </article>
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-speedometer2"></i></div>
-                    <h3 class="material-title">Nagios/Zabbix Basics</h3>
-                    <p class="material-desc">Pengenalan tools monitoring enterprise untuk memantau banyak server
-                        sekaligus.</p>
-                    <div class="material-meta"><span class="material-meta-item">45 menit</span><span
-                            class="material-meta-item">Praktik</span></div>
-                </article>
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-journal-text"></i></div>
-                    <h3 class="material-title">Log Management</h3>
-                    <p class="material-desc">Syslog, journalctl, dan cara membaca log untuk troubleshooting masalah
-                        server.</p>
-                    <div class="material-meta"><span class="material-meta-item">35 menit</span><span
-                            class="material-meta-item">Praktik</span></div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-card">
-                <div class="cta-glow"></div>
-                <div class="cta-content">
-                    <h2>🎉 Selamat!</h2>
-                    <p>Kamu sudah menyelesaikan materi ASJ. Coba Quiz untuk menguji pemahamanmu!</p><a
-                        href="/pages/quiz.html" class="btn btn-primary btn-lg"><span>Mulai Quiz</span><svg width="24"
-                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                        </svg></a>
+            <div id="loadingState" style="text-align: center; padding: 3rem;">
+                <div class="spinner"
+                    style="width: 40px; height: 40px; border: 3px solid var(--border-color); border-top-color: #3b82f6; border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 1rem;">
                 </div>
+                <p style="color: var(--text-secondary);">Memuat materi...</p>
+            </div>
+            <div class="materials-grid" id="materialsGrid" style="display: none;"></div>
+            <div id="emptyState" style="display: none; text-align: center; padding: 3rem;">
+                <i class="bi bi-inbox"
+                    style="font-size: 3rem; color: var(--text-muted); margin-bottom: 1rem; display: block;"></i>
+                <p style="color: var(--text-secondary);">Belum ada materi untuk ASJ Kelas 12.</p>
             </div>
         </div>
     </section>
@@ -338,7 +167,6 @@
                         <li><a href="/pages/kelas-12/aij.html">AIJ</a></li>
                         <li><a href="/pages/kelas-12/asj.html">ASJ</a></li>
                         <li><a href="/pages/kelas-12/kj.html">KJ</a></li>
-                        <li><a href="/pages/lab-virtual.html">Lab Virtual</a></li>
                     </ul>
                 </div>
             </div>
@@ -364,6 +192,51 @@
             </div>
         </div>
     </div>
+
+    <style>
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+
+    <script type="module">
+        import { getMaterialsByClass } from '/src/firebase/repository.js';
+        const loadingState = document.getElementById('loadingState');
+        const materialsGrid = document.getElementById('materialsGrid');
+        const emptyState = document.getElementById('emptyState');
+        const totalMaterials = document.getElementById('totalMaterials');
+        const totalModules = document.getElementById('totalModules');
+
+        loadMaterials();
+
+        async function loadMaterials() {
+            const materials = await getMaterialsByClass(12, 'ASJ');
+            loadingState.style.display = 'none';
+            if (materials.length === 0) {
+                emptyState.style.display = 'block';
+                totalMaterials.textContent = '0';
+                totalModules.textContent = '0';
+                return;
+            }
+            const uniqueModules = new Set(materials.map(m => m.modul).filter(Boolean));
+            totalMaterials.textContent = materials.length;
+            totalModules.textContent = uniqueModules.size || Math.ceil(materials.length / 3);
+            materialsGrid.innerHTML = materials.map(m => `
+                <a href="/pages/materi.html?id=${m.id}" class="material-card" style="text-decoration: none;">
+                    <div class="material-icon"><i class="bi ${m.icon || 'bi-book'}"></i></div>
+                    <h3 class="material-title">${m.title}</h3>
+                    <p class="material-desc">${m.deskripsi}</p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">${m.durasi || 30} menit</span>
+                        <span class="material-meta-item">${m.tingkat || 'Menengah'}</span>
+                    </div>
+                </a>
+            `).join('');
+            materialsGrid.style.display = 'grid';
+        }
+    </script>
     <script type="module" src="/src/main.js"></script>
 </body>
 

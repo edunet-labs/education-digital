@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="AIJ Kelas 12 - Belajar MikroTik, OSPF, BGP, NAT, dan Bandwidth Management.">
+    <meta name="description" content="AIJ Kelas 12 - Belajar MikroTik, OSPF, BGP, dan Teknik Routing Lanjutan.">
     <title>AIJ Kelas 12 - Administrasi Infrastruktur Jaringan - Edunet</title>
     <link rel="icon" type="image/png" href="/public/img/logos/edunet-logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -68,7 +68,6 @@
             <i class="bi bi-router icon" style="font-size: 4rem; color: #00ffc8;"></i>
             <i class="bi bi-diagram-3 icon" style="font-size: 3rem; color: #00ffc8;"></i>
             <i class="bi bi-hdd-stack icon" style="font-size: 3.5rem; color: #00ffc8;"></i>
-            <i class="bi bi-ethernet icon" style="font-size: 3rem; color: #00ffc8;"></i>
         </div>
         <div class="container">
             <div class="hero-content-wrapper">
@@ -78,18 +77,18 @@
                     <h1 class="hero-title"><span
                             style="background: linear-gradient(135deg, #00ffc8, #00d4a8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">AIJ</span>
                     </h1>
-                    <p class="hero-description">Administrasi Infrastruktur Jaringan - Level lanjutan dengan MikroTik,
-                        Dynamic Routing (OSPF, BGP), NAT, dan Bandwidth Management.</p>
+                    <p class="hero-description">Administrasi Infrastruktur Jaringan Lanjutan - Fokus pada MikroTik,
+                        OSPF, BGP, dan protokol routing dinamis.</p>
                     <div class="hero-stats-inline">
-                        <div class="hero-stat-item"><span class="hero-stat-number" style="color: #00ffc8;">5</span><span
-                                class="hero-stat-text">Modul</span></div>
-                        <div class="hero-stat-item"><span class="hero-stat-number"
-                                style="color: #00ffc8;">15</span><span class="hero-stat-text">Materi</span></div>
+                        <div class="hero-stat-item"><span class="hero-stat-number" style="color: #00ffc8;"
+                                id="totalModules">-</span><span class="hero-stat-text">Modul</span></div>
+                        <div class="hero-stat-item"><span class="hero-stat-number" style="color: #00ffc8;"
+                                id="totalMaterials">-</span><span class="hero-stat-text">Materi</span></div>
                         <div class="hero-stat-item"><span class="hero-stat-number"
                                 style="color: #00ffc8;">10+</span><span class="hero-stat-text">Jam Belajar</span></div>
                     </div>
                     <div class="hero-buttons">
-                        <a href="#mikrotik" class="btn-hero btn-hero-primary"
+                        <a href="#materials" class="btn-hero btn-hero-primary"
                             style="background: #00ffc8; box-shadow: 0 4px 20px rgba(0, 255, 200, 0.3); color: #0a0a0a;"><span>Mulai
                                 Belajar</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2">
@@ -103,7 +102,7 @@
                     <div class="hero-visual-card" style="border-color: rgba(0, 255, 200, 0.2);">
                         <div class="hero-visual-icon" style="color: #00ffc8;"><i class="bi bi-hdd-network-fill"></i>
                         </div>
-                        <p class="hero-visual-title">Advanced Network</p>
+                        <p class="hero-visual-title">Advanced Networking</p>
                         <div class="hero-visual-tags">
                             <span class="hero-visual-tag"
                                 style="background: rgba(0, 255, 200, 0.1); border-color: rgba(0, 255, 200, 0.2); color: #00ffc8;">MikroTik</span>
@@ -122,185 +121,24 @@
             </svg></div>
     </header>
 
-    <section class="content-section" id="mikrotik">
+    <section class="content-section" id="materials">
         <div class="container">
-            <div class="section-header"><span class="section-tag">Modul 1</span>
-                <h2 class="section-title">MikroTik RouterOS</h2>
-                <p class="section-desc">Pengenalan dan konfigurasi dasar MikroTik RouterOS.</p>
+            <div class="section-header">
+                <span class="section-tag">Materi</span>
+                <h2 class="section-title">Daftar Materi AIJ</h2>
+                <p class="section-desc">Semua materi Administrasi Infrastruktur Jaringan Kelas 12.</p>
             </div>
-            <div class="materials-grid">
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-router"></i></div>
-                    <h3 class="material-title">Pengenalan MikroTik</h3>
-                    <p class="material-desc">Apa itu MikroTik? RouterOS, RouterBOARD, dan interface management (Winbox,
-                        WebFig, CLI).</p>
-                    <div class="material-meta"><span class="material-meta-item">30 menit</span><span
-                            class="material-meta-item">Teori</span></div>
-                </article>
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-gear"></i></div>
-                    <h3 class="material-title">Basic Configuration</h3>
-                    <p class="material-desc">Konfigurasi IP address, gateway, DNS, dan internet access pada MikroTik.
-                    </p>
-                    <div class="material-meta"><span class="material-meta-item">45 menit</span><span
-                            class="material-meta-item">Praktik</span></div>
-                </article>
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-people"></i></div>
-                    <h3 class="material-title">User Management</h3>
-                    <p class="material-desc">Membuat user, group, dan mengatur permission untuk akses router.</p>
-                    <div class="material-meta"><span class="material-meta-item">35 menit</span><span
-                            class="material-meta-item">Praktik</span></div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section class="content-section" id="ospf">
-        <div class="container">
-            <div class="section-header"><span class="section-tag">Modul 2</span>
-                <h2 class="section-title">OSPF Routing</h2>
-                <p class="section-desc">Dynamic routing menggunakan protokol OSPF.</p>
-            </div>
-            <div class="materials-grid">
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-diagram-3"></i></div>
-                    <h3 class="material-title">Konsep OSPF</h3>
-                    <p class="material-desc">Open Shortest Path First, Link State Protocol, area, cost, dan neighbor
-                        discovery.</p>
-                    <div class="material-meta"><span class="material-meta-item">35 menit</span><span
-                            class="material-meta-item">Teori</span></div>
-                </article>
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-gear"></i></div>
-                    <h3 class="material-title">OSPF Configuration</h3>
-                    <p class="material-desc">Konfigurasi OSPF single area dan multi-area pada Cisco dan MikroTik.</p>
-                    <div class="material-meta"><span class="material-meta-item">50 menit</span><span
-                            class="material-meta-item">Praktik</span></div>
-                </article>
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-search"></i></div>
-                    <h3 class="material-title">OSPF Troubleshooting</h3>
-                    <p class="material-desc">Verifikasi neighbor, routing table, dan troubleshooting common issues.</p>
-                    <div class="material-meta"><span class="material-meta-item">40 menit</span><span
-                            class="material-meta-item">Praktik</span></div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section class="content-section" id="bgp">
-        <div class="container">
-            <div class="section-header"><span class="section-tag">Modul 3</span>
-                <h2 class="section-title">BGP Basics</h2>
-                <p class="section-desc">Pengenalan Border Gateway Protocol untuk routing antar AS.</p>
-            </div>
-            <div class="materials-grid">
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-globe"></i></div>
-                    <h3 class="material-title">Konsep BGP</h3>
-                    <p class="material-desc">Autonomous System, eBGP vs iBGP, path attributes, dan BGP decision process.
-                    </p>
-                    <div class="material-meta"><span class="material-meta-item">40 menit</span><span
-                            class="material-meta-item">Teori</span></div>
-                </article>
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-gear"></i></div>
-                    <h3 class="material-title">Basic BGP Config</h3>
-                    <p class="material-desc">Konfigurasi BGP neighbor, advertising network, dan route filtering dasar.
-                    </p>
-                    <div class="material-meta"><span class="material-meta-item">50 menit</span><span
-                            class="material-meta-item">Praktik</span></div>
-                </article>
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-arrow-repeat"></i></div>
-                    <h3 class="material-title">BGP Best Practice</h3>
-                    <p class="material-desc">Route aggregation, prefix filtering, dan keamanan BGP.</p>
-                    <div class="material-meta"><span class="material-meta-item">35 menit</span><span
-                            class="material-meta-item">Praktik</span></div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section class="content-section" id="nat">
-        <div class="container">
-            <div class="section-header"><span class="section-tag">Modul 4</span>
-                <h2 class="section-title">NAT & PAT</h2>
-                <p class="section-desc">Network Address Translation untuk akses internet.</p>
-            </div>
-            <div class="materials-grid">
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-shuffle"></i></div>
-                    <h3 class="material-title">Konsep NAT</h3>
-                    <p class="material-desc">Static NAT, Dynamic NAT, PAT/NAT Overload, dan kapan menggunakan
-                        masing-masing.</p>
-                    <div class="material-meta"><span class="material-meta-item">30 menit</span><span
-                            class="material-meta-item">Teori</span></div>
-                </article>
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-gear"></i></div>
-                    <h3 class="material-title">NAT Masquerade</h3>
-                    <p class="material-desc">Konfigurasi masquerade untuk internet sharing pada MikroTik dan iptables.
-                    </p>
-                    <div class="material-meta"><span class="material-meta-item">40 menit</span><span
-                            class="material-meta-item">Praktik</span></div>
-                </article>
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-box-arrow-in-right"></i></div>
-                    <h3 class="material-title">Port Forwarding</h3>
-                    <p class="material-desc">DST-NAT untuk meneruskan traffic ke server internal (web, ssh, game).</p>
-                    <div class="material-meta"><span class="material-meta-item">35 menit</span><span
-                            class="material-meta-item">Praktik</span></div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section class="content-section" id="bandwidth">
-        <div class="container">
-            <div class="section-header"><span class="section-tag">Modul 5</span>
-                <h2 class="section-title">Bandwidth Management</h2>
-                <p class="section-desc">Mengelola dan membatasi penggunaan bandwidth.</p>
-            </div>
-            <div class="materials-grid">
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-speedometer2"></i></div>
-                    <h3 class="material-title">Queue Types</h3>
-                    <p class="material-desc">Simple Queue, Queue Tree, PCQ, dan perbedaan penggunaan masing-masing.</p>
-                    <div class="material-meta"><span class="material-meta-item">35 menit</span><span
-                            class="material-meta-item">Teori</span></div>
-                </article>
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-gear"></i></div>
-                    <h3 class="material-title">Simple Queue</h3>
-                    <p class="material-desc">Konfigurasi bandwidth limiter per user/IP menggunakan simple queue.</p>
-                    <div class="material-meta"><span class="material-meta-item">40 menit</span><span
-                            class="material-meta-item">Praktik</span></div>
-                </article>
-                <article class="material-card">
-                    <div class="material-icon"><i class="bi bi-diagram-2"></i></div>
-                    <h3 class="material-title">Queue Tree & Mangle</h3>
-                    <p class="material-desc">Bandwidth management advanced dengan queue tree dan packet marking.</p>
-                    <div class="material-meta"><span class="material-meta-item">50 menit</span><span
-                            class="material-meta-item">Praktik</span></div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-card">
-                <div class="cta-glow"></div>
-                <div class="cta-content">
-                    <h2>🎉 Selamat!</h2>
-                    <p>Kamu sudah menyelesaikan materi AIJ. Coba Quiz untuk menguji pemahamanmu!</p><a
-                        href="/pages/quiz.html" class="btn btn-primary btn-lg"><span>Mulai Quiz</span><svg width="24"
-                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                        </svg></a>
+            <div id="loadingState" style="text-align: center; padding: 3rem;">
+                <div class="spinner"
+                    style="width: 40px; height: 40px; border: 3px solid var(--border-color); border-top-color: #00ffc8; border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 1rem;">
                 </div>
+                <p style="color: var(--text-secondary);">Memuat materi...</p>
+            </div>
+            <div class="materials-grid" id="materialsGrid" style="display: none;"></div>
+            <div id="emptyState" style="display: none; text-align: center; padding: 3rem;">
+                <i class="bi bi-inbox"
+                    style="font-size: 3rem; color: var(--text-muted); margin-bottom: 1rem; display: block;"></i>
+                <p style="color: var(--text-secondary);">Belum ada materi untuk AIJ Kelas 12.</p>
             </div>
         </div>
     </section>
@@ -327,7 +165,6 @@
                         <li><a href="/pages/kelas-12/aij.html">AIJ</a></li>
                         <li><a href="/pages/kelas-12/asj.html">ASJ</a></li>
                         <li><a href="/pages/kelas-12/kj.html">KJ</a></li>
-                        <li><a href="/pages/lab-virtual.html">Lab Virtual</a></li>
                     </ul>
                 </div>
             </div>
@@ -353,6 +190,51 @@
             </div>
         </div>
     </div>
+
+    <style>
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+
+    <script type="module">
+        import { getMaterialsByClass } from '/src/firebase/repository.js';
+        const loadingState = document.getElementById('loadingState');
+        const materialsGrid = document.getElementById('materialsGrid');
+        const emptyState = document.getElementById('emptyState');
+        const totalMaterials = document.getElementById('totalMaterials');
+        const totalModules = document.getElementById('totalModules');
+
+        loadMaterials();
+
+        async function loadMaterials() {
+            const materials = await getMaterialsByClass(12, 'AIJ');
+            loadingState.style.display = 'none';
+            if (materials.length === 0) {
+                emptyState.style.display = 'block';
+                totalMaterials.textContent = '0';
+                totalModules.textContent = '0';
+                return;
+            }
+            const uniqueModules = new Set(materials.map(m => m.modul).filter(Boolean));
+            totalMaterials.textContent = materials.length;
+            totalModules.textContent = uniqueModules.size || Math.ceil(materials.length / 3);
+            materialsGrid.innerHTML = materials.map(m => `
+                <a href="/pages/materi.html?id=${m.id}" class="material-card" style="text-decoration: none;">
+                    <div class="material-icon"><i class="bi ${m.icon || 'bi-book'}"></i></div>
+                    <h3 class="material-title">${m.title}</h3>
+                    <p class="material-desc">${m.deskripsi}</p>
+                    <div class="material-meta">
+                        <span class="material-meta-item">${m.durasi || 30} menit</span>
+                        <span class="material-meta-item">${m.tingkat || 'Menengah'}</span>
+                    </div>
+                </a>
+            `).join('');
+            materialsGrid.style.display = 'grid';
+        }
+    </script>
     <script type="module" src="/src/main.js"></script>
 </body>
 
