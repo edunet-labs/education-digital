@@ -345,7 +345,7 @@ try {
 document.addEventListener('keydown', (e) => {
   if (e.ctrlKey && e.shiftKey && e.key === 'A') {
     e.preventDefault();
-    window.location.href = '/.admin/login.html';
+    window.location.href = '/admin/login.html';
   }
 });
 
@@ -367,7 +367,7 @@ if (footerLogo) {
         window.showToast('Access Granted', 'Redirecting to Admin...', 'success');
       }
       setTimeout(() => {
-        window.location.href = '/.admin/login.html';
+        window.location.href = '/admin/login.html';
       }, 1000);
       tapCount = 0;
     } else {

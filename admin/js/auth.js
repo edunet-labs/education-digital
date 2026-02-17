@@ -11,13 +11,13 @@ export function initAuth() {
 
     onAuthChange(async (user) => {
         if (!user) {
-            window.location.href = '/.admin/login.html';
+            window.location.href = '/admin/login.html';
             return;
         }
 
         const userData = await getUserRole(user.id);
         if (!userData || (userData.role !== 'admin' && userData.role !== 'superadmin')) {
-            window.location.href = '/.admin/login.html';
+            window.location.href = '/admin/login.html';
             return;
         }
 
@@ -41,7 +41,7 @@ export function initAuth() {
     if (logoutBtn) {
         logoutBtn.addEventListener('click', async () => {
             await signOut();
-            window.location.href = '/.admin/login.html';
+            window.location.href = '/admin/login.html';
         });
     }
 }

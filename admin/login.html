@@ -484,7 +484,7 @@
             if (user) {
                 const userData = await getUserRole(user.id);
                 if (userData && userData.role === 'admin') {
-                    window.location.href = '/.admin/admin.html';
+                    window.location.href = '/admin/admin.html';
                 }
             }
         });
@@ -549,9 +549,9 @@
 
             // All admins (including legacy superadmins) go to admin dashboard
             if (userData.role === 'superadmin') {
-                window.location.href = '/.admin/superadmin.html';
+                window.location.href = '/admin/superadmin.html';
             } else {
-                window.location.href = '/.admin/admin.html';
+                window.location.href = '/admin/admin.html';
             }
         }
     </script>
