@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/src/styles/main.css">
     <link rel="stylesheet" href="/src/styles/pages.css">
     <link rel="stylesheet" href="/src/styles/material.css">
+
 </head>
 
 <body>
@@ -192,7 +193,9 @@
     </style>
 
     <script type="module">
-        import { getMaterialById } from '/src/firebase/repository.js';
+        // Supabase Integration
+        import { getMaterialById } from '../src/supabase/repository.js';
+        import { isLoggedIn } from '../src/supabase/auth.js';
 
         const loadingState = document.getElementById('loadingState');
         const contentContainer = document.getElementById('contentContainer');
@@ -202,47 +205,70 @@
         const materialSidebar = document.getElementById('materialSidebar');
         const materialNav = document.getElementById('materialNav');
 
-        // Get ID from URL
-        const params = new URLSearchParams(window.location.search);
-        const id = params.get('id');
+        // Main Error Hander - Removed for production
 
-        if (!id) {
-            showError();
-        } else {
-            loadMaterial(id);
+        async function init() {
+            try {
+                // Get ID from URL
+                const params = new URLSearchParams(window.location.search);
+                const id = params.get('id');
+
+                if (!id) {
+                    showError();
+                    return;
+                }
+
+                await loadMaterial(id);
+            } catch (err) {
+                console.error('Init error:', err);
+                showErrorDetails(err.message);
+            }
+        }
+
+        // Start
+        init();
+
+        function showErrorDetails(msg) {
+            loadingState.style.display = 'none';
+            if (errorState) {
+                errorState.classList.add('show');
+                const p = errorState.querySelector('p');
+                if (p) p.textContent = `Error: ${msg}`;
+            }
         }
 
         async function loadMaterial(id) {
-            const material = await getMaterialById(id);
+            try {
+                const material = await getMaterialById(id);
 
-            if (!material) {
-                showError();
-                return;
-            }
-
-            document.title = `${material.title} - Edunet`;
-
-            // Get YouTube embed URL
-            let videoEmbed = null;
-            if (material.videoUrl) {
-                const videoId = extractYoutubeId(material.videoUrl);
-                if (videoId) {
-                    videoEmbed = `https://www.youtube-nocookie.com/embed/${videoId}`;
+                if (!material) {
+                    showError();
+                    return;
                 }
-            }
 
-            // Build breadcrumb path
-            const specPath = material.spesialisasi
-                ? `/pages/kelas-${material.kelas}/${material.spesialisasi.toLowerCase()}.html`
-                : `/pages/kelas-${material.kelas}.html`;
+                document.title = `${material.title} - Edunet`;
 
-            // Format date
-            const updateDate = material.updatedAt
-                ? new Date(material.updatedAt.seconds * 1000).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })
-                : '-';
+                // Get YouTube embed URL
+                let videoEmbed = null;
+                if (material.videourl) {
+                    const videoId = extractYoutubeId(material.videourl);
+                    if (videoId) {
+                        videoEmbed = `https://www.youtube-nocookie.com/embed/${videoId}`;
+                    }
+                }
 
-            // Render Header
-            materialHeader.innerHTML = `
+                // Build breadcrumb path
+                const specPath = material.spesialisasi
+                    ? `/pages/kelas-${material.kelas}/${material.spesialisasi.toLowerCase()}.html`
+                    : `/pages/kelas-${material.kelas}.html`;
+
+                // Format date
+                const updateDate = material.updated_at
+                    ? new Date(material.updated_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })
+                    : new Date(material.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' });
+
+                // Render Header
+                materialHeader.innerHTML = `
                 <div class="container">
                     <nav class="breadcrumb">
                         <a href="/">Beranda</a>
@@ -281,22 +307,23 @@
                 </div>
             `;
 
-            // Render Article Content
-            materialArticle.innerHTML = `
+                // Render Article Content
+                materialArticle.innerHTML = `
                 <section class="article-section">
                     ${material.konten ? material.konten : `<p>${material.deskripsi}</p>`}
                 </section>
             `;
 
-            // Render Sidebar
-            let resourcesHtml = '';
-            if (material.pdfUrl || material.jobsheetUrl) {
-                resourcesHtml = `
+                // Render Sidebar
+                // Render Sidebar
+                let resourcesHtml = '';
+                if (material.pdfurl || material.jobsheeturl) {
+                    resourcesHtml = `
                     <div class="sidebar-card resources-card">
                         <h3><i class="bi bi-folder2"></i> Resources</h3>
                         <div class="resource-buttons">
-                            ${material.pdfUrl ? `
-                                <a href="${material.pdfUrl}" class="resource-btn pdf-btn" target="_blank">
+                            ${material.pdfurl ? `
+                                <a href="${material.pdfurl}" class="resource-btn pdf-btn" target="_blank">
                                     <i class="bi bi-file-earmark-pdf"></i>
                                     <div class="resource-info">
                                         <span class="resource-title">Modul PDF</span>
@@ -305,11 +332,11 @@
                                     <i class="bi bi-download"></i>
                                 </a>
                             ` : ''}
-                            ${material.jobsheetUrl ? `
-                                <a href="${material.jobsheetUrl}" class="resource-btn jobsheet-btn" target="_blank">
+                            ${material.jobsheeturl ? `
+                                <a href="${material.jobsheeturl}" class="resource-btn jobsheet-btn" target="_blank">
                                     <i class="bi bi-file-earmark-text"></i>
                                     <div class="resource-info">
-                                        <span class="resource-title">Jobsheet</span>
+                                        <span class="resource-title">Jobsheet (cara kerja)</span>
                                         <span class="resource-size">Download</span>
                                     </div>
                                     <i class="bi bi-download"></i>
@@ -318,11 +345,11 @@
                         </div>
                     </div>
                 `;
-            }
+                }
 
-            let videoHtml = '';
-            if (videoEmbed) {
-                videoHtml = `
+                let videoHtml = '';
+                if (videoEmbed) {
+                    videoHtml = `
                     <div class="sidebar-card video-card">
                         <h3><i class="bi bi-play-circle"></i> Video Tutorial</h3>
                         <div class="video-wrapper">
@@ -338,15 +365,15 @@
                         </p>
                     </div>
                 `;
-            }
+                }
 
-            materialSidebar.innerHTML = `
+                materialSidebar.innerHTML = `
                 ${resourcesHtml}
                 ${videoHtml}
             `;
 
-            // Render Navigation
-            materialNav.innerHTML = `
+                // Render Navigation
+                materialNav.innerHTML = `
                 <div class="container">
                     <div class="nav-buttons">
                         <a href="${specPath}" class="nav-btn list-btn">
@@ -357,9 +384,33 @@
                 </div>
             `;
 
-            // Show content
-            loadingState.style.display = 'none';
-            contentContainer.style.display = 'block';
+                // Show content
+                loadingState.style.display = 'none';
+                contentContainer.style.display = 'block';
+
+                // Add Quiz Link Button if material has quiz data
+                if (material.quiz_data && material.quiz_data.length > 0) {
+                    const sidebar = document.getElementById('materialSidebar');
+                    if (sidebar) {
+                        const quizCard = document.createElement('div');
+                        quizCard.className = 'sidebar-card';
+                        quizCard.style.borderTop = '3px solid var(--accent-primary)';
+                        quizCard.innerHTML = `
+                            <h3><i class="bi bi-patch-question-fill" style="color: var(--accent-primary);"></i> Kuis Materi</h3>
+                            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                                Uji pemahamanmu dengan ${material.quiz_data.length} soal.
+                            </p>
+                            <a href="/pages/quiz.html?kelas=${material.kelas}" class="btn btn-primary" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 0.5rem; text-decoration: none;">
+                                <i class="bi bi-play-circle"></i> Mulai Kuis
+                            </a>
+                        `;
+                        sidebar.appendChild(quizCard);
+                    }
+                }
+            } catch (error) {
+                console.error('Error loading material:', error);
+                showErrorDetails(error.message);
+            }
         }
 
         function showError() {
@@ -387,6 +438,8 @@
             });
         }
     </script>
+
+
 
     <script type="module" src="/src/main.js"></script>
 </body>

@@ -1,32 +1,25 @@
-// User Management Repository
-import { db } from './config.js';
-import {
-    collection,
-    doc,
-    getDocs,
-    getDoc,
-    setDoc,
-    deleteDoc,
-    query,
-    where,
-    serverTimestamp
-} from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 
-const COLLECTION_NAME = 'users';
+import { supabase } from './config.js';
+
+const TABLE_NAME = 'user_roles';
 
 /**
  * Get user role by UID
- * @param {string} uid - User UID from Firebase Auth
+ * @param {string} uid - User UID from Auth
  * @returns {Promise<Object|null>}
  */
 export async function getUserRole(uid) {
     try {
-        const docRef = doc(db, COLLECTION_NAME, uid);
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-            return docSnap.data();
+        const { data, error } = await supabase
+            .from(TABLE_NAME)
+            .select('*')
+            .eq('id', uid)
+            .single();
+
+        if (error && error.code !== 'PGRST116') { // PGRST116 is "Row not found"
+            console.error('Error getting user role details:', error);
         }
-        return null;
+        return data || null;
     } catch (error) {
         console.error('Error getting user role:', error);
         return null;
@@ -39,13 +32,21 @@ export async function getUserRole(uid) {
  * @param {Object} data - User data including email and role
  * @returns {Promise<Object>}
  */
-export async function setUserRole(uid, data) {
+export async function setUserRole(uid, roleData) {
     try {
-        await setDoc(doc(db, COLLECTION_NAME, uid), {
-            ...data,
-            createdAt: serverTimestamp(),
-            updatedAt: serverTimestamp()
-        });
+        const { role, email, username, name } = roleData;
+        const { error } = await supabase
+            .from(TABLE_NAME)
+            .upsert({
+                id: uid,
+                role,
+                email,
+                username: username || email.split('@')[0], // Fallback if missing
+                name: name || '',
+                updated_at: new Date()
+            });
+
+        if (error) throw error;
         return { success: true };
     } catch (error) {
         console.error('Error setting user role:', error);
@@ -59,8 +60,12 @@ export async function setUserRole(uid, data) {
  */
 export async function getAllAdmins() {
     try {
-        const snapshot = await getDocs(collection(db, COLLECTION_NAME));
-        return snapshot.docs.map(doc => ({ uid: doc.id, ...doc.data() }));
+        const { data, error } = await supabase
+            .from(TABLE_NAME)
+            .select('*');
+
+        if (error) throw error;
+        return data || [];
     } catch (error) {
         console.error('Error getting admins:', error);
         return [];
@@ -68,13 +73,18 @@ export async function getAllAdmins() {
 }
 
 /**
- * Delete admin user from Firestore (does not delete from Auth)
+ * Delete admin user role
  * @param {string} uid - User UID
  * @returns {Promise<Object>}
  */
 export async function deleteAdminRole(uid) {
     try {
-        await deleteDoc(doc(db, COLLECTION_NAME, uid));
+        const { error } = await supabase
+            .from(TABLE_NAME)
+            .delete()
+            .eq('id', uid);
+
+        if (error) throw error;
         return { success: true };
     } catch (error) {
         console.error('Error deleting admin:', error);
@@ -98,11 +108,16 @@ export async function isSuperAdmin(uid) {
  */
 export async function hasSuperAdmin() {
     try {
-        const q = query(collection(db, COLLECTION_NAME), where('role', '==', 'superadmin'));
-        const snapshot = await getDocs(q);
-        return !snapshot.empty;
+        const { count, error } = await supabase
+            .from(TABLE_NAME)
+            .select('*', { count: 'exact', head: true })
+            .eq('role', 'superadmin');
+
+        if (error) throw error;
+        return count > 0;
     } catch (error) {
         console.error('Error checking super admin:', error);
         return false;
     }
 }
+

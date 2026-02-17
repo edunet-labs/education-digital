@@ -106,7 +106,7 @@
     }
 
     .material-sidebar {
-        order: -1;
+        order: 1;
     }
 }
 
@@ -115,11 +115,11 @@
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
     border-radius: 16px;
-    padding: 2rem;
+    padding: 2.5rem;
 }
 
 .article-section {
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
 }
 
 .article-section:last-child {
@@ -130,11 +130,11 @@
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    font-size: 1.5rem;
+    font-size: 1.35rem;
     font-weight: 700;
     color: var(--text-primary);
-    margin-bottom: 1.25rem;
-    padding-bottom: 0.75rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.6rem;
     border-bottom: 2px solid var(--accent-primary);
 }
 
@@ -143,31 +143,35 @@
 }
 
 .article-section h3 {
-    font-size: 1.125rem;
+    font-size: 1.05rem;
     font-weight: 600;
     color: var(--text-primary);
-    margin: 1.5rem 0 0.75rem;
+    margin: 1rem 0 0.5rem;
+    padding-left: 0.75rem;
+    border-left: 3px solid var(--accent-primary);
 }
 
 .article-section p {
     color: var(--text-secondary);
-    line-height: 1.8;
-    margin-bottom: 1rem;
+    line-height: 1.7;
+    margin-bottom: 0.6rem;
+    font-size: 0.938rem;
 }
 
 /* Styled Lists */
 .styled-list {
     list-style: none;
     padding: 0;
-    margin: 1rem 0;
+    margin: 0.5rem 0 0.75rem;
 }
 
 .styled-list li {
     position: relative;
     padding-left: 1.75rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.35rem;
     color: var(--text-secondary);
-    line-height: 1.6;
+    line-height: 1.55;
+    font-size: 0.938rem;
 }
 
 .styled-list li::before {
@@ -191,15 +195,58 @@
     top: 0;
 }
 
+/* Ordered Styled Lists (from PDF generator) */
+ol.styled-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0.75rem;
+    counter-reset: list-counter;
+}
+
+ol.styled-list li {
+    position: relative;
+    padding-left: 1.75rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 0.938rem;
+    counter-increment: list-counter;
+}
+
+ol.styled-list li::before {
+    content: counter(list-counter);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    background: var(--accent-primary);
+    color: #fff;
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* Bold text in article */
+.article-section strong,
+.article-section b {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
 /* Info/Warning/Success Boxes */
 .info-box,
 .warning-box,
 .success-box {
     display: flex;
-    gap: 1rem;
-    padding: 1.25rem;
+    gap: 0.75rem;
+    padding: 1rem;
     border-radius: 12px;
-    margin: 1.5rem 0;
+    margin: 0.75rem 0;
 }
 
 .info-box {

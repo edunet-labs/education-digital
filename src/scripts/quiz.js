@@ -1,356 +1,337 @@
 /* ======================================
-   Quiz System for Edunet
+   Dynamic Quiz Page Script
+   Fetches materials with quizzes from Supabase,
+   supports class filtering, and runs quizzes inline.
    ====================================== */
 
-// Quiz data for each class
-const quizData = {
-    '10': [
-        {
-            question: 'Apa kepanjangan dari K3LH?',
-            options: [
-                'Keselamatan dan Kesehatan Kerja Lingkungan Hidup',
-                'Keamanan Kerja Kesehatan Lingkungan Hidup',
-                'Keselamatan Kerja Kesehatan Lingkungan',
-                'Kebersihan Keamanan Kesehatan Lingkungan'
-            ],
-            correct: 0
-        },
-        {
-            question: 'Komponen komputer yang berfungsi sebagai otak adalah?',
-            options: ['RAM', 'Processor', 'Hard Disk', 'Motherboard'],
-            correct: 1
-        },
-        {
-            question: 'Berapa jumlah layer pada model OSI?',
-            options: ['5 layer', '7 layer', '9 layer', '10 layer'],
-            correct: 1
-        },
-        {
-            question: 'IP Address 192.168.1.1 termasuk dalam kelas?',
-            options: ['Kelas A', 'Kelas B', 'Kelas C', 'Kelas D'],
-            correct: 2
-        },
-        {
-            question: 'Perintah untuk melihat konfigurasi IP di Windows adalah?',
-            options: ['ping', 'ipconfig', 'tracert', 'netstat'],
-            correct: 1
-        },
-        {
-            question: 'Topologi jaringan yang berbentuk lingkaran disebut?',
-            options: ['Bus', 'Star', 'Ring', 'Mesh'],
-            correct: 2
-        },
-        {
-            question: 'Perangkat yang berfungsi menghubungkan dua jaringan berbeda adalah?',
-            options: ['Switch', 'Hub', 'Router', 'Repeater'],
-            correct: 2
-        },
-        {
-            question: 'Port default untuk HTTP adalah?',
-            options: ['21', '22', '80', '443'],
-            correct: 2
-        },
-        {
-            question: 'Sistem operasi berbasis Linux yang populer untuk server adalah?',
-            options: ['Windows Server', 'Ubuntu Server', 'MacOS', 'Android'],
-            correct: 1
-        },
-        {
-            question: 'Kabel jaringan yang umum digunakan untuk LAN adalah?',
-            options: ['Coaxial', 'Fiber Optic', 'UTP', 'Serial'],
-            correct: 2
-        }
-    ],
-    '11': [
-        {
-            question: 'Protokol routing yang termasuk Distance Vector adalah?',
-            options: ['OSPF', 'RIP', 'BGP', 'EIGRP'],
-            correct: 1
-        },
-        {
-            question: 'VLAN adalah singkatan dari?',
-            options: [
-                'Virtual Local Area Network',
-                'Very Large Area Network',
-                'Variable LAN',
-                'Voice LAN'
-            ],
-            correct: 0
-        },
-        {
-            question: 'Port yang digunakan untuk trunk VLAN adalah?',
-            options: ['Access Port', 'Trunk Port', 'Voice Port', 'Management Port'],
-            correct: 1
-        },
-        {
-            question: 'Metode queue yang paling sederhana di MikroTik adalah?',
-            options: ['PCQ', 'HTB', 'Simple Queue', 'Queue Tree'],
-            correct: 2
-        },
-        {
-            question: 'Standar WiFi yang paling cepat adalah?',
-            options: ['802.11a', '802.11b', '802.11g', '802.11ac'],
-            correct: 3
-        },
-        {
-            question: 'Subnet mask /24 sama dengan?',
-            options: ['255.0.0.0', '255.255.0.0', '255.255.255.0', '255.255.255.255'],
-            correct: 2
-        },
-        {
-            question: 'Switch bekerja pada layer berapa di OSI?',
-            options: ['Layer 1', 'Layer 2', 'Layer 3', 'Layer 4'],
-            correct: 1
-        },
-        {
-            question: 'Protokol yang digunakan untuk konfigurasi IP otomatis adalah?',
-            options: ['DNS', 'DHCP', 'FTP', 'SMTP'],
-            correct: 1
-        },
-        {
-            question: 'Channel WiFi yang tidak overlap pada 2.4GHz adalah?',
-            options: ['1, 2, 3', '1, 6, 11', '2, 7, 12', '1, 5, 9'],
-            correct: 1
-        },
-        {
-            question: 'NAT adalah singkatan dari?',
-            options: [
-                'Network Address Translation',
-                'New Access Technology',
-                'Network Automated Transfer',
-                'Node Address Table'
-            ],
-            correct: 0
-        }
-    ],
-    '12': [
-        {
-            question: 'Protokol routing BGP bekerja pada layer?',
-            options: ['Layer 2', 'Layer 3', 'Layer 4', 'Layer 7'],
-            correct: 2
-        },
-        {
-            question: 'Service web server yang populer di Linux adalah?',
-            options: ['IIS', 'Apache', 'Tomcat', 'WebLogic'],
-            correct: 1
-        },
-        {
-            question: 'Port default untuk SSH adalah?',
-            options: ['21', '22', '23', '25'],
-            correct: 1
-        },
-        {
-            question: 'Firewall di Linux menggunakan?',
-            options: ['Windows Firewall', 'iptables', 'pfSense', 'Checkpoint'],
-            correct: 1
-        },
-        {
-            question: 'VPN protokol yang paling aman adalah?',
-            options: ['PPTP', 'L2TP', 'OpenVPN', 'IPSec'],
-            correct: 2
-        },
-        {
-            question: 'Database server yang open source adalah?',
-            options: ['Oracle', 'MS SQL', 'MySQL', 'DB2'],
-            correct: 2
-        },
-        {
-            question: 'IDS adalah singkatan dari?',
-            options: [
-                'Internet Data Service',
-                'Intrusion Detection System',
-                'Integrated Domain System',
-                'International DNS Server'
-            ],
-            correct: 1
-        },
-        {
-            question: 'Metode enkripsi yang paling kuat untuk WiFi adalah?',
-            options: ['WEP', 'WPA', 'WPA2', 'Open'],
-            correct: 2
-        },
-        {
-            question: 'Load balancing di MikroTik menggunakan?',
-            options: ['Simple Queue', 'Mangle', 'PCC', 'Hotspot'],
-            correct: 2
-        },
-        {
-            question: 'Tool untuk monitoring jaringan yang populer adalah?',
-            options: ['Notepad', 'Wireshark', 'Paint', 'Calculator'],
-            correct: 1
-        }
-    ]
-};
+import { getAllMaterials } from '../supabase/repository.js';
 
-// Quiz state
-let currentClass = null;
+// State
+let allMaterials = [];
+let activeFilter = '10';
+let currentQuizData = [];
 let currentQuestionIndex = 0;
-let userAnswers = [];
-let currentQuestions = [];
+let userAnswers = {};
 
-// DOM elements
-const quizSelection = document.getElementById('quizSelection');
-const quizInterface = document.getElementById('quizInterface');
-const quizResult = document.getElementById('quizResult');
+// DOM Elements
+const quizGrid = document.getElementById('quizGrid');
+const classFilter = document.getElementById('classFilter');
 
-const questionNumber = document.getElementById('questionNumber');
-const questionText = document.getElementById('questionText');
-const quizOptions = document.getElementById('quizOptions');
-const progressFill = document.getElementById('progressFill');
-const progressText = document.getElementById('progressText');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
+// ===== INIT =====
+async function initQuizPage() {
+    try {
+        // Check URL params for class filter
+        const params = new URLSearchParams(window.location.search);
+        const kelasParam = params.get('kelas');
+        if (kelasParam && ['10', '11', '12'].includes(kelasParam)) {
+            activeFilter = kelasParam;
+            // Update active button
+            classFilter.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.kelas === kelasParam);
+            });
+        }
 
-const resultScore = document.getElementById('resultScore');
-const resultMessage = document.getElementById('resultMessage');
-const resultDetails = document.getElementById('resultDetails');
+        const materials = await getAllMaterials();
+        allMaterials = materials.filter(m => m.quiz_data && m.quiz_data.length > 0);
 
-// Event listeners
-document.querySelectorAll('.quiz-card').forEach(card => {
-    card.addEventListener('click', function () {
-        const classNumber = this.dataset.class;
-        startQuiz(classNumber);
-    });
-});
-
-document.getElementById('backToSelection').addEventListener('click', showSelection);
-document.getElementById('backToSelectionFromResult').addEventListener('click', showSelection);
-document.getElementById('retryBtn').addEventListener('click', retryQuiz);
-prevBtn.addEventListener('click', previousQuestion);
-nextBtn.addEventListener('click', nextQuestion);
-
-// Functions
-function startQuiz(classNumber) {
-    currentClass = classNumber;
-    currentQuestionIndex = 0;
-    userAnswers = new Array(quizData[classNumber].length).fill(null);
-    currentQuestions = quizData[classNumber];
-
-    quizSelection.style.display = 'none';
-    quizInterface.classList.add('active');
-    quizResult.classList.remove('active');
-
-    showQuestion();
+        const filtered = allMaterials.filter(m => String(m.kelas) === activeFilter);
+        renderQuizCards(filtered);
+        setupFilters();
+    } catch (error) {
+        console.error('Error loading quizzes:', error);
+        quizGrid.innerHTML = `
+            <div class="empty-quiz-state">
+                <i class="bi bi-exclamation-triangle"></i>
+                <h3>Gagal memuat kuis</h3>
+                <p>Silakan coba lagi nanti.</p>
+            </div>
+        `;
+    }
 }
 
-function showQuestion() {
-    const question = currentQuestions[currentQuestionIndex];
+// ===== FILTER LOGIC =====
+function setupFilters() {
+    if (!classFilter) return;
 
-    // Update question number and text
-    questionNumber.textContent = `Pertanyaan ${currentQuestionIndex + 1}`;
-    questionText.textContent = question.question;
+    classFilter.addEventListener('click', (e) => {
+        const btn = e.target.closest('.filter-btn');
+        if (!btn) return;
 
-    // Update progress
-    const progress = ((currentQuestionIndex + 1) / currentQuestions.length) * 100;
-    progressFill.style.width = `${progress}%`;
-    progressText.textContent = `Pertanyaan ${currentQuestionIndex + 1} dari ${currentQuestions.length}`;
+        classFilter.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
 
-    // Render options
-    const letters = ['A', 'B', 'C', 'D'];
-    quizOptions.innerHTML = question.options.map((option, index) => `
-    <div class="quiz-option ${userAnswers[currentQuestionIndex] === index ? 'selected' : ''}" data-index="${index}">
-      <span class="option-letter">${letters[index]}</span>
-      <span>${option}</span>
-    </div>
-  `).join('');
+        activeFilter = btn.dataset.kelas;
 
-    // Add click listeners to options
-    document.querySelectorAll('.quiz-option').forEach(option => {
-        option.addEventListener('click', function () {
-            const index = parseInt(this.dataset.index);
-            selectOption(index);
+        const filtered = allMaterials.filter(m => String(m.kelas) === activeFilter);
+        renderQuizCards(filtered);
+    });
+}
+
+// ===== RENDER CARDS =====
+function renderQuizCards(materials) {
+    if (!quizGrid) return;
+
+    if (materials.length === 0) {
+        quizGrid.innerHTML = `
+            <div class="empty-quiz-state">
+                <i class="bi bi-inbox"></i>
+                <h3>Belum ada kuis tersedia</h3>
+                <p>Belum ada kuis untuk Kelas ${activeFilter}.</p>
+            </div>
+        `;
+        return;
+    }
+
+    quizGrid.innerHTML = materials.map(m => `
+        <div class="quiz-material-card" data-id="${m.id}">
+            <div class="card-top">
+                <span class="card-kelas-badge">
+                    <i class="bi bi-mortarboard"></i>
+                    Kelas ${m.kelas}
+                </span>
+                <span class="card-question-count">${m.quiz_data.length} Soal</span>
+            </div>
+            <h3 class="card-title">${escapeHtml(m.title)}</h3>
+            <p class="card-subtitle">${escapeHtml(m.spesialisasi || 'Umum')}${m.modul ? ' • ' + escapeHtml(m.modul) : ''}</p>
+            <button class="card-action">
+                <i class="bi bi-play-circle"></i> Mulai Kuis
+            </button>
+        </div>
+    `).join('');
+
+    // Attach click events
+    quizGrid.querySelectorAll('.quiz-material-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const id = card.dataset.id;
+            const material = allMaterials.find(m => m.id === id);
+            if (material) openQuizModal(material);
+        });
+    });
+}
+
+function escapeHtml(text) {
+    if (!text) return '';
+    return text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+// ===== QUIZ MODAL LOGIC =====
+function openQuizModal(material) {
+    currentQuizData = material.quiz_data;
+    currentQuestionIndex = 0;
+    userAnswers = {};
+
+    const modal = document.getElementById('quizModal');
+    if (!modal) return;
+
+    document.getElementById('quizModalTitle').textContent = material.title;
+    document.getElementById('quizTotalQuestions').textContent = currentQuizData.length;
+
+    document.getElementById('quizStartView').style.display = 'block';
+    document.getElementById('quizQuestionView').style.display = 'none';
+    document.getElementById('quizResultView').style.display = 'none';
+
+    modal.style.display = 'flex';
+    requestAnimationFrame(() => modal.classList.add('show'));
+
+    document.getElementById('startQuizBtn').onclick = startQuiz;
+    document.querySelectorAll('.close-quiz-btn, #quizModal > .quiz-overlay').forEach(el => {
+        el.onclick = closeQuizModal;
+    });
+}
+
+function closeQuizModal() {
+    const modal = document.getElementById('quizModal');
+    modal.classList.remove('show');
+    setTimeout(() => { modal.style.display = 'none'; }, 300);
+}
+
+function startQuiz() {
+    document.getElementById('quizStartView').style.display = 'none';
+    document.getElementById('quizQuestionView').style.display = 'block';
+
+    // Update progress bar
+    updateProgressBar();
+    renderQuestion();
+}
+
+function updateProgressBar() {
+    const progressFill = document.getElementById('quizProgressFill');
+    const progressText = document.getElementById('quizProgressText');
+    if (progressFill) {
+        const pct = ((currentQuestionIndex + 1) / currentQuizData.length) * 100;
+        progressFill.style.width = pct + '%';
+    }
+    if (progressText) {
+        progressText.textContent = `${currentQuestionIndex + 1} / ${currentQuizData.length}`;
+    }
+}
+
+function renderQuestion() {
+    const question = currentQuizData[currentQuestionIndex];
+
+    document.getElementById('currentQuestionNum').textContent = currentQuestionIndex + 1;
+    document.getElementById('totalQuestionNum').textContent = currentQuizData.length;
+    document.getElementById('questionText').textContent = question.question;
+
+    updateProgressBar();
+
+    const optionsContainer = document.getElementById('optionsContainer');
+    optionsContainer.innerHTML = '';
+
+    // Add entrance animation
+    optionsContainer.classList.remove('animate-in');
+    void optionsContainer.offsetWidth; // trigger reflow
+    optionsContainer.classList.add('animate-in');
+
+    Object.entries(question.options).forEach(([key, value], index) => {
+        const btn = document.createElement('div');
+        const isSelected = userAnswers[question.id] === key;
+        btn.className = `option-btn ${isSelected ? 'selected' : ''}`;
+        btn.style.animationDelay = `${index * 0.08}s`;
+        btn.innerHTML = `
+            <div class="option-marker">${key.toUpperCase()}</div>
+            <span>${escapeHtml(value)}</span>
+            ${isSelected ? '<i class="bi bi-check-circle-fill option-check"></i>' : ''}
+        `;
+        btn.onclick = () => selectOption(question.id, key, btn);
+        optionsContainer.appendChild(btn);
+    });
+
+    // Navigation
+    const prevBtn = document.getElementById('prevQBtn');
+    const nextBtn = document.getElementById('nextQBtn');
+
+    prevBtn.disabled = currentQuestionIndex === 0;
+
+    if (currentQuestionIndex === currentQuizData.length - 1) {
+        nextBtn.innerHTML = '<i class="bi bi-check2-circle"></i> Selesai';
+        nextBtn.classList.add('finish-btn');
+    } else {
+        nextBtn.innerHTML = 'Selanjutnya <i class="bi bi-arrow-right"></i>';
+        nextBtn.classList.remove('finish-btn');
+    }
+
+    prevBtn.onclick = () => {
+        if (currentQuestionIndex > 0) {
+            currentQuestionIndex--;
+            renderQuestion();
+        }
+    };
+
+    nextBtn.onclick = () => {
+        if (currentQuestionIndex < currentQuizData.length - 1) {
+            currentQuestionIndex++;
+            renderQuestion();
+        } else {
+            finishQuiz();
+        }
+    };
+}
+
+function selectOption(questionId, key, clickedBtn) {
+    userAnswers[questionId] = key;
+
+    // Visual feedback with animation
+    const container = document.getElementById('optionsContainer');
+    container.querySelectorAll('.option-btn').forEach(btn => {
+        btn.classList.remove('selected');
+        const check = btn.querySelector('.option-check');
+        if (check) check.remove();
+    });
+
+    clickedBtn.classList.add('selected');
+    clickedBtn.classList.add('pulse');
+    setTimeout(() => clickedBtn.classList.remove('pulse'), 300);
+
+    // Add check icon
+    const checkIcon = document.createElement('i');
+    checkIcon.className = 'bi bi-check-circle-fill option-check';
+    clickedBtn.appendChild(checkIcon);
+}
+
+function finishQuiz() {
+    let correctCount = 0;
+    const results = [];
+
+    currentQuizData.forEach((q, idx) => {
+        const userAnswer = userAnswers[q.id];
+        const isCorrect = userAnswer && q.answer && userAnswer.toLowerCase() === q.answer.toLowerCase();
+        if (isCorrect) correctCount++;
+
+        results.push({
+            num: idx + 1,
+            question: q.question,
+            userAnswer: userAnswer ? userAnswer.toUpperCase() : '-',
+            correctAnswer: q.answer ? q.answer.toUpperCase() : '-',
+            userAnswerText: userAnswer ? (q.options[userAnswer] || userAnswer) : 'Tidak dijawab',
+            correctAnswerText: q.answer ? (q.options[q.answer] || q.answer) : '-',
+            isCorrect
         });
     });
 
-    // Update navigation buttons
-    prevBtn.style.visibility = currentQuestionIndex === 0 ? 'hidden' : 'visible';
+    const score = Math.round((correctCount / currentQuizData.length) * 100);
 
-    if (currentQuestionIndex === currentQuestions.length - 1) {
-        nextBtn.innerHTML = `
-      Selesai
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <polyline points="20 6 9 17 4 12"></polyline>
-      </svg>
-    `;
+    document.getElementById('quizQuestionView').style.display = 'none';
+    document.getElementById('quizResultView').style.display = 'block';
+
+    document.getElementById('scoreValue').textContent = score;
+    document.getElementById('correctCount').textContent = correctCount;
+    document.getElementById('totalCount').textContent = currentQuizData.length;
+
+    const msg = document.getElementById('resultMessage');
+    const emoji = document.getElementById('resultEmoji');
+
+    if (score >= 80) {
+        msg.textContent = 'Luar Biasa!';
+        msg.style.color = 'var(--success, #10b981)';
+        emoji.textContent = '🎉';
+    } else if (score >= 60) {
+        msg.textContent = 'Cukup Bagus!';
+        msg.style.color = 'var(--accent-primary)';
+        emoji.textContent = '👍';
     } else {
-        nextBtn.innerHTML = `
-      Berikutnya
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M5 12h14M12 5l7 7-7 7" />
-      </svg>
-    `;
-    }
-}
-
-function selectOption(index) {
-    userAnswers[currentQuestionIndex] = index;
-
-    // Update UI
-    document.querySelectorAll('.quiz-option').forEach(opt => {
-        opt.classList.remove('selected');
-    });
-    document.querySelector(`[data-index="${index}"]`).classList.add('selected');
-}
-
-function previousQuestion() {
-    if (currentQuestionIndex > 0) {
-        currentQuestionIndex--;
-        showQuestion();
-    }
-}
-
-function nextQuestion() {
-    if (currentQuestionIndex < currentQuestions.length - 1) {
-        currentQuestionIndex++;
-        showQuestion();
-    } else {
-        // Finish quiz
-        showResult();
-    }
-}
-
-function showResult() {
-    // Calculate score
-    let correctCount = 0;
-    currentQuestions.forEach((question, index) => {
-        if (userAnswers[index] === question.correct) {
-            correctCount++;
-        }
-    });
-
-    const percentage = Math.round((correctCount / currentQuestions.length) * 100);
-
-    // Update result UI
-    resultScore.textContent = `${percentage}%`;
-    resultDetails.textContent = `Kamu menjawab ${correctCount} dari ${currentQuestions.length} pertanyaan dengan benar`;
-
-    // Set message based on score
-    if (percentage >= 80) {
-        resultMessage.textContent = 'Luar Biasa! 🎉';
-    } else if (percentage >= 60) {
-        resultMessage.textContent = 'Bagus! 👍';
-    } else if (percentage >= 40) {
-        resultMessage.textContent = 'Cukup Baik';
-    } else {
-        resultMessage.textContent = 'Tetap Semangat! 💪';
+        msg.textContent = 'Belajar Lagi Yuk!';
+        msg.style.color = 'var(--danger, #ef4444)';
+        emoji.textContent = '💪';
     }
 
-    // Show result screen
-    quizInterface.classList.remove('active');
-    quizResult.classList.add('active');
+    // Render answer review
+    const reviewContainer = document.getElementById('answerReview');
+    reviewContainer.innerHTML = results.map(r => `
+        <div class="review-item ${r.isCorrect ? 'correct' : 'wrong'}">
+            <div class="review-num">
+                <span class="review-number">${r.num}</span>
+                <i class="bi ${r.isCorrect ? 'bi-check-circle-fill' : 'bi-x-circle-fill'}"></i>
+            </div>
+            <div class="review-content">
+                <p class="review-question">${escapeHtml(r.question)}</p>
+                <div class="review-answers">
+                    <span class="your-answer ${r.isCorrect ? '' : 'wrong-text'}">
+                        Jawaban kamu: <strong>${r.userAnswer}. ${escapeHtml(r.userAnswerText)}</strong>
+                    </span>
+                    ${!r.isCorrect ? `
+                        <span class="correct-answer">
+                            Jawaban benar: <strong>${r.correctAnswer}. ${escapeHtml(r.correctAnswerText)}</strong>
+                        </span>
+                    ` : ''}
+                </div>
+            </div>
+        </div>
+    `).join('');
+
+    document.getElementById('retryQuizBtn').onclick = () => {
+        currentQuestionIndex = 0;
+        userAnswers = {};
+        document.getElementById('quizResultView').style.display = 'none';
+        document.getElementById('quizStartView').style.display = 'block';
+    };
+    document.getElementById('closeResultBtn').onclick = closeQuizModal;
 }
 
-function retryQuiz() {
-    startQuiz(currentClass);
-}
-
-function showSelection() {
-    quizSelection.style.display = 'block';
-    quizInterface.classList.remove('active');
-    quizResult.classList.remove('active');
-
-    currentClass = null;
-    currentQuestionIndex = 0;
-    userAnswers = [];
-    currentQuestions = [];
-}
+// Start
+document.addEventListener('DOMContentLoaded', initQuizPage);

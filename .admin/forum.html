@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Super Admin Dashboard - Edunet">
-    <title>Super Admin Dashboard - Edunet</title>
+    <meta name="description" content="Admin Forum - Edunet">
+    <title>Kelola Forum - Edunet</title>
     <link rel="icon" type="image/png" href="/public/img/logos/edunet-logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,6 +13,9 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="/.admin/css/admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/relativeTime.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/locale/id.js"></script>
     <!-- Restore admin theme preference immediately -->
     <script>
         (function () {
@@ -49,11 +52,11 @@
                         <i class="bi bi-collection"></i>
                         Kelola Materi
                     </a>
-                    <a href="/.admin/forum.html" class="nav-link">
+                    <a href="/.admin/forum.html" class="nav-link active">
                         <i class="bi bi-chat-left-text"></i>
                         Kelola Forum
                     </a>
-                    <a href="/.admin/superadmin.html" class="nav-link active">
+                    <a href="/.admin/superadmin.html" class="nav-link super-admin-only" style="display: none;">
                         <i class="bi bi-shield-lock"></i>
                         Kelola Admin
                     </a>
@@ -74,11 +77,10 @@
                     <span>Mode Gelap</span>
                 </button>
                 <div class="user-info">
-                    <div class="user-avatar" id="userAvatar"
-                        style="background: linear-gradient(135deg, #f59e0b, #ef4444);">S</div>
+                    <div class="user-avatar" id="userAvatar">A</div>
                     <div class="user-details">
                         <div class="user-name" id="userName">Loading...</div>
-                        <div class="user-role" id="userRole">Super Admin</div>
+                        <div class="user-role" id="userRole">Admin</div>
                     </div>
                 </div>
                 <button class="logout-btn" id="logoutBtn">
@@ -95,103 +97,69 @@
                     <button class="menu-toggle" id="menuToggle">
                         <i class="bi bi-list"></i>
                     </button>
-                    <h1 class="page-title">Kelola Admin</h1>
+                    <h1 class="page-title">Kelola Forum</h1>
                 </div>
             </header>
 
             <div class="content-body">
-                <!-- Info Box -->
-                <div class="info-box">
-                    <i class="bi bi-info-circle-fill"></i>
-                    <span>Halaman ini khusus untuk Super Admin. Anda dapat menambahkan admin baru atau menghapus akses
-                        admin yang sudah ada.</span>
-                </div>
-
                 <!-- Stats Cards -->
                 <div class="cards-grid">
                     <div class="stat-card">
                         <div class="stat-card-header">
-                            <div class="stat-card-icon orange">
-                                <i class="bi bi-people-fill"></i>
-                            </div>
-                        </div>
-                        <div class="stat-value" id="adminsCount">0</div>
-                        <div class="stat-label">Total Pengguna</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-card-header">
                             <div class="stat-card-icon blue">
-                                <i class="bi bi-person-badge"></i>
+                                <i class="bi bi-chat-dots"></i>
                             </div>
                         </div>
-                        <div class="stat-value" id="totalAdmins">0</div>
-                        <div class="stat-label">Admin Biasa</div>
+                        <div class="stat-value" id="totalTopics">0</div>
+                        <div class="stat-label">Total Topik</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-card-header">
-                            <div class="stat-card-icon purple">
-                                <i class="bi bi-shield-check"></i>
+                            <div class="stat-card-icon green">
+                                <i class="bi bi-reply-all"></i>
                             </div>
                         </div>
-                        <div class="stat-value" id="totalSuperAdmins">0</div>
-                        <div class="stat-label">Super Admin</div>
+                        <div class="stat-value" id="totalReplies">0</div>
+                        <div class="stat-label">Total Balasan</div>
                     </div>
                 </div>
 
-                <!-- Add Admin Form -->
-                <div class="section-card">
-                    <div class="section-header">
-                        <h2 class="section-title">
-                            <i class="bi bi-person-plus-fill"></i>
-                            Tambah Admin Baru
-                        </h2>
-                    </div>
-                    <div class="section-body">
-                        <form id="adminForm">
-                            <div class="form-grid">
-                                <div class="form-group">
-                                    <label class="form-label">Nama Lengkap</label>
-                                    <input type="text" id="adminName" class="form-input" placeholder="Nama admin..."
-                                        required>
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">Email / Username</label>
-                                    <input type="email" id="adminEmail" class="form-input"
-                                        placeholder="email@edunet.local" required>
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">Password</label>
-                                    <input type="password" id="adminPassword" class="form-input"
-                                        placeholder="Minimal 6 karakter" minlength="6" required>
-                                </div>
-                                <!-- Role selection removed: defaulting to 'admin' -->
-                            </div>
-                            <div style="margin-top: 1.25rem;">
-                                <button type="submit" class="btn btn-primary" id="submitBtn">
-                                    <i class="bi bi-plus-lg"></i>
-                                    Tambahkan User
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-                <!-- Admins List -->
+                <!-- Forum List -->
                 <div class="section-card">
                     <div class="section-header">
                         <h2 class="section-title">
                             <i class="bi bi-list-ul"></i>
-                            Daftar Admin
+                            Daftar Topik
                         </h2>
+                        <div style="display: flex; gap: 1rem; align-items: center;">
+                            <input type="text" id="searchTopic" class="form-input" placeholder="Cari topik..."
+                                style="padding: 0.55rem 0.85rem; font-size: 0.875rem; width: 280px;">
+                        </div>
                     </div>
                     <div class="section-body" style="padding: 0;">
-                        <div class="admin-list-container" style="padding: 1.5rem;">
-                            <div class="admin-list" id="adminsList">
-                                <div class="empty-state">
-                                    <i class="bi bi-people"></i>
-                                    <p>Memuat data admin...</p>
-                                </div>
-                            </div>
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Topik</th>
+                                        <th>Penulis</th>
+                                        <th>Kategori</th>
+                                        <th>Balasan</th>
+                                        <th>Tanggal</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="topicsList">
+                                    <tr>
+                                        <td colspan="6">
+                                            <div class="empty-state">
+                                                <i class="bi bi-inbox"></i>
+                                                <p>Belum ada topik</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -202,7 +170,7 @@
     <!-- Toast -->
     <div class="toast" id="toast"></div>
 
-    <script type="module" src="/.admin/js/superadmin.js"></script>
+    <script type="module" src="/.admin/js/forum-admin.js"></script>
 </body>
 
 </html>

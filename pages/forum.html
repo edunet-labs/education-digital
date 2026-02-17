@@ -351,6 +351,95 @@
             .topic-detail {
                 padding: 1.5rem;
             }
+
+            /* Mobile Card Improvements */
+            .forum-card {
+                padding: 1rem;
+            }
+
+            .forum-title {
+                font-size: 1rem;
+            }
+
+            .forum-stats {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+        }
+
+        /* File Input Styling */
+        .file-input-wrapper {
+            position: relative;
+            width: 100%;
+            height: 50px;
+            background: var(--bg-tertiary);
+            border: 1px dashed var(--border-color);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all var(--transition-fast);
+        }
+
+        .file-input-wrapper:hover {
+            border-color: var(--accent-primary);
+            background: rgba(0, 255, 200, 0.05);
+        }
+
+        .file-input {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+        }
+
+        .file-input-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            pointer-events: none;
+        }
+
+        .files-preview {
+            display: none;
+            margin-top: 1rem;
+            position: relative;
+        }
+
+        .files-preview img {
+            max-width: 100%;
+            max-height: 200px;
+            border-radius: var(--radius-md);
+            object-fit: cover;
+            border: 1px solid var(--border-color);
+        }
+
+        .remove-image-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .remove-image-btn:hover {
+            background: #ef4444;
         }
     </style>
 </head>
@@ -460,6 +549,9 @@
                 <div class="topic-detail">
                     <div class="forum-tags" id="detailTags"></div>
                     <h2 class="topic-question" id="detailTitle"></h2>
+                    <div id="detailImage" style="margin-bottom: 1.5rem; display: none;">
+                        <img src="" alt="Lampiran" style="max-width: 100%; border-radius: var(--radius-lg);">
+                    </div>
                     <p class="topic-body" id="detailBody"></p>
                     <div class="forum-meta" id="detailMeta"></div>
                 </div>
@@ -484,6 +576,34 @@
                         <div class="form-group">
                             <textarea class="form-textarea" id="replyBody" placeholder="Tulis balasanmu di sini..."
                                 rows="4"></textarea>
+                        </div>
+
+                        <!-- Reply Image Upload -->
+                        <div class="form-group">
+                            <label class="form-label" style="font-size: 0.8rem; margin-bottom: 0.25rem;">Lampirkan
+                                Gambar (Opsional)</label>
+                            <div class="file-input-wrapper" style="height: 40px; border-style: dashed;">
+                                <input type="file" id="replyImage" accept="image/*" class="file-input">
+                                <div class="file-input-label">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                        <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                        <polyline points="21 15 16 10 5 21"></polyline>
+                                    </svg>
+                                    <span>Pilih gambar...</span>
+                                </div>
+                            </div>
+                            <div id="replyImagePreview" class="files-preview">
+                                <img src="" alt="Preview">
+                                <button type="button" class="remove-image-btn" id="removeReplyImageBtn">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
                         <div style="display: flex; justify-content: flex-end;">
                             <button class="btn btn-primary" id="submitReply">
@@ -537,6 +657,31 @@
                     <textarea class="form-textarea" id="topicBody"
                         placeholder="Jelaskan pertanyaan kamu secara detail..." required></textarea>
                 </div>
+                <div class="form-group">
+                    <label class="form-label">Upload Gambar (Opsional)</label>
+                    <div class="file-input-wrapper">
+                        <input type="file" id="topicImage" accept="image/*" class="file-input">
+                        <div class="file-input-label">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                <polyline points="21 15 16 10 5 21"></polyline>
+                            </svg>
+                            <span>Pilih gambar...</span>
+                        </div>
+                    </div>
+                    <div id="imagePreview" class="files-preview">
+                        <img src="" alt="Preview">
+                        <button type="button" class="remove-image-btn" id="removeImageBtn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
                 <div class="form-footer">
                     <button type="button" class="btn btn-secondary" id="cancelTopic">Batal</button>
                     <button type="submit" class="btn btn-primary">
@@ -586,6 +731,32 @@
             </div>
         </div>
     </footer>
+
+    <!-- Name Input Modal -->
+    <div class="custom-modal" id="replyNameModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3>Siapa Nama Kamu?</h3>
+                <button class="close-modal" id="closeReplyNameModal">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Masukkan nama kamu agar teman-teman tahu siapa yang membalas.</p>
+                <div class="form-group">
+                    <input type="text" class="form-input" id="replyAuthorName" placeholder="Contoh: Budi Santoso"
+                        required>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="confirmReplyName">Lanjut Balas</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Search Modal -->
     <div class="search-modal" id="searchModal">

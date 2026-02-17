@@ -202,7 +202,9 @@
     </style>
 
     <script type="module">
-        import { getMaterialsByClass } from '/src/firebase/repository.js';
+        // Supabase Integration
+        import { getMaterialsByClass } from '../../src/supabase/repository.js';
+        import { isLoggedIn } from '../../src/supabase/auth.js';
         const loadingState = document.getElementById('loadingState');
         const materialsGrid = document.getElementById('materialsGrid');
         const emptyState = document.getElementById('emptyState');

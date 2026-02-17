@@ -1,3 +1,5 @@
+import { forumRepository } from './supabase/forum.js';
+
 /* ======================================
    Edunet Main JavaScript
    Core functionality for the website
@@ -291,3 +293,95 @@ document.querySelectorAll('.nav-link').forEach(link => {
 console.log('%c⌘ Edunet', 'font-size: 24px; font-weight: bold; color: #00ffc8;');
 console.log('%cKuasai Jaringan, Taklukkan Masa Depan!', 'font-size: 14px; color: #9ca3af;');
 console.log('%cBuilt with 💚 for Indonesian students', 'font-size: 12px; color: #6b7280;');
+
+// ===== Toast Notification =====
+window.showToast = function (title, message, type = 'info') {
+  let container = document.querySelector('.toast-container');
+  if (!container) {
+    container = document.createElement('div');
+    container.className = 'toast-container';
+    document.body.appendChild(container);
+  }
+
+  const toast = document.createElement('div');
+  toast.className = `toast ${type}`;
+  toast.innerHTML = `
+        <div class="toast-content">
+            <span class="toast-title">${title}</span>
+            <span class="toast-msg">${message}</span>
+        </div>
+        <button onclick="this.parentElement.remove()" style="color: var(--text-muted);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+    `;
+
+  container.appendChild(toast);
+
+  // Auto remove
+  setTimeout(() => {
+    toast.style.animation = 'slideOut 0.3s ease forwards';
+    setTimeout(() => toast.remove(), 300);
+  }, 5000);
+};
+
+// ===== Global Realtime Subscriptions =====
+// Subscribe to new forum topics
+try {
+  forumRepository.subscribeToNewTopics((newTopic) => {
+    const myName = localStorage.getItem('edunet_forum_username');
+    if (newTopic.author_name !== myName) {
+      window.showToast('Topik Baru di Forum', `${newTopic.author_name}: ${newTopic.title}`, 'info');
+    }
+  });
+} catch (e) {
+  console.error('Failed to subscribe to forum topics:', e);
+}
+
+// ===== Hidden Admin Access Shortcut =====
+// Ctrl+Shift+A navigates to admin login (no visible link on site)
+document.addEventListener('keydown', (e) => {
+  if (e.ctrlKey && e.shiftKey && e.key === 'A') {
+    e.preventDefault();
+    window.location.href = '/.admin/login.html';
+  }
+});
+
+// Mobile shortcut: 5 taps on Footer Logo
+const footerLogo = document.querySelector('.footer-brand .logo');
+if (footerLogo) {
+  let tapCount = 0;
+  let tapTimer = null;
+
+  footerLogo.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    tapCount++;
+    clearTimeout(tapTimer);
+
+    if (tapCount >= 5) {
+      // Show confirmation before redirecting
+      if (typeof window.showToast === 'function') {
+        window.showToast('Access Granted', 'Redirecting to Admin...', 'success');
+      }
+      setTimeout(() => {
+        window.location.href = '/.admin/login.html';
+      }, 1000);
+      tapCount = 0;
+    } else {
+      // Reset count if no next tap within 400ms
+      tapTimer = setTimeout(() => {
+        // If the intention was just to navigate home (single tap), do it now
+        if (tapCount === 1) {
+          const href = footerLogo.getAttribute('href');
+          if (href && window.location.pathname !== href && href !== '#') {
+            window.location.href = href;
+          }
+        }
+        tapCount = 0;
+      }, 400);
+    }
+  });
+}

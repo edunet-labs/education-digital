@@ -4,174 +4,351 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Admin Login - Edunet">
     <title>Admin Login - Edunet</title>
     <link rel="icon" type="image/png" href="/public/img/logos/edunet-logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="/src/styles/main.css">
-    <link rel="stylesheet" href="/src/styles/pages.css">
     <style>
-        .login-container {
+        /* ===== Login Theme Variables ===== */
+        :root {
+            --login-bg: #0b0d13;
+            --login-card: #12161f;
+            --login-border: rgba(255, 255, 255, 0.06);
+            --login-text: #eaf0f6;
+            --login-text-secondary: #a0aec0;
+            --login-text-muted: #6b7a90;
+            --login-input-bg: #0f1219;
+            --login-accent: #00d4aa;
+            --login-accent-hover: #00e8b8;
+            --login-accent-gradient: linear-gradient(135deg, #00d4aa 0%, #00b4d8 50%, #7c5cfc 100%);
+            --login-accent-glow: rgba(0, 212, 170, 0.15);
+            --login-danger: #ef4444;
+            --login-danger-bg: rgba(239, 68, 68, 0.1);
+            --login-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+            --login-radius: 16px;
+        }
+
+        /* ===== Reset ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--login-bg);
+            color: var(--login-text);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* ===== Animated Background ===== */
+        .bg-glow {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-glow.g1 {
+            width: 500px;
+            height: 500px;
+            background: #00d4aa;
+            top: -15%;
+            left: -10%;
+            animation: float1 12s ease-in-out infinite;
+        }
+
+        .bg-glow.g2 {
+            width: 400px;
+            height: 400px;
+            background: #7c5cfc;
+            bottom: -10%;
+            right: -5%;
+            animation: float2 15s ease-in-out infinite;
+        }
+
+        .bg-glow.g3 {
+            width: 350px;
+            height: 350px;
+            background: #00b4d8;
+            top: 50%;
+            left: 60%;
+            animation: float3 10s ease-in-out infinite;
+        }
+
+        @keyframes float1 {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(40px, 30px);
+            }
+        }
+
+        @keyframes float2 {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(-50px, -40px);
+            }
+        }
+
+        @keyframes float3 {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(30px, -60px);
+            }
+        }
+
+        /* ===== Login Card ===== */
+        .login-container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 400px;
+            padding: 1rem;
         }
 
         .login-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-primary);
-            border-radius: 1rem;
-            padding: 2.5rem;
-            width: 100%;
-            max-width: 420px;
-            position: relative;
-            overflow: hidden;
+            background: var(--login-card);
+            border: 1px solid var(--login-border);
+            border-radius: var(--login-radius);
+            padding: 2.5rem 2rem;
+            box-shadow: var(--login-shadow);
+            animation: cardEntry 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
         }
 
-        .login-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-primary);
+        @keyframes cardEntry {
+            from {
+                opacity: 0;
+                transform: translateY(24px) scale(0.96);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
-        .login-header {
-            text-align: center;
+        /* Logo */
+        .login-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
             margin-bottom: 2rem;
         }
 
-        .login-logo {
-            width: 60px;
-            height: 60px;
-            margin-bottom: 1rem;
+        .login-logo img {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
         }
 
-        .login-title {
+        .login-logo-text {
             font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            background: var(--login-accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .login-subtitle {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+            font-size: 0.875rem;
+            color: var(--login-text-muted);
+            font-weight: 500;
+        }
+
+        /* Form */
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
         }
 
         .form-group {
-            margin-bottom: 1.25rem;
+            display: flex;
+            flex-direction: column;
         }
 
         .form-label {
-            display: block;
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: var(--text-primary);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--login-text-secondary);
             margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 0.9rem;
+            color: var(--login-text-muted);
+            font-size: 1.1rem;
+            pointer-events: none;
+            z-index: 1;
         }
 
         .form-input {
             width: 100%;
-            padding: 0.875rem 1rem;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-primary);
-            border-radius: 0.5rem;
-            color: var(--text-primary);
-            font-size: 1rem;
+            padding: 0.8rem 1rem 0.8rem 2.75rem;
+            background: var(--login-input-bg);
+            border: 1px solid var(--login-border);
+            border-radius: 10px;
+            color: var(--login-text);
+            font-size: 0.95rem;
+            font-family: inherit;
+            outline: none;
             transition: all 0.2s ease;
         }
 
         .form-input:focus {
-            outline: none;
-            border-color: var(--accent-primary);
-            box-shadow: 0 0 0 3px rgba(0, 255, 200, 0.1);
+            border-color: var(--login-accent);
+            box-shadow: 0 0 0 3px var(--login-accent-glow);
         }
 
         .form-input::placeholder {
-            color: var(--text-muted);
+            color: var(--login-text-muted);
         }
 
+        .password-toggle {
+            position: absolute;
+            right: 0.75rem;
+            background: none;
+            border: none;
+            color: var(--login-text-muted);
+            cursor: pointer;
+            font-size: 1.1rem;
+            padding: 0.25rem;
+            transition: color 0.15s ease;
+            z-index: 1;
+        }
+
+        .password-toggle:hover {
+            color: var(--login-text-secondary);
+        }
+
+        /* Error Message */
+        .error-message {
+            display: none;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            background: var(--login-danger-bg);
+            border: 1px solid rgba(239, 68, 68, 0.15);
+            border-radius: 10px;
+            color: var(--login-danger);
+            font-size: 0.85rem;
+            font-weight: 500;
+            animation: shake 0.3s ease;
+        }
+
+        .error-message.show {
+            display: flex;
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-6px);
+            }
+
+            75% {
+                transform: translateX(6px);
+            }
+        }
+
+        /* Submit Button */
         .login-btn {
             width: 100%;
-            padding: 1rem;
-            background: #00b085;
+            padding: 0.85rem;
+            background: var(--login-accent-gradient);
             border: none;
-            border-radius: 0.5rem;
-            color: #ffffff;
+            border-radius: 10px;
+            color: #fff;
             font-size: 1rem;
-            font-weight: 600;
+            font-weight: 700;
+            font-family: inherit;
             cursor: pointer;
             transition: all 0.2s ease;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
+            box-shadow: 0 4px 16px rgba(0, 212, 170, 0.2);
         }
 
         .login-btn:hover {
-            background: #00b085;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 212, 170, 0.3);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
         }
 
         .login-btn:disabled {
             opacity: 0.6;
             cursor: not-allowed;
+            transform: none;
         }
 
-        .error-message {
-            background: rgba(239, 68, 68, 0.1);
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            color: #ef4444;
-            padding: 0.75rem 1rem;
-            border-radius: 0.5rem;
-            font-size: 0.875rem;
-            margin-bottom: 1rem;
+        /* Spinner */
+        .btn-spinner {
             display: none;
-        }
-
-        .error-message.show {
-            display: block;
-        }
-
-        .back-link {
-            display: block;
-            text-align: center;
-            margin-top: 1.5rem;
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.875rem;
-            transition: color 0.2s ease;
-        }
-
-        .back-link:hover {
-            color: var(--accent-primary);
-        }
-
-        .spinner {
-            width: 20px;
-            height: 20px;
-            border: 2px solid transparent;
-            border-top-color: currentColor;
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top-color: #fff;
             border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-            display: none;
-        }
-
-        .login-btn.loading .spinner {
-            display: block;
+            animation: spin 0.6s linear infinite;
         }
 
         .login-btn.loading .btn-text {
             display: none;
+        }
+
+        .login-btn.loading .btn-spinner {
+            display: block;
         }
 
         @keyframes spin {
@@ -179,148 +356,204 @@
                 transform: rotate(360deg);
             }
         }
+
+        /* Footer */
+        .login-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.8rem;
+            color: var(--login-text-muted);
+        }
+
+        .login-footer a {
+            color: var(--login-accent);
+            text-decoration: none;
+        }
+
+        .login-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Back link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.85rem;
+            color: var(--login-text-muted);
+            text-decoration: none;
+            margin-bottom: 1.25rem;
+            transition: color 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: var(--login-accent);
+        }
     </style>
 </head>
 
 <body>
+    <!-- Animated Background Glows -->
+    <div class="bg-glow g1"></div>
+    <div class="bg-glow g2"></div>
+    <div class="bg-glow g3"></div>
+
     <div class="login-container">
+        <a href="/" class="back-link">
+            <i class="bi bi-arrow-left"></i>
+            Kembali ke website
+        </a>
+
         <div class="login-card">
-            <div class="login-header">
-                <img src="/public/img/logos/edunet-logo.png" alt="Edunet Logo" class="login-logo">
-                <h1 class="login-title">Admin Login</h1>
-                <p class="login-subtitle">Masuk untuk mengelola materi pembelajaran</p>
+            <div class="login-logo">
+                <img src="/public/img/logos/edunet-logo.png" alt="Edunet">
+                <span class="login-logo-text">Edunet Admin</span>
+                <span class="login-subtitle">Masuk ke panel admin</span>
             </div>
 
-            <div class="error-message" id="errorMessage"></div>
-
-            <form id="loginForm">
-                <div class="form-group">
-                    <label class="form-label" for="username">Email</label>
-                    <input type="text" id="username" class="form-input" placeholder="Masukan Email & Username" required
-                        autocomplete="username">
+            <form class="login-form" id="loginForm">
+                <div class="error-message" id="errorMessage">
+                    <i class="bi bi-exclamation-triangle-fill"></i>
+                    <span id="errorText"></span>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label" for="password">Password</label>
-                    <input type="password" id="password" class="form-input" placeholder="Masukkan password" required>
+                    <label class="form-label">Username</label>
+                    <div class="input-wrapper">
+                        <i class="bi bi-person input-icon"></i>
+                        <input type="text" class="form-input" id="username" placeholder="Masukkan username"
+                            autocomplete="username" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <div class="input-wrapper">
+                        <i class="bi bi-lock input-icon"></i>
+                        <input type="password" class="form-input" id="password" placeholder="Masukkan password"
+                            autocomplete="current-password" required>
+                        <button type="button" class="password-toggle" id="togglePassword">
+                            <i class="bi bi-eye"></i>
+                        </button>
+                    </div>
                 </div>
 
                 <button type="submit" class="login-btn" id="loginBtn">
-                    <span class="btn-text">
-                        <i class="bi bi-box-arrow-in-right"></i>
-                        Masuk
-                    </span>
-                    <div class="spinner"></div>
+                    <span class="btn-text">Masuk</span>
+                    <div class="btn-spinner"></div>
                 </button>
             </form>
 
-            <a href="/" class="back-link">
-                <i class="bi bi-arrow-left"></i> Kembali ke Beranda
-            </a>
+            <div class="login-footer">
+                &copy; 2025 Edunet. Admin Access Only.
+            </div>
         </div>
     </div>
 
     <script type="module">
-        import { signIn, signOut, onAuthChange } from '/src/firebase/auth.js';
-        import { getUserRole, setUserRole, hasSuperAdmin } from '/src/firebase/users.js';
+        import { signIn, onAuthChange } from '../src/supabase/auth.js';
+        import { getUserRole, setUserRole } from '../src/supabase/users.js';
 
-        // Flag to track if we've already signed out on page load
-        let hasSignedOut = false;
-        let isLoginInProgress = false;
+        // DOM elements
+        const form = document.getElementById('loginForm');
+        const loginBtn = document.getElementById('loginBtn');
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const errorMessage = document.getElementById('errorMessage');
+        const errorText = document.getElementById('errorText');
+        const togglePassword = document.getElementById('togglePassword');
 
-        // Redirect based on role
-        async function redirectBasedOnRole(user) {
-            const userData = await getUserRole(user.uid);
+        // Password visibility toggle
+        togglePassword?.addEventListener('click', () => {
+            const type = passwordInput.type === 'password' ? 'text' : 'password';
+            passwordInput.type = type;
+            togglePassword.querySelector('i').className = type === 'password' ? 'bi bi-eye' : 'bi bi-eye-slash';
+        });
 
-            // If no user data exists and no super admin exists, make this user super admin
-            if (!userData) {
-                const hasSuper = await hasSuperAdmin();
-                if (!hasSuper) {
-                    // First user becomes super admin
-                    const username = user.email.split('@')[0];
-                    await setUserRole(user.uid, {
-                        email: user.email,
-                        username: username,
-                        role: 'superadmin',
-                        name: 'Super Admin'
-                    });
-                    window.location.href = '/.admin/superadmin.html';
-                    return;
-                } else {
-                    // New user without role - deny access
-                    errorMessage.textContent = 'Akun Anda belum diaktifkan oleh Super Admin.';
-                    errorMessage.classList.add('show');
-                    return;
-                }
-            }
-
-            // Redirect based on role
-            if (userData.role === 'superadmin') {
-                window.location.href = '/.admin/superadmin.html';
-            } else if (userData.role === 'admin') {
-                window.location.href = '/.admin/admin.html';
-            } else {
-                errorMessage.textContent = 'Akun Anda tidak memiliki akses.';
-                errorMessage.classList.add('show');
-            }
+        function showError(msg) {
+            errorText.textContent = msg;
+            errorMessage.classList.add('show');
         }
 
-        // SECURITY: Force logout when visiting login page (require re-authentication)
-        // Only redirect after successful login, not on page load
+        function hideError() {
+            errorMessage.classList.remove('show');
+        }
+
+        // Check if already logged in
         onAuthChange(async (user) => {
-            if (user && !hasSignedOut && !isLoginInProgress) {
-                // User has existing session - sign them out to force re-authentication
-                hasSignedOut = true;
-                await signOut();
-                // Page will reload/state will update after signout
-            } else if (user && isLoginInProgress) {
-                // User just logged in via form - redirect them
-                await redirectBasedOnRole(user);
+            if (user) {
+                const userData = await getUserRole(user.id);
+                if (userData && userData.role === 'admin') {
+                    window.location.href = '/.admin/admin.html';
+                }
             }
         });
 
-        const form = document.getElementById('loginForm');
-        const loginBtn = document.getElementById('loginBtn');
-        const errorMessage = document.getElementById('errorMessage');
-
-        // Convert username to internal email format
-        function toInternalEmail(username) {
-            // If already an email, use as-is
-            if (username.includes('@')) {
-                return username;
-            }
-            // Convert username to internal email
-            return `${username.toLowerCase()}@edunet.local`;
-        }
-
+        // Login handler
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
+            hideError();
 
-            const username = document.getElementById('username').value.trim();
-            const password = document.getElementById('password').value;
-            const email = toInternalEmail(username);
+            const username = usernameInput.value.trim();
+            const password = passwordInput.value;
 
-            // Show loading state
+            if (!username || !password) {
+                showError('Username dan password wajib diisi.');
+                return;
+            }
+
+            // Convert username to internal email format
+            const email = username.includes('@') ? username : `${username}@edunet.local`;
+
             loginBtn.classList.add('loading');
             loginBtn.disabled = true;
-            errorMessage.classList.remove('show');
 
-            // Set flag to indicate login is in progress (prevents auto-logout)
-            isLoginInProgress = true;
+            try {
+                const result = await signIn(email, password);
 
-            const result = await signIn(email, password);
+                if (result.error) {
+                    showError('Username atau password salah.');
+                    loginBtn.classList.remove('loading');
+                    loginBtn.disabled = false;
+                    return;
+                }
 
-            if (result.success) {
-                // Redirect will be handled by onAuthChange
-                await redirectBasedOnRole(result.user);
-            } else {
-                isLoginInProgress = false;
-                errorMessage.textContent = result.error;
-                errorMessage.classList.add('show');
+                const user = result.user;
+                if (!user) {
+                    showError('Gagal mendapatkan data pengguna.');
+                    loginBtn.classList.remove('loading');
+                    loginBtn.disabled = false;
+                    return;
+                }
+
+                await redirectBasedOnRole(user);
+
+            } catch (err) {
+                console.error('Login error:', err);
+                showError('Terjadi kesalahan. Coba lagi.');
                 loginBtn.classList.remove('loading');
                 loginBtn.disabled = false;
             }
         });
+
+        async function redirectBasedOnRole(user) {
+            let userData = await getUserRole(user.id);
+
+            // Backward compatibility: Allow both 'admin' and 'superadmin' roles
+            if (!userData || (userData.role !== 'admin' && userData.role !== 'superadmin')) {
+                showError('Akun Anda tidak memiliki akses admin.');
+                loginBtn.classList.remove('loading');
+                loginBtn.disabled = false;
+                return;
+            }
+
+            // All admins (including legacy superadmins) go to admin dashboard
+            if (userData.role === 'superadmin') {
+                window.location.href = '/.admin/superadmin.html';
+            } else {
+                window.location.href = '/.admin/admin.html';
+            }
+        }
     </script>
 </body>
 

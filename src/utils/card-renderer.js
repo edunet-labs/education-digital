@@ -22,7 +22,7 @@ export function renderCard(material) {
                     </svg>
                     Baca Materi
                 </span>
-                ${material.videoUrl ? `
+                ${material.videourl ? `
                     <span class="material-meta-item">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polygon points="5 3 19 12 5 21 5 3"></polygon>
