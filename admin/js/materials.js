@@ -55,6 +55,7 @@ export function initMaterials() {
     // Initialize File Inputs
     initFileInput('pdfFile', 'pdfFileName');
     initFileInput('jobsheetFile', 'jobsheetFileName');
+    initFileInput('essayPdfFile', 'essayPdfFileName');
 }
 
 function initFileInput(inputId, displayId) {
@@ -235,12 +236,14 @@ async function handleMaterialSubmit(e) {
             quiz_data: document.getElementById('quizData').value ? JSON.parse(document.getElementById('quizData').value) : null,
             pdfurl: document.getElementById('pdfUrl').value,
             jobsheeturl: document.getElementById('jobsheetUrl').value,
+            essay_pdf_url: document.getElementById('essayPdfUrl').value,
             created_by: currentUser?.id // Use created_by instead of user_id to match schema
         };
 
         // Handle File Uploads
         const pdfFile = document.getElementById('pdfFile').files[0];
         const jobsheetFile = document.getElementById('jobsheetFile').files[0];
+        const essayPdfFile = document.getElementById('essayPdfFile').files[0];
 
         // Helper to update progress
         const updateProgress = (width, text) => {
@@ -262,6 +265,14 @@ async function handleMaterialSubmit(e) {
             const result = await uploadFile(jobsheetFile, `jobsheets/${Date.now()}_${jobsheetFile.name}`);
             if (!result.success) throw new Error('Gagal upload Jobsheet: ' + result.error);
             formData.jobsheeturl = result.url;
+        }
+
+        // Upload Essay PDF
+        if (essayPdfFile) {
+            updateProgress('80%', 'Mengupload Soal Essay...');
+            const result = await uploadFile(essayPdfFile, `essays/${Date.now()}_${essayPdfFile.name}`);
+            if (!result.success) throw new Error('Gagal upload Essay: ' + result.error);
+            formData.essay_pdf_url = result.url;
         }
 
         updateProgress('90%', 'Menyimpan Data...');
@@ -320,6 +331,7 @@ window.editMaterial = async (id) => {
     if (el('videoUrl')) el('videoUrl').value = material.videourl || '';
     if (el('pdfUrl')) el('pdfUrl').value = material.pdfurl || '';
     if (el('jobsheetUrl')) el('jobsheetUrl').value = material.jobsheeturl || '';
+    if (el('essayPdfUrl')) el('essayPdfUrl').value = material.essay_pdf_url || '';
 
     // Quiz Data
     if (material.quiz_data) {
@@ -380,11 +392,13 @@ function resetForm() {
     // Reset file displays
     if (el('pdfFileName')) el('pdfFileName').textContent = 'Pilih file PDF...';
     if (el('jobsheetFileName')) el('jobsheetFileName').textContent = 'Pilih file Jobsheet...';
+    if (el('essayPdfFileName')) el('essayPdfFileName').textContent = 'Pilih file Essay...';
     if (el('quizFileName')) el('quizFileName').textContent = 'Pilih file Soal PDF...';
 
     // Reset hidden URLs and Quiz
     if (el('pdfUrl')) el('pdfUrl').value = '';
     if (el('jobsheetUrl')) el('jobsheetUrl').value = '';
+    if (el('essayPdfUrl')) el('essayPdfUrl').value = '';
     if (el('quizData')) el('quizData').value = '';
     if (el('quizPreview')) el('quizPreview').style.display = 'none';
 

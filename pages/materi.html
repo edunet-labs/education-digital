@@ -317,7 +317,7 @@
                 // Render Sidebar
                 // Render Sidebar
                 let resourcesHtml = '';
-                if (material.pdfurl || material.jobsheeturl) {
+                if (material.pdfurl || material.jobsheeturl || material.essay_pdf_url) {
                     resourcesHtml = `
                     <div class="sidebar-card resources-card">
                         <h3><i class="bi bi-folder2"></i> Resources</h3>
@@ -337,6 +337,16 @@
                                     <i class="bi bi-file-earmark-text"></i>
                                     <div class="resource-info">
                                         <span class="resource-title">Jobsheet (cara kerja)</span>
+                                        <span class="resource-size">Download</span>
+                                    </div>
+                                    <i class="bi bi-download"></i>
+                                </a>
+                            ` : ''}
+                            ${material.essay_pdf_url ? `
+                                <a href="${material.essay_pdf_url}" class="resource-btn" target="_blank" style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6; border: 1px solid rgba(139, 92, 246, 0.2);">
+                                    <i class="bi bi-journal-text"></i>
+                                    <div class="resource-info">
+                                        <span class="resource-title">Soal Essay</span>
                                         <span class="resource-size">Download</span>
                                     </div>
                                     <i class="bi bi-download"></i>

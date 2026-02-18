@@ -40,10 +40,29 @@ if (navToggle && navMenu) {
   // Close menu when clicking on a link
   const navLinks = navMenu.querySelectorAll('.nav-link');
   navLinks.forEach(link => {
-    link.addEventListener('click', () => {
+    link.addEventListener('click', (e) => {
+      // Don't close if it's a dropdown toggle (parent has nav-dropdown class)
+      if (link.parentElement.classList.contains('nav-dropdown')) {
+        return;
+      }
       navToggle.classList.remove('active');
       navMenu.classList.remove('active');
     });
+  });
+
+  // Mobile Dropdown Toggle
+  const dropdowns = navMenu.querySelectorAll('.nav-dropdown');
+  dropdowns.forEach(dropdown => {
+    const link = dropdown.querySelector('a');
+    if (link) {
+      link.addEventListener('click', (e) => {
+        // Only prevent default on mobile/small screens where we use click
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          dropdown.classList.toggle('active');
+        }
+      });
+    }
   });
 }
 
