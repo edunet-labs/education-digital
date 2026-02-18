@@ -127,7 +127,16 @@ function renderMaterials(materials) {
                     ${m.modul || '-'} • ${m.durasi} menit • ${m.tingkat}
                 </div>
             </td>
-            <td data-label="Kelas"><span class="badge badge-blue">Kelas ${m.kelas}</span></td>
+            <td data-label="Kelas">
+                ${(() => {
+            const kelas = m.kelas;
+            let badgeClass = 'badge-secondary';
+            if (kelas == 10) badgeClass = 'badge-purple';
+            else if (kelas == 11) badgeClass = 'badge-yellow';
+            else if (kelas == 12) badgeClass = 'badge-orange';
+            return `<span class="badge ${badgeClass}">Kelas ${kelas}</span>`;
+        })()}
+            </td>
             <td data-label="Spesialisasi">
                 ${m.spesialisasi ? (() => {
             const spec = m.spesialisasi;
