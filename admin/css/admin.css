@@ -637,6 +637,11 @@ a {
     color: var(--stat-purple);
 }
 
+.badge-red {
+    background: var(--danger-bg);
+    color: var(--danger);
+}
+
 /* ===== Form Styles ===== */
 .form-grid {
     display: grid;

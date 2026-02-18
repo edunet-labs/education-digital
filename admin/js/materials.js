@@ -128,7 +128,16 @@ function renderMaterials(materials) {
                 </div>
             </td>
             <td data-label="Kelas"><span class="badge badge-blue">Kelas ${m.kelas}</span></td>
-            <td data-label="Spesialisasi">${m.spesialisasi ? `<span class="badge badge-orange">${m.spesialisasi}</span>` : '-'}</td>
+            <td data-label="Spesialisasi">
+                ${m.spesialisasi ? (() => {
+            const spec = m.spesialisasi;
+            let badgeClass = 'badge-secondary';
+            if (spec === 'AIJ') badgeClass = 'badge-green';
+            else if (spec === 'ASJ') badgeClass = 'badge-blue';
+            else if (spec === 'KJ') badgeClass = 'badge-red';
+            return `<span class="badge ${badgeClass}">${spec}</span>`;
+        })() : '-'}
+            </td>
             <td data-label="Tanggal">
                 <div style="font-size: 0.85rem; color: var(--text-primary);">
                     ${m.created_at ? dayjs(m.created_at).format('DD MMM YYYY, HH:mm') : '-'}
