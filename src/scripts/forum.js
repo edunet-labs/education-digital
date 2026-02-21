@@ -10,7 +10,7 @@ const newTopicForm = document.getElementById('newTopicForm');
 // Image Upload Elements
 const topicImageInput = document.getElementById('topicImage');
 const imagePreview = document.getElementById('imagePreview');
-const previewImg = imagePreview.querySelector('img');
+const previewImg = imagePreview ? imagePreview.querySelector('img') : null;
 const removeImageBtn = document.getElementById('removeImageBtn');
 
 // Reply Name Modal Elements
@@ -145,7 +145,8 @@ function setupEventListeners() {
       if (file) {
         const reader = new FileReader();
         reader.onload = function (e) {
-          replyImagePreview.querySelector('img').src = e.target.result;
+          const img = replyImagePreview.querySelector('img');
+          if (img) img.src = e.target.result;
           replyImagePreview.style.display = 'block';
         }
         reader.readAsDataURL(file);
