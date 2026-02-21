@@ -1,1 +1,0 @@
-Error: Failed to run sql query: ERROR: 42703: column "pdfUrl" does not exist LINE 18: pdfurl = COALESCE(pdfurl, "pdfUrl"), ^ HINT: Perhaps you meant to reference the column "materi.pdfurl".
