@@ -46,7 +46,7 @@
 │   ├── 🟠 AIJ - Infrastruktur Jaringan
 │   ├── 🔵 ASJ - Sistem Jaringan
 │   └── 🔴 KJ - Keamanan Jaringan
-└── 🧪 Lab Virtual
+└── 🧪 Tools
     ├── Cisco Packet Tracer
     ├── GNS3
     └── VirtualBox
@@ -65,6 +65,11 @@ cd education-digital
 
 # Install dependencies
 npm install
+
+# Setup environment variables
+# 1. Copy .env.example to .env
+# 2. Buka .env dan isi dengan URL & Key dari Supabase kamu (Settings -> API)
+cp .env.example .env
 
 # Jalankan development server
 npm run dev
@@ -120,7 +125,7 @@ Preferensi tema disimpan di `localStorage` dan akan tetap tersimpan saat refresh
 
 ## 👨‍💻 Tim Pengembang
 
-**Boetoen 2025 & 2026 TKJ PJBL**
+**Edunet 2025 & 2026 TKJ PJBL**
 
 ---
 
@@ -132,7 +137,7 @@ Preferensi tema disimpan di `localStorage` dan akan tetap tersimpan saat refresh
 
 <div align="center">
 
-Made with 💚 for Indonesian students
+Team Edunet 2025 & 2026 TKJ PJBL
 
 **[⬆ Kembali ke atas](#-edunet)**
 
