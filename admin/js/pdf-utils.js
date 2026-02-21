@@ -193,6 +193,7 @@ async function parseQuizPdf(file) {
                 options: {},
                 answer: null
             };
+            currentOption = null;
             continue;
         }
 
@@ -215,7 +216,18 @@ async function parseQuizPdf(file) {
             }
 
             currentQuestion.options[key] = value;
+            currentOption = key;
             continue;
+        }
+
+        // 4. Continuation line (multi-line question or option)
+        if (currentQuestion) {
+            if (currentOption) {
+                // Determine if it looks like a junk line or page number, maybe skip? Let's just append for now
+                currentQuestion.options[currentOption] += ' ' + text;
+            } else {
+                currentQuestion.question += ' ' + text;
+            }
         }
     }
 
