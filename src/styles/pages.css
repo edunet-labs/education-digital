@@ -1,4 +1,4 @@
-/* ======================================
+﻿/* ======================================
    Edunet Pages Styles
    Additional styles for content pages
    ====================================== */
@@ -921,7 +921,7 @@
     }
 }
 
-/* ===== Lab Virtual Tool Cards ===== */
+/* ===== Tools Tool Cards ===== */
 .tools-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));

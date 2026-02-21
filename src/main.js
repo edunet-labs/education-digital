@@ -1,4 +1,4 @@
-import { forumRepository } from './supabase/forum.js';
+﻿import { forumRepository } from './supabase/forum.js';
 
 /* ======================================
    Edunet Main JavaScript
@@ -130,11 +130,11 @@ const searchData = [
   { title: 'Server Hardening', category: 'KJ Kelas 12', url: '/pages/kelas-12/kj.html#hardening', keywords: 'hardening server vulnerability scanning patch management selinux apparmor' },
   { title: 'Penetration Testing', category: 'KJ Kelas 12', url: '/pages/kelas-12/kj.html#pentest', keywords: 'pentest penetration testing kali linux nmap metasploit vulnerability' },
 
-  // Lab Virtual
-  { title: 'Cisco Packet Tracer', category: 'Lab Virtual', url: '/pages/lab-virtual.html#packet-tracer', keywords: 'cisco packet tracer simulator network jaringan simulasi' },
-  { title: 'GNS3', category: 'Lab Virtual', url: '/pages/lab-virtual.html#gns3', keywords: 'gns3 emulator router network virtualisasi' },
-  { title: 'VirtualBox / VMware', category: 'Lab Virtual', url: '/pages/lab-virtual.html#virtualbox', keywords: 'virtualbox vmware virtual machine vm mesin virtual hypervisor' },
-  { title: 'Download ISO', category: 'Lab Virtual', url: '/pages/lab-virtual.html#iso', keywords: 'iso download windows linux debian ubuntu server image' },
+  // Tools
+  { title: 'Cisco Packet Tracer', category: 'Tools', url: '/pages/tools.html#packet-tracer', keywords: 'cisco packet tracer simulator network jaringan simulasi' },
+  { title: 'GNS3', category: 'Tools', url: '/pages/tools.html#gns3', keywords: 'gns3 emulator router network virtualisasi' },
+  { title: 'VirtualBox / VMware', category: 'Tools', url: '/pages/tools.html#virtualbox', keywords: 'virtualbox vmware virtual machine vm mesin virtual hypervisor' },
+  { title: 'Download ISO', category: 'Tools', url: '/pages/tools.html#iso', keywords: 'iso download windows linux debian ubuntu server image' },
 
   // Quiz
   { title: 'Quiz Jaringan', category: 'Quiz', url: '/pages/quiz.html', keywords: 'quiz kuis latihan soal jaringan network ulangan' },
