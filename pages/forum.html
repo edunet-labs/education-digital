@@ -441,6 +441,91 @@
         .remove-image-btn:hover {
             background: #ef4444;
         }
+
+        /* Custom Modal for Reply Name */
+        .custom-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 2500;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .custom-modal.active {
+            display: flex;
+        }
+
+        .modal-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-container {
+            position: relative;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xl);
+            width: 90%;
+            max-width: 400px;
+            padding: 2rem;
+            z-index: 1;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .modal-header h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .close-modal {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 0.25rem;
+            transition: color var(--transition-fast);
+        }
+
+        .close-modal:hover {
+            color: var(--accent-primary);
+        }
+
+        .modal-body p {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .modal-footer {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: flex-end;
+        }
     </style>
 </head>
 

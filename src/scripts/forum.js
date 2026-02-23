@@ -37,9 +37,11 @@ function containsProfanity(text) {
 }
 
 // Initialize
-document.addEventListener('DOMContentLoaded', () => {
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
   init();
-});
+}
 
 async function init() {
   await renderTopics();
