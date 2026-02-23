@@ -311,7 +311,7 @@ document.querySelectorAll('.nav-link').forEach(link => {
 // Console easter egg
 console.log('%c⌘ Edunet', 'font-size: 24px; font-weight: bold; color: #00ffc8;');
 console.log('%cKuasai Jaringan, Taklukkan Masa Depan!', 'font-size: 14px; color: #9ca3af;');
-console.log('%cBuilt with 💚 for Indonesian students', 'font-size: 12px; color: #6b7280;');
+console.log('%cEdunet Teams 2026', 'font-size: 12px; color: #6b7280;');
 
 // ===== Toast Notification =====
 window.showToast = function (title, message, type = 'info') {
